@@ -82,7 +82,7 @@ function Hero() {
 
         <Header transparent />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col items-center justify-center px-6 pb-40 text-center">
+        <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col items-center justify-center px-6 pb-12 text-center sm:pb-20 md:pb-40">
           <h1 className="font-display text-[44px] font-extrabold leading-[0.9] tracking-[-0.03em] text-white/85 sm:text-[72px] md:text-[120px] lg:text-[160px]">
             THE COMPANY<br />OF JOURNEY
           </h1>
