@@ -9,7 +9,7 @@ import lodge from "@/assets/lodge.jpg";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ArrowRight, ArrowUpRight, Pause, Play } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,18 +24,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [showFixed, setShowFixed] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const threshold = window.innerHeight * 0.8;
-      setShowFixed(window.scrollY > threshold);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <div className="bg-background">
       <Hero />
@@ -48,14 +36,17 @@ function Index() {
       <Footer />
       <Link
         to="/contact"
-        className={[
-          "fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-semibold shadow-xl transition-all duration-300 sm:hidden",
-          showFixed ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none",
-        ].join(" ")}
-        style={{ background: "var(--signal)" }}
+        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-white/95 px-3 py-2 shadow-xl backdrop-blur sm:hidden"
       >
-        <span className="text-white">Book</span>
-        <ArrowRight className="h-4 w-4 text-white" />
+        <div className="flex flex-col gap-0.5">
+          <span className="inline-flex items-center rounded-full bg-[var(--signal)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
+            Book your safari
+          </span>
+          <span className="text-[11px] font-medium leading-none text-foreground">With Remarkable</span>
+        </div>
+        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[var(--cobalt)] text-white">
+          <ArrowRight className="h-4 w-4" />
+        </span>
       </Link>
     </div>
   );
@@ -82,18 +73,6 @@ function Hero() {
           <h1 className="font-display text-[44px] font-extrabold leading-[0.9] tracking-[-0.03em] text-white/85 sm:text-[72px] md:text-[120px] lg:text-[160px]">
             THE COMPANY<br />OF JOURNEYS
           </h1>
-          <Link
-            to="/contact"
-            className="mt-8 flex items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:hidden w-full max-w-[340px]"
-          >
-            <div className="text-left">
-              <span className="tag-pill">Book your safari</span>
-              <div className="mt-2 text-[15px] font-medium text-foreground">With Remarkable</div>
-            </div>
-            <span className="icon-circle shrink-0">
-              <ArrowRight className="h-5 w-5" />
-            </span>
-          </Link>
         </div>
 
         {/* play/pause */}
