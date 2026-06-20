@@ -106,7 +106,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                     className="h-8 w-auto"
                   />
                   <span className="font-display text-lg font-extrabold tracking-tight">
-                    Remarkable Destination
+                    Remarkable <br className="md:hidden" /> Destination
                   </span>
                 </SheetTitle>
               </SheetHeader>
