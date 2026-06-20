@@ -16,6 +16,7 @@ import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ExperiencesRouteImport } from './routes/experiences'
 import { Route as DestinationsRouteImport } from './routes/destinations'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConservationRouteImport } from './routes/conservation'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -54,6 +55,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConservationRoute = ConservationRouteImport.update({
+  id: '/conservation',
+  path: '/conservation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -68,6 +74,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/conservation': typeof ConservationRoute
   '/contact': typeof ContactRoute
   '/destinations': typeof DestinationsRoute
   '/experiences': typeof ExperiencesRoute
@@ -79,6 +86,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/conservation': typeof ConservationRoute
   '/contact': typeof ContactRoute
   '/destinations': typeof DestinationsRoute
   '/experiences': typeof ExperiencesRoute
@@ -91,6 +99,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/conservation': typeof ConservationRoute
   '/contact': typeof ContactRoute
   '/destinations': typeof DestinationsRoute
   '/experiences': typeof ExperiencesRoute
@@ -104,6 +113,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/conservation'
     | '/contact'
     | '/destinations'
     | '/experiences'
@@ -115,6 +125,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/conservation'
     | '/contact'
     | '/destinations'
     | '/experiences'
@@ -126,6 +137,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/conservation'
     | '/contact'
     | '/destinations'
     | '/experiences'
@@ -138,6 +150,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ConservationRoute: typeof ConservationRoute
   ContactRoute: typeof ContactRoute
   DestinationsRoute: typeof DestinationsRoute
   ExperiencesRoute: typeof ExperiencesRoute
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conservation': {
+      id: '/conservation'
+      path: '/conservation'
+      fullPath: '/conservation'
+      preLoaderRoute: typeof ConservationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -218,6 +238,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ConservationRoute: ConservationRoute,
   ContactRoute: ContactRoute,
   DestinationsRoute: DestinationsRoute,
   ExperiencesRoute: ExperiencesRoute,
