@@ -30,7 +30,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
           <img
             src={elephantLogo.url}
             alt="Remarkable Destination"
-            className="h-16 w-auto sm:h-18 md:h-20 lg:h-24"
+            className="h-16 w-auto md:h-20 lg:h-24"
           />
           <div className="flex flex-col leading-none">
             <span
