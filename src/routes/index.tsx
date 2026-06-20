@@ -73,13 +73,13 @@ function Hero() {
         {/* floating CTA card */}
         <Link
           to="/contact"
-          className="absolute right-5 bottom-28 z-10 flex w-[280px] items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur md:right-10"
+          className="absolute bottom-20 left-4 right-4 z-20 flex items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:left-auto sm:right-5 sm:bottom-28 sm:w-[280px] md:right-10"
         >
           <div className="text-left">
             <span className="tag-pill">Book your safari</span>
             <div className="mt-2 text-[15px] font-medium text-foreground">With Remarkable</div>
           </div>
-          <span className="icon-circle">
+          <span className="icon-circle shrink-0">
             <ArrowRight className="h-5 w-5" />
           </span>
         </Link>
