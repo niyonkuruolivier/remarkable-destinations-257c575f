@@ -24,14 +24,15 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [scrolled, setScrolled] = useState(false);
+  const [showFixed, setShowFixed] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > window.innerHeight * 0.7);
+      const threshold = window.innerHeight * 0.8;
+      setShowFixed(window.scrollY > threshold);
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -47,19 +48,14 @@ function Index() {
       <Footer />
       <Link
         to="/contact"
-        className={`fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-white/95 px-3 py-2 shadow-xl backdrop-blur transition-all duration-300 sm:hidden ${
-          scrolled ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"
-        }`}
+        className={[
+          "fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-semibold shadow-xl transition-all duration-300 sm:hidden",
+          showFixed ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none",
+        ].join(" ")}
+        style={{ background: "var(--signal)" }}
       >
-        <div className="flex flex-col gap-0.5">
-          <span className="inline-flex items-center rounded-full bg-[var(--signal)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
-            Book your safari
-          </span>
-          <span className="text-[11px] font-medium leading-none text-foreground">With Remarkable</span>
-        </div>
-        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[var(--cobalt)] text-white">
-          <ArrowRight className="h-4 w-4" />
-        </span>
+        <span className="text-white">Book</span>
+        <ArrowRight className="h-4 w-4 text-white" />
       </Link>
     </div>
   );
@@ -82,14 +78,13 @@ function Hero() {
 
         <Header transparent />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col items-center justify-center px-6 pb-40 text-center">
+        <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col items-center justify-center px-6 text-center">
           <h1 className="font-display text-[44px] font-extrabold leading-[0.9] tracking-[-0.03em] text-white/85 sm:text-[72px] md:text-[120px] lg:text-[160px]">
-            THE COMPANY<br />OF JOURNEY
+            THE COMPANY<br />OF JOURNEYS
           </h1>
-
           <Link
             to="/contact"
-            className="mt-8 flex w-full max-w-[340px] items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:w-[280px]"
+            className="mt-8 flex items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:hidden w-full max-w-[340px]"
           >
             <div className="text-left">
               <span className="tag-pill">Book your safari</span>
@@ -109,6 +104,20 @@ function Hero() {
         >
           {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
         </button>
+
+        {/* floating CTA card */}
+        <Link
+          to="/contact"
+          className="absolute bottom-20 left-4 right-4 z-20 hidden items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:flex sm:left-auto sm:right-5 sm:bottom-28 sm:w-[280px] md:right-10"
+        >
+          <div className="text-left">
+            <span className="tag-pill">Book your safari</span>
+            <div className="mt-2 text-[15px] font-medium text-foreground">With Remarkable</div>
+          </div>
+          <span className="icon-circle shrink-0">
+            <ArrowRight className="h-5 w-5" />
+          </span>
+        </Link>
 
         {/* curved wave bottom */}
         <svg
