@@ -82,21 +82,21 @@ function Hero() {
 
         <Header transparent />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col items-center justify-center px-6 pb-12 text-center sm:pb-20 md:pb-40">
+        <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col items-center justify-center px-6 pb-40 text-center">
           <h1 className="font-display text-[44px] font-extrabold leading-[0.9] tracking-[-0.03em] text-white/85 sm:text-[72px] md:text-[120px] lg:text-[160px]">
             THE COMPANY<br />OF JOURNEY
           </h1>
 
           <Link
             to="/contact"
-            className="mt-6 flex w-full max-w-[260px] items-center justify-between gap-3 rounded-2xl bg-white/95 p-2.5 pl-3.5 shadow-xl backdrop-blur sm:mt-8 sm:max-w-[340px] sm:p-3 sm:pl-4"
+            className="mt-8 flex w-full max-w-[340px] items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:w-[280px]"
           >
             <div className="text-left">
-              <span className="tag-pill text-[10px] sm:text-xs">Book your safari</span>
-              <div className="mt-1 text-[13px] font-medium text-foreground sm:mt-2 sm:text-[15px]">With Remarkable</div>
+              <span className="tag-pill">Book your safari</span>
+              <div className="mt-2 text-[15px] font-medium text-foreground">With Remarkable</div>
             </div>
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--cobalt)] text-white sm:h-11 sm:w-11">
-              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="icon-circle shrink-0">
+              <ArrowRight className="h-5 w-5" />
             </span>
           </Link>
         </div>
