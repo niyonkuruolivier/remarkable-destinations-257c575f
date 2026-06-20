@@ -38,7 +38,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
               (onDark ? "text-white" : "text-foreground")
             }
           >
-            Remarkable Destination
+            Remarkable <br className="md:hidden" /> Destination
           </span>
         </Link>
 
