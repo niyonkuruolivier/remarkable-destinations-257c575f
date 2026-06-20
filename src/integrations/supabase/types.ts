@@ -14,7 +14,258 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blog_posts: {
+        Row: {
+          author_avatar_url: string | null
+          author_name: string | null
+          category: string | null
+          content: string | null
+          created_at: string
+          excerpt: string | null
+          featured_image_url: string | null
+          id: string
+          published: boolean | null
+          published_at: string | null
+          seo_description: string | null
+          seo_title: string | null
+          slug: string
+          title: string
+        }
+        Insert: {
+          author_avatar_url?: string | null
+          author_name?: string | null
+          category?: string | null
+          content?: string | null
+          created_at?: string
+          excerpt?: string | null
+          featured_image_url?: string | null
+          id?: string
+          published?: boolean | null
+          published_at?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
+          slug: string
+          title: string
+        }
+        Update: {
+          author_avatar_url?: string | null
+          author_name?: string | null
+          category?: string | null
+          content?: string | null
+          created_at?: string
+          excerpt?: string | null
+          featured_image_url?: string | null
+          id?: string
+          published?: boolean | null
+          published_at?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
+          slug?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      destinations: {
+        Row: {
+          active: boolean | null
+          best_months: string[] | null
+          country: string
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string | null
+          name: string
+          slug: string
+          wildlife_highlights: string[] | null
+        }
+        Insert: {
+          active?: boolean | null
+          best_months?: string[] | null
+          country: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          name: string
+          slug: string
+          wildlife_highlights?: string[] | null
+        }
+        Update: {
+          active?: boolean | null
+          best_months?: string[] | null
+          country?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          slug?: string
+          wildlife_highlights?: string[] | null
+        }
+        Relationships: []
+      }
+      gallery_items: {
+        Row: {
+          active: boolean | null
+          alt_text: string | null
+          category: string
+          created_at: string
+          id: string
+          image_url: string
+          sort_order: number | null
+          title: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          alt_text?: string | null
+          category: string
+          created_at?: string
+          id?: string
+          image_url: string
+          sort_order?: number | null
+          title?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          alt_text?: string | null
+          category?: string
+          created_at?: string
+          id?: string
+          image_url?: string
+          sort_order?: number | null
+          title?: string | null
+        }
+        Relationships: []
+      }
+      inquiries: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          interest: string | null
+          message: string | null
+          name: string
+          phone: string | null
+          source: string | null
+          status: string | null
+          travel_date: string | null
+          travelers: number | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          interest?: string | null
+          message?: string | null
+          name: string
+          phone?: string | null
+          source?: string | null
+          status?: string | null
+          travel_date?: string | null
+          travelers?: number | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          interest?: string | null
+          message?: string | null
+          name?: string
+          phone?: string | null
+          source?: string | null
+          status?: string | null
+          travel_date?: string | null
+          travelers?: number | null
+        }
+        Relationships: []
+      }
+      packages: {
+        Row: {
+          active: boolean | null
+          activities: string[] | null
+          created_at: string
+          destinations: string[] | null
+          duration_days: number | null
+          featured: boolean | null
+          id: string
+          image_url: string | null
+          name: string
+          price_currency: string | null
+          price_from: number | null
+          price_on_request: boolean | null
+          slug: string
+        }
+        Insert: {
+          active?: boolean | null
+          activities?: string[] | null
+          created_at?: string
+          destinations?: string[] | null
+          duration_days?: number | null
+          featured?: boolean | null
+          id?: string
+          image_url?: string | null
+          name: string
+          price_currency?: string | null
+          price_from?: number | null
+          price_on_request?: boolean | null
+          slug: string
+        }
+        Update: {
+          active?: boolean | null
+          activities?: string[] | null
+          created_at?: string
+          destinations?: string[] | null
+          duration_days?: number | null
+          featured?: boolean | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          price_currency?: string | null
+          price_from?: number | null
+          price_on_request?: boolean | null
+          slug?: string
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          approved: boolean | null
+          country: string | null
+          country_flag: string | null
+          created_at: string
+          id: string
+          quote: string
+          rating: number | null
+          safari_type: string | null
+          traveler_name: string
+          trip_date: string | null
+        }
+        Insert: {
+          approved?: boolean | null
+          country?: string | null
+          country_flag?: string | null
+          created_at?: string
+          id?: string
+          quote: string
+          rating?: number | null
+          safari_type?: string | null
+          traveler_name: string
+          trip_date?: string | null
+        }
+        Update: {
+          approved?: boolean | null
+          country?: string | null
+          country_flag?: string | null
+          created_at?: string
+          id?: string
+          quote?: string
+          rating?: number | null
+          safari_type?: string | null
+          traveler_name?: string
+          trip_date?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
