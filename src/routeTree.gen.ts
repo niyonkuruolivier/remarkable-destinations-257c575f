@@ -11,8 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as JourneysRouteImport } from './routes/journeys'
-import { Route as JournalRouteImport } from './routes/journal'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ExperiencesRouteImport } from './routes/experiences'
 import { Route as DestinationsRouteImport } from './routes/destinations'
@@ -30,16 +28,6 @@ const TestimonialsRoute = TestimonialsRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JourneysRoute = JourneysRouteImport.update({
-  id: '/journeys',
-  path: '/journeys',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JournalRoute = JournalRouteImport.update({
-  id: '/journal',
-  path: '/journal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -92,8 +80,6 @@ export interface FileRoutesByFullPath {
   '/destinations': typeof DestinationsRoute
   '/experiences': typeof ExperiencesRoute
   '/gallery': typeof GalleryRoute
-  '/journal': typeof JournalRoute
-  '/journeys': typeof JourneysRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
 }
@@ -106,8 +92,6 @@ export interface FileRoutesByTo {
   '/destinations': typeof DestinationsRoute
   '/experiences': typeof ExperiencesRoute
   '/gallery': typeof GalleryRoute
-  '/journal': typeof JournalRoute
-  '/journeys': typeof JourneysRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
 }
@@ -121,8 +105,6 @@ export interface FileRoutesById {
   '/destinations': typeof DestinationsRoute
   '/experiences': typeof ExperiencesRoute
   '/gallery': typeof GalleryRoute
-  '/journal': typeof JournalRoute
-  '/journeys': typeof JourneysRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
 }
@@ -137,8 +119,6 @@ export interface FileRouteTypes {
     | '/destinations'
     | '/experiences'
     | '/gallery'
-    | '/journal'
-    | '/journeys'
     | '/sitemap.xml'
     | '/testimonials'
   fileRoutesByTo: FileRoutesByTo
@@ -151,8 +131,6 @@ export interface FileRouteTypes {
     | '/destinations'
     | '/experiences'
     | '/gallery'
-    | '/journal'
-    | '/journeys'
     | '/sitemap.xml'
     | '/testimonials'
   id:
@@ -165,8 +143,6 @@ export interface FileRouteTypes {
     | '/destinations'
     | '/experiences'
     | '/gallery'
-    | '/journal'
-    | '/journeys'
     | '/sitemap.xml'
     | '/testimonials'
   fileRoutesById: FileRoutesById
@@ -180,8 +156,6 @@ export interface RootRouteChildren {
   DestinationsRoute: typeof DestinationsRoute
   ExperiencesRoute: typeof ExperiencesRoute
   GalleryRoute: typeof GalleryRoute
-  JournalRoute: typeof JournalRoute
-  JourneysRoute: typeof JourneysRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TestimonialsRoute: typeof TestimonialsRoute
 }
@@ -200,20 +174,6 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/journeys': {
-      id: '/journeys'
-      path: '/journeys'
-      fullPath: '/journeys'
-      preLoaderRoute: typeof JourneysRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/journal': {
-      id: '/journal'
-      path: '/journal'
-      fullPath: '/journal'
-      preLoaderRoute: typeof JournalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -284,8 +244,6 @@ const rootRouteChildren: RootRouteChildren = {
   DestinationsRoute: DestinationsRoute,
   ExperiencesRoute: ExperiencesRoute,
   GalleryRoute: GalleryRoute,
-  JournalRoute: JournalRoute,
-  JourneysRoute: JourneysRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TestimonialsRoute: TestimonialsRoute,
 }
