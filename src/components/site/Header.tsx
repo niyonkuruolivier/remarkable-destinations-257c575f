@@ -11,10 +11,13 @@ import {
 import elephantLogo from "@/assets/elephant-logo.png.asset.json";
 
 const nav = [
+  { to: "/about", label: "About" },
   { to: "/destinations", label: "Destinations" },
-  { to: "/journeys", label: "Journeys" },
-  { to: "/about", label: "About us" },
-  { to: "/journal", label: "Magazine" },
+  { to: "/experiences", label: "Experiences" },
+  { to: "/gallery", label: "Gallery" },
+  { to: "/conservation", label: "Conservation" },
+  { to: "/blog", label: "Blog" },
+  { to: "/testimonials", label: "Testimonials" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -65,8 +68,8 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
             <Link
               key={n.to}
               to={n.to}
-              className="rounded-full px-4 py-2 text-[14px] font-medium text-foreground/80 transition-colors hover:text-foreground"
-              activeProps={{ className: "bg-foreground text-white rounded-full px-4 py-2 text-[14px] font-medium" }}
+              className="rounded-full px-3 py-2 text-[13px] font-medium text-foreground/80 transition-colors hover:text-foreground"
+              activeProps={{ className: "bg-foreground text-white rounded-full px-3 py-2 text-[13px] font-medium" }}
             >
               {n.label}
             </Link>

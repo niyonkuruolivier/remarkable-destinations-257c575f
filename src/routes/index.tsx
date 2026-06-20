@@ -255,7 +255,7 @@ function Magazine() {
             STORIES FROM<br />THE FIELD.
           </h2>
         </div>
-        <Link to="/journal" className="btn-ghost-pill">
+        <Link to="/blog" className="btn-ghost-pill">
           Read the magazine <ArrowUpRight className="h-4 w-4" />
         </Link>
       </div>
@@ -313,8 +313,8 @@ function Responsibility() {
               fund a measured conservation outcome.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <Link to="/about" className="btn-ink">Our roadmap</Link>
-              <Link to="/journal" className="btn-ghost-pill">Impact report 2025</Link>
+              <Link to="/conservation" className="btn-ink">Our roadmap</Link>
+              <Link to="/blog" className="btn-ghost-pill">Impact report 2025</Link>
             </div>
           </div>
 
@@ -376,10 +376,10 @@ function CTA() {
               Begin a conversation <ArrowUpRight className="h-4 w-4" />
             </Link>
             <Link
-              to="/journeys"
+              to="/experiences"
               className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3.5 text-[15px] font-semibold text-white hover:bg-white/10"
             >
-              Explore journeys
+              Explore experiences
             </Link>
           </div>
         </div>
