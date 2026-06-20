@@ -59,6 +59,18 @@ function Hero() {
           <h1 className="font-display text-[44px] font-extrabold leading-[0.9] tracking-[-0.03em] text-white/85 sm:text-[72px] md:text-[120px] lg:text-[160px]">
             THE COMPANY<br />OF JOURNEYS
           </h1>
+          <Link
+            to="/contact"
+            className="mt-8 flex items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:hidden w-full max-w-[340px]"
+          >
+            <div className="text-left">
+              <span className="tag-pill">Book your safari</span>
+              <div className="mt-2 text-[15px] font-medium text-foreground">With Remarkable</div>
+            </div>
+            <span className="icon-circle shrink-0">
+              <ArrowRight className="h-5 w-5" />
+            </span>
+          </Link>
         </div>
 
         {/* play/pause */}
@@ -73,7 +85,7 @@ function Hero() {
         {/* floating CTA card */}
         <Link
           to="/contact"
-          className="absolute bottom-20 left-4 right-4 z-20 flex items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:left-auto sm:right-5 sm:bottom-28 sm:w-[280px] md:right-10"
+          className="absolute bottom-20 left-4 right-4 z-20 hidden items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:flex sm:left-auto sm:right-5 sm:bottom-28 sm:w-[280px] md:right-10"
         >
           <div className="text-left">
             <span className="tag-pill">Book your safari</span>
