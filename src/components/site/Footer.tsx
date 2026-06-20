@@ -1,51 +1,64 @@
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/logo.png";
-import { Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Instagram, Linkedin, Youtube } from "lucide-react";
+
+const groups = [
+  {
+    title: "Company",
+    items: ["About us", "Newsroom", "Investors", "Magazine", "Careers"],
+  },
+  {
+    title: "Destinations",
+    items: ["Rwanda", "Kenya", "Tanzania", "Zanzibar", "Namibia", "Botswana"],
+  },
+  {
+    title: "Journeys",
+    items: ["Honeymoon", "Family", "Photographic", "Conservation", "Private jet"],
+  },
+  {
+    title: "Responsibility",
+    items: ["Sustainability", "Communities", "Wildlife funds", "Carbon offsetting"],
+  },
+];
 
 export function Footer() {
   return (
-    <footer className="bg-dark text-ivory">
-      <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-10">
-        <div className="grid gap-14 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <div className="flex items-center gap-3">
-              <img src={logo} alt="" className="h-12 w-auto invert" />
-              <div className="leading-tight">
-                <div className="font-display text-2xl italic text-ivory">Remarkable</div>
-                <div className="text-[10px] tracking-[0.34em] uppercase text-gold">Destinations</div>
-              </div>
-            </div>
-            <p className="mt-8 max-w-md text-[15px] leading-[1.8] text-ivory/70">
-              A bespoke safari atelier, designing privileged passages through East and
-              Southern Africa. Quietly crafted from Kigali, Rwanda.
-            </p>
-          </div>
-
-          <div className="md:col-span-3">
-            <div className="eyebrow">Explore</div>
-            <ul className="mt-6 space-y-3 text-[14px] text-ivory/75">
-              <li><Link to="/destinations" className="hover:text-gold">Destinations</Link></li>
-              <li><Link to="/journeys" className="hover:text-gold">Signature Journeys</Link></li>
-              <li><Link to="/gallery" className="hover:text-gold">Gallery</Link></li>
-              <li><Link to="/journal" className="hover:text-gold">The Journal</Link></li>
-              <li><Link to="/about" className="hover:text-gold">Atelier</Link></li>
-            </ul>
-          </div>
-
-          <div className="md:col-span-4">
-            <div className="eyebrow">Atelier</div>
-            <ul className="mt-6 space-y-4 text-[14px] text-ivory/75">
-              <li className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 text-gold" /> KG 7 Avenue, Kacyiru, Kigali, Rwanda</li>
-              <li className="flex items-start gap-3"><Mail className="mt-0.5 h-4 w-4 text-gold" /> hello@remarkabledestinations.co</li>
-              <li className="flex items-start gap-3"><Phone className="mt-0.5 h-4 w-4 text-gold" /> +250 788 000 000</li>
-              <li className="flex items-start gap-3"><Instagram className="mt-0.5 h-4 w-4 text-gold" /> @remarkable.destinations</li>
-            </ul>
-          </div>
+    <footer style={{ background: "var(--ink)", color: "var(--cream)" }}>
+      <div className="mx-auto max-w-[1500px] px-6 pt-20 pb-10 md:px-10 md:pt-28">
+        {/* Top supergraphic */}
+        <div className="flex flex-col gap-10 border-b border-white/10 pb-16 md:flex-row md:items-end md:justify-between">
+          <h2 className="font-display text-[44px] font-extrabold tracking-tight text-white md:text-[88px]">
+            REMARKABLE<span style={{ color: "var(--signal)" }}>.</span>
+          </h2>
+          <Link to="/contact" className="btn-cobalt self-start md:self-auto">
+            Begin your journey <ArrowUpRight className="h-4 w-4" />
+          </Link>
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-ivory/10 pt-8 text-[12px] tracking-[0.16em] uppercase text-ivory/40 md:flex-row md:items-center">
-          <div>© {new Date().getFullYear()} Remarkable Destinations</div>
-          <div>Bespoke Safaris · Kigali · Since 2014</div>
+        <div className="grid gap-12 py-16 md:grid-cols-4">
+          {groups.map((g) => (
+            <div key={g.title}>
+              <div className="text-[12px] font-semibold uppercase tracking-wider text-white/50">
+                {g.title}
+              </div>
+              <ul className="mt-5 space-y-3 text-[15px] text-white/85">
+                {g.items.map((i) => (
+                  <li key={i} className="hover:text-white">{i}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-6 border-t border-white/10 pt-8 text-[13px] text-white/55 md:flex-row md:items-center md:justify-between">
+          <div>© {new Date().getFullYear()} Remarkable Destinations Ltd · Kigali, Rwanda</div>
+          <div className="flex items-center gap-3">
+            <a className="grid h-10 w-10 place-items-center rounded-full border border-white/15 hover:bg-white/10" href="#"><Instagram className="h-4 w-4" /></a>
+            <a className="grid h-10 w-10 place-items-center rounded-full border border-white/15 hover:bg-white/10" href="#"><Linkedin className="h-4 w-4" /></a>
+            <a className="grid h-10 w-10 place-items-center rounded-full border border-white/15 hover:bg-white/10" href="#"><Youtube className="h-4 w-4" /></a>
+          </div>
+          <div className="flex gap-5">
+            <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a>
+          </div>
         </div>
       </div>
     </footer>
