@@ -9,7 +9,7 @@ import lodge from "@/assets/lodge.jpg";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ArrowRight, ArrowUpRight, Pause, Play } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,6 +24,17 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > window.innerHeight * 0.7);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div className="bg-background">
       <Hero />
@@ -36,7 +47,9 @@ function Index() {
       <Footer />
       <Link
         to="/contact"
-        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-white/95 px-3 py-2 shadow-xl backdrop-blur sm:hidden"
+        className={`fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-white/95 px-3 py-2 shadow-xl backdrop-blur transition-all duration-300 sm:hidden ${
+          scrolled ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"
+        }`}
       >
         <div className="flex flex-col gap-0.5">
           <span className="inline-flex items-center rounded-full bg-[var(--signal)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
@@ -87,7 +100,7 @@ function Hero() {
         {/* floating CTA card */}
         <Link
           to="/contact"
-          className="absolute bottom-20 left-4 right-4 z-20 hidden items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:flex sm:left-auto sm:right-5 sm:bottom-28 sm:w-[280px] md:right-10"
+          className="absolute bottom-20 left-4 right-4 z-20 flex items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:left-auto sm:right-5 sm:bottom-28 sm:w-[280px] md:right-10"
         >
           <div className="text-left">
             <span className="tag-pill">Book your safari</span>
