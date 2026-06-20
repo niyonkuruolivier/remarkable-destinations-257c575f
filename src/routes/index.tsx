@@ -36,14 +36,17 @@ function Index() {
       <Footer />
       <Link
         to="/contact"
-        className={[
-          "fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-semibold shadow-xl transition-all duration-300 sm:hidden",
-          showFixed ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none",
-        ].join(" ")}
-        style={{ background: "var(--signal)" }}
+        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-white/95 px-3 py-2 shadow-xl backdrop-blur sm:hidden"
       >
-        <span className="text-white">Book</span>
-        <ArrowRight className="h-4 w-4 text-white" />
+        <div className="flex flex-col gap-0.5">
+          <span className="inline-flex items-center rounded-full bg-[var(--signal)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
+            Book your safari
+          </span>
+          <span className="text-[11px] font-medium leading-none text-foreground">With Remarkable</span>
+        </div>
+        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[var(--cobalt)] text-white">
+          <ArrowRight className="h-4 w-4" />
+        </span>
       </Link>
     </div>
   );
