@@ -9,7 +9,7 @@ import lodge from "@/assets/lodge.jpg";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ArrowRight, ArrowUpRight, Pause, Play } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
