@@ -4,19 +4,42 @@ import { ArrowUpRight, Instagram, Linkedin, Youtube } from "lucide-react";
 const groups = [
   {
     title: "Company",
-    items: ["About us", "Newsroom", "Investors", "Magazine", "Careers"],
+    items: [
+      { label: "About us", to: "/about" as const },
+      { label: "Conservation", to: "/conservation" as const },
+      { label: "Blog", to: "/blog" as const },
+      { label: "Testimonials", to: "/testimonials" as const },
+      { label: "Contact", to: "/contact" as const },
+    ],
   },
   {
     title: "Destinations",
-    items: ["Rwanda", "Kenya", "Tanzania", "Zanzibar", "Namibia", "Botswana"],
+    items: [
+      { label: "Rwanda", to: "/destinations" as const },
+      { label: "Kenya", to: "/destinations" as const },
+      { label: "Tanzania", to: "/destinations" as const },
+      { label: "Uganda", to: "/destinations" as const },
+      { label: "All destinations", to: "/destinations" as const },
+    ],
   },
   {
-    title: "Journeys",
-    items: ["Honeymoon", "Family", "Photographic", "Conservation", "Private jet"],
+    title: "Experiences",
+    items: [
+      { label: "Wildlife Safaris", to: "/experiences" as const },
+      { label: "Birdwatching", to: "/experiences" as const },
+      { label: "Walking Safaris", to: "/experiences" as const },
+      { label: "Photography", to: "/experiences" as const },
+      { label: "Cultural Journeys", to: "/experiences" as const },
+    ],
   },
   {
     title: "Responsibility",
-    items: ["Sustainability", "Communities", "Wildlife funds", "Carbon offsetting"],
+    items: [
+      { label: "Sustainability", to: "/conservation" as const },
+      { label: "Communities", to: "/conservation" as const },
+      { label: "Wildlife funds", to: "/conservation" as const },
+      { label: "Carbon offsetting", to: "/conservation" as const },
+    ],
   },
 ];
 
@@ -42,7 +65,11 @@ export function Footer() {
               </div>
               <ul className="mt-5 space-y-3 text-[15px] text-white/85">
                 {g.items.map((i) => (
-                  <li key={i} className="hover:text-white">{i}</li>
+                  <li key={i.label}>
+                    <Link to={i.to} className="hover:text-white">
+                      {i.label}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
