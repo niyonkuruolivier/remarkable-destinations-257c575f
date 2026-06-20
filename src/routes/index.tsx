@@ -24,18 +24,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [showFixed, setShowFixed] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const threshold = window.innerHeight * 0.8;
-      setShowFixed(window.scrollY > threshold);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <div className="bg-background">
       <Hero />
