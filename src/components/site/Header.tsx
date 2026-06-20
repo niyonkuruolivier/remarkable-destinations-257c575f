@@ -109,15 +109,20 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
             </SheetTrigger>
             <SheetContent side="right" className="w-full sm:w-[400px]">
               <SheetHeader>
-                <SheetTitle className="flex items-center gap-2.5">
+              <SheetTitle className="flex items-center gap-3">
                   <img
                     src={elephantLogo.url}
                     alt="Remarkable Destination"
-                    className="h-8 w-auto"
+                    className="h-14 w-auto"
                   />
-                  <span className="font-display text-lg font-extrabold tracking-tight">
-                    Remarkable <br className="md:hidden" /> Destination
-                  </span>
+                  <div className="flex flex-col leading-none">
+                    <span className="font-display text-[22px] font-extrabold tracking-tight uppercase">
+                      Remarkable
+                    </span>
+                    <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/60">
+                      Destination
+                    </span>
+                  </div>
                 </SheetTitle>
               </SheetHeader>
               <nav className="mt-10 flex flex-col gap-2">
