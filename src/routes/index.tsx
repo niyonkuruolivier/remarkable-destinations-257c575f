@@ -85,7 +85,7 @@ function Hero() {
         {/* floating CTA card */}
         <Link
           to="/contact"
-          className="absolute bottom-20 left-4 right-4 z-20 flex items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:left-auto sm:right-5 sm:bottom-28 sm:w-[280px] md:right-10"
+          className="absolute bottom-20 left-4 right-4 z-20 hidden items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:flex sm:left-auto sm:right-5 sm:bottom-28 sm:w-[280px] md:right-10"
         >
           <div className="text-left">
             <span className="tag-pill">Book your safari</span>
