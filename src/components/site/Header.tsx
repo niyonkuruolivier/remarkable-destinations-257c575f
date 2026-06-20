@@ -1,73 +1,84 @@
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/logo.png";
+import { Globe, Search } from "lucide-react";
 
 const nav = [
-  { to: "/", label: "Home" },
   { to: "/destinations", label: "Destinations" },
   { to: "/journeys", label: "Journeys" },
-  { to: "/gallery", label: "Gallery" },
-  { to: "/journal", label: "Journal" },
-  { to: "/about", label: "About" },
+  { to: "/about", label: "About us" },
+  { to: "/journal", label: "Magazine" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export function Header({ transparent = false }: { transparent?: boolean }) {
+  const onDark = transparent;
   return (
-    <header
-      className={
-        "absolute inset-x-0 top-0 z-40 " +
-        (transparent ? "" : "bg-background border-b border-border")
-      }
-    >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10 md:py-6">
-        <Link to="/" className="flex items-center gap-3">
-          <img
-            src={logo}
-            alt="Remarkable Destinations"
-            className={"h-10 w-auto " + (transparent ? "invert" : "")}
-          />
-          <div className="hidden flex-col leading-tight md:flex">
-            <span
-              className={
-                "font-display text-[20px] italic " +
-                (transparent ? "text-ivory" : "text-foreground")
-              }
-            >
-              Remarkable
-            </span>
-            <span
-              className={
-                "text-[10px] tracking-[0.32em] uppercase " +
-                (transparent ? "text-gold" : "text-muted-foreground")
-              }
-            >
-              Destinations
-            </span>
-          </div>
+    <header className="absolute inset-x-0 top-0 z-40">
+      <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-4 px-5 py-5 md:px-8 md:py-7">
+        {/* Brand */}
+        <Link to="/" className="flex items-center gap-2.5 shrink-0">
+          <span
+            className="grid place-items-center rounded-full text-[18px] font-black"
+            style={{
+              background: "var(--signal)",
+              color: "#fff",
+              width: 42,
+              height: 42,
+            }}
+          >
+            R
+          </span>
+          <span
+            className={
+              "hidden font-display text-[18px] font-extrabold tracking-tight md:block " +
+              (onDark ? "text-white" : "text-foreground")
+            }
+          >
+            REMARKABLE<span style={{ color: "var(--signal)" }}>.</span>
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-9 lg:flex">
+        {/* Pill nav */}
+        <nav
+          className={
+            "hidden items-center gap-1 rounded-full px-2 py-1.5 lg:flex " +
+            (onDark
+              ? "bg-white/85 backdrop-blur-md"
+              : "bg-white shadow-[0_1px_0_rgba(11,14,46,0.06)]")
+          }
+        >
           {nav.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className={
-                "text-[12px] font-medium tracking-[0.18em] uppercase transition-colors " +
-                (transparent
-                  ? "text-ivory/80 hover:text-gold"
-                  : "text-foreground/80 hover:text-gold")
-              }
-              activeProps={{
-                className: transparent ? "text-gold" : "text-gold",
-              }}
+              className="rounded-full px-4 py-2 text-[14px] font-medium text-foreground/80 transition-colors hover:text-foreground"
+              activeProps={{ className: "bg-foreground text-white rounded-full px-4 py-2 text-[14px] font-medium" }}
             >
               {n.label}
             </Link>
           ))}
         </nav>
 
-        <Link to="/contact" className="btn-primary !py-3 !px-5 text-[11px]">
-          Plan Your Safari
-        </Link>
+        {/* Right cluster */}
+        <div className="flex items-center gap-2">
+          <button
+            aria-label="Search"
+            className={
+              "grid h-11 w-11 place-items-center rounded-full " +
+              (onDark ? "bg-white/85 text-foreground" : "bg-white text-foreground")
+            }
+          >
+            <Search className="h-4 w-4" />
+          </button>
+          <button
+            aria-label="Language"
+            className={
+              "grid h-11 w-11 place-items-center rounded-full " +
+              (onDark ? "bg-white/85 text-foreground" : "bg-white text-foreground")
+            }
+          >
+            <Globe className="h-4 w-4" />
+          </button>
+        </div>
       </div>
     </header>
   );

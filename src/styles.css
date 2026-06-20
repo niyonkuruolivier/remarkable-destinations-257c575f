@@ -45,47 +45,47 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-forest: var(--forest);
-  --color-gold: var(--gold);
-  --color-sand: var(--sand);
-  --color-ivory: var(--ivory);
-  --color-sunset: var(--sunset);
-  --color-dark: var(--dark);
-  --color-muted-warm: var(--muted-warm);
-  --font-display: "Cormorant Garamond", serif;
+  --color-ink: var(--ink);
+  --color-lavender: var(--lavender);
+  --color-lavender-deep: var(--lavender-deep);
+  --color-cream: var(--cream);
+  --color-signal: var(--signal);
+  --color-cobalt: var(--cobalt);
+  --color-sun: var(--sun);
+  --font-display: "Archivo", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.25rem;
-  /* Brand */
-  --forest: oklch(0.32 0.05 150);     /* #1B3A2D */
-  --gold: oklch(0.71 0.13 75);        /* #C8973A */
-  --sand: oklch(0.88 0.05 80);        /* #E8D5B0 */
-  --ivory: oklch(0.975 0.008 80);     /* #FAF7F2 */
-  --sunset: oklch(0.60 0.16 38);      /* #C4622D */
-  --dark: oklch(0.18 0.02 150);       /* #0F1F16 */
-  --muted-warm: oklch(0.52 0.015 145);/* #6B7C6E */
+  --radius: 1.5rem;
+  /* Brand — editorial corporate-travel */
+  --ink: #0B0E2E;                /* deep navy, near-black */
+  --lavender: #E5E3F1;           /* page canvas */
+  --lavender-deep: #C9C5E4;      /* card / shape fills */
+  --cream: #F7F4EC;              /* warm panel */
+  --signal: #E60028;             /* tag red */
+  --cobalt: #2A4BFF;             /* CTA blue */
+  --sun: #FFB400;                /* accent yellow */
 
-  --background: var(--ivory);
-  --foreground: var(--dark);
+  --background: var(--lavender);
+  --foreground: var(--ink);
   --card: oklch(1 0 0);
-  --card-foreground: var(--dark);
+  --card-foreground: var(--ink);
   --popover: oklch(1 0 0);
-  --popover-foreground: var(--dark);
-  --primary: var(--forest);
-  --primary-foreground: var(--ivory);
-  --secondary: var(--sand);
-  --secondary-foreground: var(--forest);
-  --muted: oklch(0.94 0.01 80);
-  --muted-foreground: var(--muted-warm);
-  --accent: var(--gold);
-  --accent-foreground: var(--dark);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--cream);
+  --secondary: var(--lavender-deep);
+  --secondary-foreground: var(--ink);
+  --muted: #D7D4E6;
+  --muted-foreground: #5A5C7A;
+  --accent: var(--cobalt);
+  --accent-foreground: #FFFFFF;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.88 0.015 80);
-  --input: oklch(0.88 0.015 80);
-  --ring: var(--gold);
+  --border: #C9C5E4;
+  --input: #C9C5E4;
+  --ring: var(--cobalt);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -148,71 +148,101 @@
     font-feature-settings: "ss01", "cv11";
   }
 
-  h1, h2, .font-display {
+  h1, h2, h3, .font-display {
     font-family: var(--font-display);
-    font-weight: 300;
-    letter-spacing: -0.01em;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 0.95;
+  }
+
+  .font-condensed {
+    font-family: "Archivo Narrow", "Archivo", sans-serif;
+    font-weight: 700;
+    font-stretch: 75%;
   }
 
   ::selection {
-    background: var(--gold);
-    color: var(--dark);
+    background: var(--ink);
+    color: var(--cream);
   }
+}
+
+@utility tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--signal);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+}
+
+@utility btn-cobalt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: var(--cobalt);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0.9rem 1.5rem;
+  border-radius: 999px;
+  transition: transform 200ms ease, background 200ms ease;
+  &:hover { background: var(--ink); transform: translateY(-1px); }
+}
+
+@utility btn-ink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0.9rem 1.5rem;
+  border-radius: 999px;
+  transition: transform 200ms ease, background 200ms ease;
+  &:hover { background: var(--cobalt); transform: translateY(-1px); }
+}
+
+@utility btn-ghost-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: transparent;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0.9rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  transition: all 200ms ease;
+  &:hover { background: var(--ink); color: var(--cream); }
 }
 
 @utility eyebrow {
-  font-family: var(--font-sans);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
+  letter-spacing: 0.04em;
+  color: var(--muted-foreground);
 }
 
-@utility btn-primary {
+@utility icon-circle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.625rem;
-  background: var(--gold);
-  color: var(--dark);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 1rem 2rem;
-  border: 1px solid var(--gold);
-  transition: all 280ms cubic-bezier(.2,.7,.2,1);
-  &:hover {
-    background: var(--sunset);
-    border-color: var(--sunset);
-    color: var(--ivory);
-  }
-}
-
-@utility btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.625rem;
-  background: transparent;
-  color: var(--ivory);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 1rem 2rem;
-  border: 1px solid color-mix(in oklab, var(--ivory) 40%, transparent);
-  transition: all 280ms cubic-bezier(.2,.7,.2,1);
-  &:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-}
-
-@utility hairline {
-  display: inline-block;
   width: 56px;
-  height: 1px;
-  background: var(--gold);
+  height: 56px;
+  border-radius: 999px;
+  background: var(--cobalt);
+  color: #fff;
+  transition: transform 200ms ease;
+  &:hover { transform: scale(1.08); }
 }
