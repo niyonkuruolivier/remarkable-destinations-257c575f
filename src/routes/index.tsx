@@ -9,7 +9,7 @@ import lodge from "@/assets/lodge.jpg";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ArrowRight, ArrowUpRight, Pause, Play } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,6 +24,18 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [showFixed, setShowFixed] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const threshold = window.innerHeight * 0.8;
+      setShowFixed(window.scrollY > threshold);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div className="bg-background">
       <Hero />
@@ -34,6 +46,17 @@ function Index() {
       <Responsibility />
       <CTA />
       <Footer />
+      <Link
+        to="/contact"
+        className={[
+          "fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-semibold shadow-xl transition-all duration-300 sm:hidden",
+          showFixed ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none",
+        ].join(" ")}
+        style={{ background: "var(--signal)" }}
+      >
+        <span className="text-white">Book</span>
+        <ArrowRight className="h-4 w-4 text-white" />
+      </Link>
     </div>
   );
 }
