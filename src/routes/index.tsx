@@ -67,14 +67,30 @@ function Hero() {
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "var(--ink)" }}>
       <div className="relative h-[100svh] min-h-[720px] w-full">
-        <img
-          src={hero}
-          alt="Infinity pool overlooking the African savanna at dusk"
-          className="absolute inset-0 h-full w-full object-cover"
-          width={1920}
-          height={1280}
-        />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(11,14,46,0.35) 0%, rgba(11,14,46,0.15) 40%, rgba(229,227,241,0.95) 100%)" }} />
+        {/* YouTube background video */}
+        <div className="absolute inset-0 overflow-hidden">
+          <iframe
+            title="Hero background video"
+            aria-hidden="true"
+            tabIndex={-1}
+            src="https://www.youtube.com/embed/HiIQdK6-y78?autoplay=1&mute=1&loop=1&playlist=HiIQdK6-y78&controls=0&modestbranding=1&rel=0&playsinline=1&showinfo=0&iv_load_policy=3&disablekb=1&fs=0"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen={false}
+            frameBorder={0}
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[100vh] w-[177.78vh] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 border-0"
+          />
+          {/* Poster fallback shown until iframe paints */}
+          <img
+            src={hero}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 h-full w-full object-cover"
+          />
+        </div>
+        {/* 50% dark overlay for readability */}
+        <div className="absolute inset-0 bg-black/50" />
+        {/* Bottom fade into page background */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(11,14,46,0) 55%, rgba(229,227,241,0.95) 100%)" }} />
 
         <Header transparent />
 
