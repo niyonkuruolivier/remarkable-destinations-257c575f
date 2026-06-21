@@ -77,7 +77,7 @@ function Hero() {
             allow="autoplay; encrypted-media; picture-in-picture"
             allowFullScreen={false}
             frameBorder={0}
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[100vh] w-[177.78vh] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 border-0"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[100vh] w-[177.78vh] min-h-[56.25vw] min-w-[100vw] -translate-x-1/2 -translate-y-1/2 border-0"
           />
           {/* Poster fallback shown until iframe paints */}
           <img
