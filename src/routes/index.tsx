@@ -95,7 +95,7 @@ function Hero() {
         <Header transparent />
 
         <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col items-center justify-center px-6 text-center">
-          <h1 className="font-display text-[44px] font-extrabold leading-[0.9] tracking-[-0.03em] text-white/85 sm:text-[72px] md:text-[120px] lg:text-[160px]">
+          <h1 className="font-display text-[44px] font-extrabold leading-[0.9] tracking-[-0.03em] text-white/85 sm:text-[72px] md:text-[88px] lg:text-[112px] xl:text-[140px]">
             THE COMPANY<br />OF JOURNEYS
           </h1>
           <Link
