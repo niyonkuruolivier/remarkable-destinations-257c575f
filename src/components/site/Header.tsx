@@ -32,7 +32,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
         <Link to="/" className="flex items-center gap-3 shrink-0">
           <img
             src={elephantLogo.url}
-            alt="Remarkable Destination"
+            alt="Heritage Africa Destination"
             className="h-16 w-auto md:h-20 lg:h-24"
           />
           <div className="flex flex-col leading-none">
@@ -42,7 +42,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                 (onDark ? "text-white" : "text-foreground")
               }
             >
-              Remarkable
+              Heritage Africa
             </span>
             <span
               className={
@@ -115,12 +115,12 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
               <SheetTitle className="flex items-center gap-3">
                   <img
                     src={elephantLogo.url}
-                    alt="Remarkable Destination"
+                    alt="Heritage Africa Destination"
                     className="h-14 w-auto"
                   />
                   <div className="flex flex-col leading-none">
                     <span className="font-display text-[22px] font-extrabold tracking-tight uppercase">
-                      Remarkable
+                      Heritage Africa
                     </span>
                     <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/60">
                       Destination
