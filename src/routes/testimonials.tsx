@@ -6,10 +6,10 @@ import { Footer } from "@/components/site/Footer";
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
     meta: [
-      { title: "Testimonials — Stories from Remarkable travellers" },
+      { title: "Testimonials — Stories from Heritage Africa travellers" },
       { name: "description", content: "Real letters from travellers who entrusted us with their East African journeys — gorillas in Rwanda, the Great Migration, honeymoons and family safaris." },
-      { property: "og:title", content: "Testimonials — Remarkable Destinations" },
-      { property: "og:description", content: "Letters from Remarkable travellers, in their own words." },
+      { property: "og:title", content: "Testimonials — Heritage Africa Collection" },
+      { property: "og:description", content: "Letters from Heritage Africa travellers, in their own words." },
       { property: "og:url", content: "https://remarkable-destinations.lovable.app/testimonials" },
     ],
     links: [{ rel: "canonical", href: "https://remarkable-destinations.lovable.app/testimonials" }],
@@ -18,16 +18,16 @@ export const Route = createFileRoute("/testimonials")({
 });
 
 const featured = [
-  { name: "Eleanor & Marcus Whitfield", place: "London, UK · Honeymoon · 12 nights", body: "We had been to East Africa twice before, with two well-known firms, and assumed we had seen what it could offer. Remarkable showed us a country we did not know — and a way of moving through it that was both deeply private and quietly conscious. The morning Patrick walked us into the gorillas, neither of us spoke for an hour afterwards. We are already planning our return.", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" },
+  { name: "Eleanor & Marcus Whitfield", place: "London, UK · Honeymoon · 12 nights", body: "We had been to East Africa twice before, with two well-known firms, and assumed we had seen what it could offer. Heritage Africa showed us a country we did not know — and a way of moving through it that was both deeply private and quietly conscious. The morning Patrick walked us into the gorillas, neither of us spoke for an hour afterwards. We are already planning our return.", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" },
   { name: "The Tanaka Family", place: "Tokyo, Japan · Family safari · 10 nights", body: "Travelling with two children, aged eight and eleven, we expected compromise. There was none. Every camp was ready for us, every guide spoke to the children as equals, and the itinerary changed three times mid-trip to follow the migration. Our son still draws cheetahs in his notebook. Thank you, Aline.", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80" },
 ];
 
 const more = [
   { name: "Priya Sharma", place: "Mumbai · Photography safari", body: "Two private vehicles, two of the best wildlife photographers in Kenya, and a designer who refused to settle for the obvious frames. The portfolio I came home with would not have been possible anywhere else." },
-  { name: "Daniel & Sofia Reyes", place: "Madrid · Honeymoon", body: "From the moment we landed in Kigali we were held — by our guides, by every host, by Remarkable. The most thoughtfully composed twelve nights of our lives." },
-  { name: "The Olusegun Family", place: "Lagos · Family safari", body: "An African family travelling to East Africa — Remarkable understood every nuance of that, and made it feel like coming home rather than visiting." },
+  { name: "Daniel & Sofia Reyes", place: "Madrid · Honeymoon", body: "From the moment we landed in Kigali we were held — by our guides, by every host, by Heritage Africa. The most thoughtfully composed twelve nights of our lives." },
+  { name: "The Olusegun Family", place: "Lagos · Family safari", body: "An African family travelling to East Africa — Heritage Africa understood every nuance of that, and made it feel like coming home rather than visiting." },
   { name: "Margaret Holloway", place: "Sydney · Solo traveller", body: "I was a little nervous to travel alone at 68. By the second day I had forgotten the question entirely. The care was discreet, the company exceptional, the wildlife everything I had hoped." },
-  { name: "Dr. Henrik Lindqvist", place: "Stockholm · Conservation safari", body: "I came for the elephants of Amboseli and stayed an extra week to spend time with the conservancies Remarkable partners with. This is a company that means every word." },
+  { name: "Dr. Henrik Lindqvist", place: "Stockholm · Conservation safari", body: "I came for the elephants of Amboseli and stayed an extra week to spend time with the conservancies Heritage Africa partners with. This is a company that means every word." },
   { name: "James & Olivia Carter", place: "New York · Anniversary", body: "Twenty years of marriage, ten years of safaris, and the most extraordinary trip of either. Aline's team listened, then designed something we did not know we wanted." },
 ];
 

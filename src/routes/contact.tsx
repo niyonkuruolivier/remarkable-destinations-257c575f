@@ -6,15 +6,15 @@ import { MapPin, Mail, Phone, MessageCircle, Clock } from "lucide-react";
 
 const WHATSAPP_NUMBER = "+250788000000"; // TODO: replace with your real WhatsApp number
 const WHATSAPP_DISPLAY = "+250 788 000 000";
-const WHATSAPP_MSG = encodeURIComponent("Hello Remarkable Destinations — I would like to plan a safari.");
+const WHATSAPP_MSG = encodeURIComponent("Hello Heritage Africa Collection — I would like to plan a safari.");
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}?text=${WHATSAPP_MSG}`;
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact & Inquiries — Remarkable Destinations" },
+      { title: "Contact & Inquiries — Heritage Africa Collection" },
       { name: "description", content: "Speak with a safari designer in Kigali. WhatsApp, email or the inquiry form — we reply within 24 hours, every day of the year." },
-      { property: "og:title", content: "Contact & Inquiries — Remarkable Destinations" },
+      { property: "og:title", content: "Contact & Inquiries — Heritage Africa Collection" },
       { property: "og:description", content: "Speak with a safari designer in Kigali. We reply within 24 hours." },
       { property: "og:url", content: "https://remarkable-destinations.lovable.app/contact" },
     ],
