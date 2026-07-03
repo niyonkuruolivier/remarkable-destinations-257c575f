@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Pencil, Trash2, Plus } from "lucide-react";
 import { toast } from "sonner";
@@ -16,9 +17,10 @@ import { mediaUrl } from "@/lib/media";
 export type FieldDef = {
   key: string;
   label: string;
-  type: "text" | "textarea" | "number" | "boolean" | "image" | "array" | "json";
+  type: "text" | "textarea" | "number" | "boolean" | "image" | "array" | "json" | "select";
   required?: boolean;
   colInList?: boolean;
+  options?: string[];
 };
 
 export function CrudTable({
@@ -153,6 +155,15 @@ export function CrudTable({
                   {f.type !== "boolean" && f.type !== "image" && <Label>{f.label}</Label>}
                   {f.type === "text" ? (
                     <Input value={editing[f.key] ?? ""} onChange={(e) => setEditing({ ...editing, [f.key]: e.target.value })} required={f.required} />
+                  ) : f.type === "select" ? (
+                    <Select value={editing[f.key] ?? ""} onValueChange={(v) => setEditing({ ...editing, [f.key]: v })}>
+                      <SelectTrigger><SelectValue placeholder="Select…" /></SelectTrigger>
+                      <SelectContent>
+                        {(f.options ?? []).map((o) => (
+                          <SelectItem key={o} value={o}>{o}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   ) : f.type === "number" ? (
                     <Input type="number" value={editing[f.key] ?? ""} onChange={(e) => setEditing({ ...editing, [f.key]: e.target.value === "" ? null : Number(e.target.value) })} />
                   ) : f.type === "textarea" ? (
