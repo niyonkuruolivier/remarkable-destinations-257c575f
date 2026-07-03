@@ -47,7 +47,7 @@ export const adminUpsertSiteSetting = createServerFn({ method: "POST" })
     await assertAdmin(context);
     const { error } = await context.supabase
       .from("site_settings")
-      .upsert({ key: data.key, value: data.value }, { onConflict: "key" });
+      .upsert({ key: data.key, value: data.value as any }, { onConflict: "key" });
     if (error) throw new Error(error.message);
     return { ok: true };
   });
