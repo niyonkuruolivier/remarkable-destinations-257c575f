@@ -10,6 +10,9 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ArrowRight, ArrowUpRight, Pause, Play } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getSiteSettings, type HeroSetting, type HomeSection } from "@/lib/site-settings";
+import { mediaUrl } from "@/lib/media";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,6 +28,12 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [showFixed, setShowFixed] = useState(false);
+  const settings = useQuery({ queryKey: ["site_settings"], queryFn: getSiteSettings, staleTime: 30_000 });
+  const sections: HomeSection[] = settings.data?.["home.sections"] ?? [];
+  const isEnabled = (id: string) => {
+    const s = sections.find((x) => x.id === id);
+    return !s || s.enabled !== false;
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -39,12 +48,12 @@ function Index() {
   return (
     <div className="bg-background">
       <Hero />
-      <Intro />
-      <Brands />
-      <Stats />
-      <Magazine />
-      <Responsibility />
-      <CTA />
+      {isEnabled("intro") && <Intro />}
+      {isEnabled("destinations") && <Brands />}
+      {isEnabled("stats") && <Stats />}
+      {isEnabled("magazine") && <Magazine />}
+      {isEnabled("responsibility") && <Responsibility />}
+      {isEnabled("cta") && <CTA />}
       <Footer />
       <Link
         to="/contact"
