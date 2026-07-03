@@ -10,6 +10,9 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ArrowRight, ArrowUpRight, Pause, Play } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getSiteSettings, type HeroSetting, type HomeSection } from "@/lib/site-settings";
+import { mediaUrl } from "@/lib/media";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,6 +28,12 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [showFixed, setShowFixed] = useState(false);
+  const settings = useQuery({ queryKey: ["site_settings"], queryFn: getSiteSettings, staleTime: 30_000 });
+  const sections: HomeSection[] = settings.data?.["home.sections"] ?? [];
+  const isEnabled = (id: string) => {
+    const s = sections.find((x) => x.id === id);
+    return !s || s.enabled !== false;
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -39,12 +48,12 @@ function Index() {
   return (
     <div className="bg-background">
       <Hero />
-      <Intro />
-      <Brands />
-      <Stats />
-      <Magazine />
-      <Responsibility />
-      <CTA />
+      {isEnabled("intro") && <Intro />}
+      {isEnabled("destinations") && <Brands />}
+      {isEnabled("stats") && <Stats />}
+      {isEnabled("magazine") && <Magazine />}
+      {isEnabled("responsibility") && <Responsibility />}
+      {isEnabled("cta") && <CTA />}
       <Footer />
       <Link
         to="/contact"
@@ -64,6 +73,12 @@ function Index() {
 /* ---------------- HERO ---------------- */
 function Hero() {
   const [playing, setPlaying] = useState(true);
+  const settings = useQuery({ queryKey: ["site_settings"], queryFn: getSiteSettings, staleTime: 30_000 });
+  const h: HeroSetting | undefined = settings.data?.["home.hero"];
+  const heroTitle = h?.title || "The company of journeys";
+  const heroImage = h?.imageUrl ? mediaUrl(h.imageUrl) : hero;
+  const ctaLabel = h?.ctaLabel || "Book your safari";
+  const ctaHref = h?.ctaHref || "/contact";
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "var(--ink)" }}>
       <div className="relative h-[100svh] min-h-[720px] w-full">
@@ -81,7 +96,7 @@ function Hero() {
           />
           {/* Poster fallback shown until iframe paints */}
           <img
-            src={hero}
+            src={heroImage}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 -z-10 h-full w-full object-cover"
@@ -96,14 +111,14 @@ function Hero() {
 
         <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col items-center justify-center px-6 text-center">
           <h1 className="font-display text-[44px] font-extrabold leading-[0.9] tracking-[-0.03em] text-white/85 sm:text-[72px] md:text-[88px] lg:text-[112px] xl:text-[140px]">
-            THE COMPANY<br />OF JOURNEYS
+            {heroTitle.toUpperCase()}
           </h1>
           <Link
-            to="/contact"
+            to={ctaHref as any}
             className="mt-8 flex items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:hidden w-full max-w-[340px]"
           >
             <div className="text-left">
-              <span className="tag-pill">Book your safari</span>
+              <span className="tag-pill">{ctaLabel}</span>
               <div className="mt-2 text-[15px] font-medium text-foreground">With Remarkable</div>
             </div>
             <span className="icon-circle shrink-0">
