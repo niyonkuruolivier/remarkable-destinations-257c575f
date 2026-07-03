@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import type {} from "@tanstack/react-start";
 
 const BASE_URL = "";
 
-export const Route = createFileRoute("/sitemap.xml")({
+const routeOptions = {
   server: {
     handlers: {
       GET: async () => {
@@ -34,4 +33,6 @@ export const Route = createFileRoute("/sitemap.xml")({
       },
     },
   },
-});
+};
+
+export const Route = createFileRoute("/sitemap.xml")(routeOptions as never);
