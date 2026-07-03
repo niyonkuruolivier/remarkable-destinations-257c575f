@@ -77,7 +77,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col gap-6 border-t border-white/10 pt-8 text-[13px] text-white/55 md:flex-row md:items-center md:justify-between">
-          <div>© {new Date().getFullYear()} Heritage Africa Collection Ltd · Kigali, Rwanda</div>
+          <div>© {new Date().getFullYear()} Remarkable Collection Ltd · Kigali, Rwanda</div>
           <div className="flex items-center gap-3">
             <a className="grid h-10 w-10 place-items-center rounded-full border border-white/15 hover:bg-white/10" href="#"><Instagram className="h-4 w-4" /></a>
             <a className="grid h-10 w-10 place-items-center rounded-full border border-white/15 hover:bg-white/10" href="#"><Linkedin className="h-4 w-4" /></a>

@@ -6,9 +6,9 @@ import { Footer } from "@/components/site/Footer";
 export const Route = createFileRoute("/conservation")({
   head: () => ({
     meta: [
-      { title: "Conservation & Sustainability — Heritage Africa Collection" },
-      { name: "description", content: "Every Heritage Africa journey funds measurable conservation — gorilla protection, anti-poaching, community livelihoods and carbon balance across East Africa." },
-      { property: "og:title", content: "Conservation & Sustainability — Heritage Africa Collection" },
+      { title: "Conservation & Sustainability — Remarkable Collection" },
+      { name: "description", content: "Every Remarkable journey funds measurable conservation — gorilla protection, anti-poaching, community livelihoods and carbon balance across East Africa." },
+      { property: "og:title", content: "Conservation & Sustainability — Remarkable Collection" },
       { property: "og:description", content: "Travel that pays the wild back. Real projects. Measured outcomes." },
       { property: "og:url", content: "https://remarkable-destinations.lovable.app/conservation" },
     ],
@@ -57,7 +57,7 @@ function ConservationPage() {
       <PageHero
         eyebrow="Conservation & sustainability"
         title={<>TRAVEL THAT PAYS<br />THE WILD BACK.</>}
-        subtitle="Sustainability is not a department at Heritage Africa — it is the operating model. Each itinerary is engineered to leave the land, the wildlife and the people who steward them measurably better."
+        subtitle="Sustainability is not a department at Remarkable — it is the operating model. Each itinerary is engineered to leave the land, the wildlife and the people who steward them measurably better."
         image="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&fit=crop&w=1920&q=80"
         alt="Ranger watching elephants at dusk"
       />
@@ -69,7 +69,7 @@ function ConservationPage() {
           <span style={{ color: "var(--signal)" }}>We travel because the wild is worth protecting.</span>
         </h2>
         <p className="mx-auto mt-8 max-w-2xl text-[17px] leading-[1.8] text-muted-foreground">
-          From the first dollar of your deposit to the last litre of fuel in a guide's vehicle, every part of a Heritage Africa journey is audited against four pillars: wildlife, climate, community and craft.
+          From the first dollar of your deposit to the last litre of fuel in a guide's vehicle, every part of a Remarkable journey is audited against four pillars: wildlife, climate, community and craft.
         </p>
       </section>
 

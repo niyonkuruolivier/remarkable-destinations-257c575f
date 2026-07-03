@@ -6,9 +6,9 @@ import { Footer } from "@/components/site/Footer";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Heritage Africa Collection" },
+      { title: "About — Remarkable Collection" },
       { name: "description", content: "An atelier of African journey designers headquartered in Kigali — guided by craft, conservation and a deep respect for the wild." },
-      { property: "og:title", content: "About — Heritage Africa Collection" },
+      { property: "og:title", content: "About — Remarkable Collection" },
       { property: "og:description", content: "An atelier of African journey designers headquartered in Kigali — guided by craft, conservation and a deep respect for the wild." },
       { property: "og:url", content: "https://remarkable-destinations.lovable.app/about" },
     ],
@@ -37,7 +37,7 @@ function AboutPage() {
       <PageHero
         eyebrow="About us"
         title={<>AN ATELIER<br />FOR THE WILD.</>}
-        subtitle="Heritage Africa Collection is an East African journey house headquartered in Kigali, designing private safaris that move at the pace of the land — and leave it better than we found it."
+        subtitle="Remarkable Collection is an East African journey house headquartered in Kigali, designing private safaris that move at the pace of the land — and leave it better than we found it."
         image="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1920&q=80"
         alt="Acacia trees on the African savanna at dawn"
       />
@@ -53,7 +53,7 @@ function AboutPage() {
           </div>
           <div className="md:col-span-7 space-y-6 text-[17px] leading-[1.8] text-foreground/80">
             <p>
-              Heritage Africa Collection began in 2014 with a single hand-drawn itinerary —
+              Remarkable Collection began in 2014 with a single hand-drawn itinerary —
               seven nights between the gorillas of Volcanoes and the elephants of Akagera,
               designed for a family who had been told East Africa was not for them. They left
               changed. We did too.
@@ -66,7 +66,7 @@ function AboutPage() {
             </p>
             <p>
               Today, more than 1,400 guides, trackers, hosts and conservationists carry the
-              Heritage Africa name across East and Southern Africa — a quiet network of people who
+              Remarkable name across East and Southern Africa — a quiet network of people who
               believe that travel, done with care, can still be one of the most generous things
               we do.
             </p>
