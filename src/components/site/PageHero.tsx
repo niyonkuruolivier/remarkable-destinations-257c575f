@@ -32,7 +32,7 @@ export function PageHero({
         <Header transparent />
         <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col items-start justify-end px-6 pb-24 md:px-10 md:pb-32">
           <span className="tag-pill">{eyebrow}</span>
-          <h1 className="mt-5 max-w-4xl font-display text-[44px] font-extrabold leading-[0.92] tracking-[-0.02em] text-white sm:text-[64px] md:text-[96px]">
+          <h1 className="mt-5 max-w-4xl font-display text-[22px] font-extrabold leading-[0.92] tracking-[-0.02em] text-white sm:text-[32px] md:text-[48px]">
             {title}
           </h1>
           {subtitle ? (
