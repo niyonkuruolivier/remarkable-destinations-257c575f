@@ -7,9 +7,9 @@ import { Footer } from "@/components/site/Footer";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — A Visual Field-Book | Heritage Africa Collection" },
+      { title: "Gallery — A Visual Field-Book | Remarkable Collection" },
       { name: "description", content: "Wildlife, lodges, landscapes and people — a visual field-book from our safaris across East Africa." },
-      { property: "og:title", content: "Gallery — Heritage Africa Collection" },
+      { property: "og:title", content: "Gallery — Remarkable Collection" },
       { property: "og:description", content: "A visual field-book from our East African safaris." },
       { property: "og:url", content: "https://remarkable-destinations.lovable.app/gallery" },
     ],
@@ -97,7 +97,7 @@ function GalleryPage() {
             Carry your own home.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-[16px] text-white/80">
-            Every Heritage Africa journey can be paired with a dedicated photographic guide — from first-time travellers to professional shooters.
+            Every Remarkable journey can be paired with a dedicated photographic guide — from first-time travellers to professional shooters.
           </p>
           <Link to="/contact" className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-[15px] font-semibold text-foreground hover:bg-foreground hover:text-white">
             Plan a photographic safari <ArrowUpRight className="h-4 w-4" />

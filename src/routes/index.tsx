@@ -14,9 +14,9 @@ import { useState, useEffect } from "react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Heritage Africa Collection — The company of unforgettable journeys" },
+      { title: "Remarkable Collection — The company of unforgettable journeys" },
       { name: "description", content: "An integrated African travel group: bespoke safaris, conservation-led lodges, private journeys and editorial storytelling, headquartered in Kigali." },
-      { property: "og:title", content: "Heritage Africa Collection" },
+      { property: "og:title", content: "Remarkable Collection" },
       { property: "og:description", content: "The company of unforgettable journeys." },
     ],
   }),
@@ -104,7 +104,7 @@ function Hero() {
           >
             <div className="text-left">
               <span className="tag-pill">Book your safari</span>
-              <div className="mt-2 text-[15px] font-medium text-foreground">With Heritage Africa</div>
+              <div className="mt-2 text-[15px] font-medium text-foreground">With Remarkable</div>
             </div>
             <span className="icon-circle shrink-0">
               <ArrowRight className="h-5 w-5" />
@@ -128,7 +128,7 @@ function Hero() {
         >
           <div className="text-left">
             <span className="tag-pill">Book your safari</span>
-            <div className="mt-2 text-[15px] font-medium text-foreground">With Heritage Africa</div>
+            <div className="mt-2 text-[15px] font-medium text-foreground">With Remarkable</div>
           </div>
           <span className="icon-circle shrink-0">
             <ArrowRight className="h-5 w-5" />
@@ -154,7 +154,7 @@ function Intro() {
   return (
     <section className="mx-auto max-w-[1180px] px-6 pt-20 pb-24 text-center md:pt-28 md:pb-32">
       <p className="font-display text-[24px] font-medium leading-[1.35] text-foreground md:text-[34px]">
-        We are <span style={{ color: "var(--signal)" }}>Heritage Africa Collection</span>, an
+        We are <span style={{ color: "var(--signal)" }}>Remarkable Collection</span>, an
         integrated African travel group with operations across nine countries: our
         guests fly between continents, cross savannas at dawn, sleep under
         canvas and wake in lodges built by the communities that own them. Our
@@ -241,7 +241,7 @@ function Stats() {
           </h2>
           <p className="text-[16px] leading-relaxed text-white/70 md:col-span-5">
             From a single safari atelier in Kigali to an integrated travel group
-            operating across the continent — Heritage Africa today. Tomorrow we go
+            operating across the continent — Remarkable today. Tomorrow we go
             further: more conservation, more community-owned lodges, and more
             unforgettable hours under the African sky.
           </p>
@@ -347,7 +347,7 @@ function Responsibility() {
             </h2>
             <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground md:text-[17px]">
               Sustainability is not a department — it is the operating model.
-              By 2030, every Heritage Africa journey will be carbon-balanced, every
+              By 2030, every Remarkable journey will be carbon-balanced, every
               partner lodge community-owned, and every guest contribution will
               fund a measured conservation outcome.
             </p>

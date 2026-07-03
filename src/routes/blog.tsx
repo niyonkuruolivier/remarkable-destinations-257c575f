@@ -6,9 +6,9 @@ import { Footer } from "@/components/site/Footer";
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Blog & Travel Insights — Heritage Africa Collection" },
+      { title: "Blog & Travel Insights — Remarkable Collection" },
       { name: "description", content: "Field notes, planning guides and conservation stories from East Africa's most experienced safari designers." },
-      { property: "og:title", content: "Blog & Travel Insights — Heritage Africa Collection" },
+      { property: "og:title", content: "Blog & Travel Insights — Remarkable Collection" },
       { property: "og:description", content: "Field notes, planning guides and conservation stories from East Africa." },
       { property: "og:url", content: "https://remarkable-destinations.lovable.app/blog" },
     ],
@@ -40,7 +40,7 @@ function BlogPage() {
       <PageHero
         eyebrow="Travel insights"
         title={<>STORIES FROM<br />THE FIELD.</>}
-        subtitle="Planning guides, conservation reporting and quiet field notes — written by the guides, designers and photographers who carry the Heritage Africa name across East Africa."
+        subtitle="Planning guides, conservation reporting and quiet field notes — written by the guides, designers and photographers who carry the Remarkable name across East Africa."
         image="https://images.unsplash.com/photo-1493244040629-496f6d136cc3?auto=format&fit=crop&w=1920&q=80"
         alt="Vehicle silhouette in storm light over savanna"
       />

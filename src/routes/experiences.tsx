@@ -6,9 +6,9 @@ import { Footer } from "@/components/site/Footer";
 export const Route = createFileRoute("/experiences")({
   head: () => ({
     meta: [
-      { title: "Safari Experiences — Wildlife, Walking, Photography, Cultural | Heritage Africa" },
+      { title: "Safari Experiences — Wildlife, Walking, Photography, Cultural | Remarkable" },
       { name: "description", content: "Six ways to encounter Africa — wildlife safaris, birdwatching, walking safaris, photography, cultural journeys and private luxury adventures." },
-      { property: "og:title", content: "Safari Experiences — Heritage Africa Collection" },
+      { property: "og:title", content: "Safari Experiences — Remarkable Collection" },
       { property: "og:description", content: "Six ways to encounter Africa, each privately designed around you." },
       { property: "og:url", content: "https://remarkable-destinations.lovable.app/experiences" },
     ],
@@ -68,7 +68,7 @@ function ExperiencesPage() {
       <PageHero
         eyebrow="Safari experiences"
         title={<>SIX WAYS<br />TO MEET AFRICA.</>}
-        subtitle="Every Heritage Africa journey is bespoke — but they begin from six well-loved foundations. Blend any of them, in any order, on any continent of the wild."
+        subtitle="Every Remarkable journey is bespoke — but they begin from six well-loved foundations. Blend any of them, in any order, on any continent of the wild."
         image="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1920&q=80"
         alt="Rainforest canopy in Uganda"
       />

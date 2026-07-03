@@ -6,9 +6,9 @@ import { Footer } from "@/components/site/Footer";
 export const Route = createFileRoute("/destinations")({
   head: () => ({
     meta: [
-      { title: "Destinations — Rwanda, Kenya, Tanzania, Uganda | Heritage Africa Collection" },
+      { title: "Destinations — Rwanda, Kenya, Tanzania, Uganda | Remarkable Collection" },
       { name: "description", content: "Hand-designed safaris across Rwanda, Kenya, Tanzania and Uganda. Gorilla trekking, the Great Migration, Serengeti plains and pearl-of-Africa rainforests." },
-      { property: "og:title", content: "Destinations — Heritage Africa Collection" },
+      { property: "og:title", content: "Destinations — Remarkable Collection" },
       { property: "og:description", content: "Hand-designed safaris across Rwanda, Kenya, Tanzania and Uganda." },
       { property: "og:url", content: "https://remarkable-destinations.lovable.app/destinations" },
     ],
