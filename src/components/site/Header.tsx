@@ -8,7 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import elephantLogo from "@/assets/elephant-logo.png.asset.json";
+import elephantLogo from "@/assets/elephant-sketch-logo.png.asset.json";
 
 const nav = [
   { to: "/about", label: "About" },

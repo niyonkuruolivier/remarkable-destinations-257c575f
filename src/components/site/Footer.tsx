@@ -50,7 +50,7 @@ export function Footer() {
         {/* Top supergraphic */}
         <div className="flex flex-col gap-10 border-b border-white/10 pb-16 md:flex-row md:items-end md:justify-between">
           <h2 className="font-display text-[44px] font-extrabold tracking-tight text-white md:text-[88px]">
-            HERITAGE AFRICA<span style={{ color: "var(--signal)" }}>.</span>
+            REMARKABLE<span style={{ color: "var(--signal)" }}>.</span>
           </h2>
           <Link to="/contact" className="btn-cobalt self-start md:self-auto">
             Begin your journey <ArrowUpRight className="h-4 w-4" />
