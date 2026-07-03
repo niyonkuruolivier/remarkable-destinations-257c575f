@@ -33,7 +33,7 @@ function ContactPage() {
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-5 text-center">
             <span className="eyebrow">Begin</span>
-            <h1 className="mt-5 font-display text-[24px] leading-[1.05] text-foreground md:text-[36px]">
+            <h1 className="mt-5 font-display text-[29px] leading-[1.05] text-foreground md:text-[43px]">
               <em className="italic font-light">A conversation,</em><br />not a transaction.
             </h1>
             <p className="mx-auto mt-8 max-w-md text-[16px] leading-[1.8] text-muted-foreground">
