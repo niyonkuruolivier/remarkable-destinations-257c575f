@@ -29,13 +29,13 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
     <header className="absolute inset-x-0 top-0 z-40">
       <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-4 px-4 py-4 md:px-8 md:py-6">
         {/* Brand */}
-        <Link to="/" className="flex items-center gap-3 shrink-0">
+        <Link to="/" className="flex items-center gap-1.5 shrink-0">
           <img
             src={elephantLogo.url}
             alt="Remarkable Destination"
             className="h-16 w-auto md:h-20 lg:h-24"
           />
-          <div className="flex flex-col leading-none">
+          <div className="flex flex-col justify-center leading-none">
             <span
               className={
                 "font-display text-[22px] font-extrabold tracking-tight uppercase sm:text-[26px] md:text-[30px] lg:text-[34px] " +
