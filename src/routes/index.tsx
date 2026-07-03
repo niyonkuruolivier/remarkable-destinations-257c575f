@@ -236,7 +236,7 @@ function Stats() {
       <div className="mx-auto max-w-[1500px] px-6 py-24 md:px-10 md:py-32">
         <div className="grid items-end gap-10 md:grid-cols-12">
           <h2 className="font-display text-[44px] font-extrabold leading-[0.95] tracking-tight text-white md:col-span-7 md:text-[88px]">
-            HERITAGE AFRICA<br />
+            REMARKABLE<br />
             <span style={{ color: "var(--sun)" }}>IN NUMBERS.</span>
           </h2>
           <p className="text-[16px] leading-relaxed text-white/70 md:col-span-5">
@@ -401,7 +401,7 @@ function CTA() {
             Plan with us
           </div>
           <h2 className="mx-auto mt-4 max-w-3xl font-display text-[42px] font-extrabold leading-[0.95] tracking-tight md:text-[80px]">
-            YOUR HERITAGE AFRICA<br />STARTS HERE.
+            YOUR REMARKABLE<br />STARTS HERE.
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-[16px] text-white/85">
             Speak with a travel designer in Kigali. We respond within 24 hours
