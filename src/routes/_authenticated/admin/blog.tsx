@@ -13,7 +13,7 @@ export const Route = createFileRoute("/_authenticated/admin/blog")({
         { key: "slug", label: "Slug", type: "text", required: true },
         { key: "excerpt", label: "Excerpt", type: "textarea" },
         { key: "content", label: "Content (Markdown or HTML)", type: "textarea", colInList: false },
-        { key: "category", label: "Category", type: "text" },
+        { key: "category", label: "Category", type: "select", options: ["Field notes", "Planning", "Conservation", "Families", "Photography", "Honeymoons"] },
         { key: "featured_image_url", label: "Featured image", type: "image" },
         { key: "author_name", label: "Author", type: "text", colInList: false },
         { key: "author_avatar_url", label: "Author avatar", type: "image", colInList: false },
