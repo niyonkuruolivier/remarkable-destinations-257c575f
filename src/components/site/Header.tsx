@@ -110,37 +110,56 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                 <Menu className="h-5 w-5" />
               </button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full sm:w-[400px]">
-              <SheetHeader>
-              <SheetTitle className="flex items-center gap-3">
+            <SheetContent
+              side="right"
+              className="w-full sm:w-[480px] border-l-0 bg-ink p-0 text-cream"
+            >
+              <div className="flex h-full flex-col px-8 pt-10 pb-12">
+                {/* Close */}
+                <button
+                  onClick={() => setOpen(false)}
+                  aria-label="Close menu"
+                  className="absolute right-6 top-6 text-cream/70 transition-colors hover:text-cream"
+                >
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <line x1="6" y1="6" x2="22" y2="22" />
+                    <line x1="22" y1="6" x2="6" y2="22" />
+                  </svg>
+                </button>
+
+                {/* Brand */}
+                <div className="flex items-center gap-3 mb-14">
                   <img
                     src={elephantLogo.url}
                     alt="Remarkable Destination"
-                    className="h-14 w-auto"
+                    className="h-12 w-auto brightness-0 invert"
                   />
                   <div className="flex flex-col leading-none">
-                    <span className="font-display text-[22px] font-extrabold tracking-tight uppercase">
+                    <span className="font-display text-[20px] font-extrabold tracking-tight uppercase text-cream">
                       Remarkable
                     </span>
-                    <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/60">
+                    <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.2em] text-cream/60">
                       Destination
                     </span>
                   </div>
-                </SheetTitle>
-              </SheetHeader>
-              <nav className="mt-10 flex flex-col gap-2">
-                {nav.map((n) => (
-                  <Link
-                    key={n.to}
-                    to={n.to}
-                    onClick={() => setOpen(false)}
-                    className="rounded-xl px-4 py-3 text-[16px] font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
-                    activeProps={{ className: "rounded-xl px-4 py-3 text-[16px] font-medium bg-foreground text-white" }}
-                  >
-                    {n.label}
-                  </Link>
-                ))}
-              </nav>
+                </div>
+
+                {/* Nav */}
+                <nav className="flex flex-col">
+                  {nav.map((n) => (
+                    <Link
+                      key={n.to}
+                      to={n.to}
+                      onClick={() => setOpen(false)}
+                      className="group flex items-center justify-between border-b border-cream/10 py-6 text-[13px] font-normal uppercase tracking-[0.18em] text-cream/80 transition-colors hover:text-cream"
+                      activeProps={{ className: "group flex items-center justify-between border-b border-cream/10 py-6 text-[13px] font-normal uppercase tracking-[0.18em] text-cream" }}
+                    >
+                      <span>{n.label}</span>
+                      <ArrowRight className="h-4 w-4 text-cream/40 transition-all duration-300 group-hover:translate-x-1 group-hover:text-cream" />
+                    </Link>
+                  ))}
+                </nav>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
