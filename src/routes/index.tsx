@@ -112,12 +112,12 @@ function Hero() {
         <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col justify-center px-6 md:px-10">
           <div className="max-w-[720px]">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80 sm:text-[12px]">
-              Uncover Africa's wonders
+              Unlock Africa's Magic
             </p>
             <h1 className="mt-5 font-display font-extrabold uppercase leading-[0.92] tracking-[-0.02em] text-white text-[44px] sm:text-[64px] md:text-[80px] lg:text-[96px]">
               Wild beauty &{" "}
               <span className="block">unforgettable</span>
-              <span className="italic">
+              <span className="italic" style={{ color: "var(--sun)" }}>
                 journeys
               </span>
             </h1>
