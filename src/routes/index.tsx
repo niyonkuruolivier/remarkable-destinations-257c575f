@@ -111,23 +111,14 @@ function Hero() {
 
         <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col justify-center px-6 md:px-10">
           <div className="max-w-[720px]">
-            <p
-              className="text-[22px] leading-none sm:text-[28px] md:text-[32px]"
-              style={{
-                fontFamily: "'Caveat', 'Dancing Script', cursive",
-                color: "var(--sun)",
-                transform: "rotate(-2deg)",
-                transformOrigin: "left",
-              }}
-            >
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80 sm:text-[12px]">
               Uncover Africa's wonders
             </p>
-            <h1 className="mt-4 font-display font-extrabold uppercase leading-[0.92] tracking-[-0.02em] text-white text-[44px] sm:text-[64px] md:text-[80px] lg:text-[96px]">
+            <h1 className="mt-5 font-display font-extrabold uppercase leading-[0.92] tracking-[-0.02em] text-white text-[44px] sm:text-[64px] md:text-[80px] lg:text-[96px]">
               Wild beauty &{" "}
               <span className="block">unforgettable</span>
-              <span className="italic font-black" style={{ color: "var(--sun)", fontFamily: "'Playfair Display', Georgia, serif" }}>
+              <span className="italic">
                 journeys
-                <span className="ml-1 inline-block h-[0.9em] w-[3px] align-middle animate-pulse" style={{ background: "var(--sun)" }} />
               </span>
             </h1>
             <p className="mt-6 max-w-[520px] text-[15px] leading-[1.65] text-white/85 md:text-[17px]">
