@@ -114,7 +114,7 @@ function Hero() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] sm:text-[12px]" style={{ color: "var(--sun)" }}>
               Unlock Africa's Magic
             </p>
-            <h1 className="mt-5 font-display font-extrabold uppercase leading-[0.92] tracking-[-0.02em] text-white text-[44px] sm:text-[64px] md:text-[80px] lg:text-[96px]">
+            <h1 className="mt-5 font-display font-extrabold uppercase leading-[0.92] tracking-[-0.02em] text-white text-[40px] sm:text-[56px] md:text-[72px] lg:text-[88px]">
               Wild beauty &{" "}
               <span className="block">unforgettable</span>
               <span className="italic" style={{ color: "var(--sun)" }}>
