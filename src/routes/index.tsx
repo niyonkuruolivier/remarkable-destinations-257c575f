@@ -109,22 +109,50 @@ function Hero() {
 
         <Header transparent />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col items-center justify-center px-6 text-center">
-          <h1 className="font-display text-[35px] font-extrabold leading-[0.9] tracking-[-0.03em] text-white/85 sm:text-[58px] md:text-[70px] lg:text-[90px] xl:text-[112px]">
-            {heroTitle.toUpperCase()}
-          </h1>
-          <Link
-            to={ctaHref as any}
-            className="mt-8 flex items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:hidden w-full max-w-[340px]"
-          >
-            <div className="text-left">
-              <span className="tag-pill">{ctaLabel}</span>
-              <div className="mt-2 text-[15px] font-medium text-foreground">With Remarkable</div>
+        <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col justify-center px-6 md:px-10">
+          <div className="max-w-[720px]">
+            <p
+              className="text-[22px] leading-none sm:text-[28px] md:text-[32px]"
+              style={{
+                fontFamily: "'Caveat', 'Dancing Script', cursive",
+                color: "var(--sun)",
+                transform: "rotate(-2deg)",
+                transformOrigin: "left",
+              }}
+            >
+              Uncover Africa's wonders
+            </p>
+            <h1 className="mt-4 font-display font-extrabold uppercase leading-[0.92] tracking-[-0.02em] text-white text-[44px] sm:text-[64px] md:text-[80px] lg:text-[96px]">
+              Wild beauty &{" "}
+              <span className="block">unforgettable</span>
+              <span className="italic font-black" style={{ color: "var(--sun)", fontFamily: "'Playfair Display', Georgia, serif" }}>
+                journeys
+                <span className="ml-1 inline-block h-[0.9em] w-[3px] align-middle animate-pulse" style={{ background: "var(--sun)" }} />
+              </span>
+            </h1>
+            <p className="mt-6 max-w-[520px] text-[15px] leading-[1.65] text-white/85 md:text-[17px]">
+              Remarkable Collection invites you to experience the magic of Africa.
+              Whether it's safaris, cultural journeys, or gorilla trekking — we
+              craft adventures that connect you to the heart of the continent.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:max-w-[380px]">
+              <Link
+                to={ctaHref as any}
+                className="group flex items-center justify-center gap-3 rounded-2xl px-6 py-4 text-[15px] font-semibold text-white shadow-xl transition-all hover:brightness-110"
+                style={{ background: "var(--signal)" }}
+              >
+                {ctaLabel}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/experiences"
+                className="flex items-center justify-center gap-3 rounded-2xl border border-white/60 px-6 py-4 text-[15px] font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10"
+              >
+                Join a group journey
+              </Link>
             </div>
-            <span className="icon-circle shrink-0">
-              <ArrowRight className="h-5 w-5" />
-            </span>
-          </Link>
+          </div>
         </div>
 
         {/* play/pause */}
