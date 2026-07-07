@@ -27,7 +27,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
 
   return (
     <header className="absolute inset-x-0 top-0 z-40">
-      <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-4 px-4 py-4 md:px-8 md:py-6">
+      <div className="relative mx-auto flex max-w-[1500px] items-center justify-between gap-4 px-4 py-4 md:px-8 md:py-6">
         {/* Brand */}
         <Link to="/" className="flex items-center gap-1.5 shrink-0">
           <img
@@ -35,7 +35,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
             alt="Remarkable Destination"
             className="h-16 w-auto md:h-20 lg:h-24"
           />
-          <div className="flex flex-col justify-center leading-none">
+          <div className="hidden lg:flex flex-col justify-center leading-none">
             <span
               className={
                 "font-display text-[22px] font-extrabold tracking-tight uppercase sm:text-[26px] md:text-[30px] lg:text-[34px] " +
@@ -54,6 +54,26 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
             </span>
           </div>
         </Link>
+
+        {/* Centered brand text on mobile */}
+        <div className="lg:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center leading-none pointer-events-none">
+          <span
+            className={
+              "font-display text-[22px] font-extrabold tracking-tight uppercase sm:text-[26px] " +
+              (onDark ? "text-white" : "text-foreground")
+            }
+          >
+            Remarkable
+          </span>
+          <span
+            className={
+              "mt-0.5 text-[10px] font-medium uppercase tracking-[0.2em] sm:text-[11px] " +
+              (onDark ? "text-white/70" : "text-foreground/60")
+            }
+          >
+            Destination
+          </span>
+        </div>
 
         {/* Desktop pill nav */}
         <nav
