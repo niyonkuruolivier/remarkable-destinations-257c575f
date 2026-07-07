@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Globe, Search, Menu, X } from "lucide-react";
+import { Globe, Search, Menu, ArrowRight } from "lucide-react";
 import {
   Sheet,
   SheetContent,
