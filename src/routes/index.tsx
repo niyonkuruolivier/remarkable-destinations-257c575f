@@ -201,7 +201,7 @@ function Hero() {
         </button>
 
         {/* Dot indicators */}
-        <div className="absolute bottom-24 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2.5 md:bottom-16">
+        <div className="absolute bottom-28 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2.5 md:bottom-24">
           {slides.map((s, i) => (
             <button
               key={s.src}
