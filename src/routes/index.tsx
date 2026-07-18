@@ -490,7 +490,7 @@ function Stats() {
     <section style={{ background: "var(--ink)", color: "var(--cream)" }} className="overflow-hidden">
       <div className="mx-auto max-w-[1500px] px-6 py-24 md:px-10 md:py-32">
         <div className="grid items-end gap-10 md:grid-cols-12">
-          <h2 className="font-display text-[44px] font-extrabold leading-[0.95] tracking-tight text-white md:col-span-7 md:text-[88px]">
+          <h2 className="font-display text-[34px] font-extrabold leading-[0.95] tracking-tight text-white sm:text-[44px] md:col-span-7 md:text-[88px]">
             REMARKABLE<br />
             <span style={{ color: "var(--sun)" }}>IN NUMBERS.</span>
           </h2>
