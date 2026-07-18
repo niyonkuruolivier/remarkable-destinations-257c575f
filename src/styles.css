@@ -52,8 +52,8 @@
   --color-signal: var(--signal);
   --color-cobalt: var(--cobalt);
   --color-sun: var(--sun);
-  --font-display: "Archivo", system-ui, sans-serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+ --font-display: "Marcellus", "Cormorant Garamond", Georgia, serif;
+ --font-sans: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 :root {
@@ -145,14 +145,30 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    letter-spacing: 0.005em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, .font-display {
+  h1, h2, h3, h4, h5, h6, .font-display {
     font-family: var(--font-display);
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    line-height: 0.95;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    line-height: 1.2;
+  }
+  h1 { font-size: clamp(2.25rem, 4.5vw, 3.75rem); line-height: 1.1; }
+  h2 { font-size: clamp(1.875rem, 3.5vw, 2.75rem); line-height: 1.15; }
+  h3 { font-size: clamp(1.5rem, 2.5vw, 2rem); }
+  h4 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+  h5 { font-size: 1.125rem; }
+  h6 { font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 500; }
+  p { line-height: 1.7; }
+  button, input, select, textarea, label {
+    font-family: var(--font-sans);
+    letter-spacing: 0.01em;
   }
 
   .font-condensed {
