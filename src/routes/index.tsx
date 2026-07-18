@@ -147,10 +147,7 @@ function Hero() {
 
         <div className="relative z-10 mx-auto flex h-full w-full max-w-[1500px] flex-1 flex-col justify-center px-6 pb-32 pt-20 md:max-w-[1280px] md:items-center md:justify-center md:px-12 md:pb-44 md:pt-20 md:text-center">
           <div className="max-w-[720px] md:max-w-[1040px] md:mx-auto md:flex md:flex-col md:items-center md:animate-fade-in">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] sm:text-[12px] md:text-[12px]" style={{ color: "var(--sun)" }}>
-              Unlock Africa's Magic
-            </p>
-            <h1 className="mt-3 font-display font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-white text-[clamp(1.9rem,7vw,2.6rem)] sm:text-[clamp(2.4rem,6vw,3.25rem)] md:mt-4 md:font-normal md:tracking-[0.005em] md:leading-[1.08] md:text-[clamp(2.2rem,4.2vw,4rem)]">
+            <h1 className="font-display font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-white text-[clamp(1.9rem,7vw,2.6rem)] sm:text-[clamp(2.4rem,6vw,3.25rem)] md:font-normal md:tracking-[0.005em] md:leading-[1.08] md:text-[clamp(2.2rem,4.2vw,4rem)]">
               Wild beauty &{" "}
               <span className="block md:inline">unforgettable</span>{" "}
               <span className="italic" style={{ color: "var(--sun)" }}>
