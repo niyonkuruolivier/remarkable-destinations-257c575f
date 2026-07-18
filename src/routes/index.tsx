@@ -1,5 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import hero from "@/assets/hero-pool.jpg";
+import heroGorilla from "@/assets/hero-slide-gorilla.jpg";
+import heroKivu from "@/assets/hero-slide-kivu.jpg";
+import heroHills from "@/assets/hero-slide-hills.jpg";
 import destRwanda from "@/assets/dest-rwanda.jpg";
 import destKenya from "@/assets/dest-kenya.jpg";
 import destTanzania from "@/assets/dest-tanzania.jpg";
@@ -8,11 +11,25 @@ import destNamibia from "@/assets/dest-namibia.jpg";
 import lodge from "@/assets/lodge.jpg";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { ArrowRight, ArrowUpRight, Pause, Play } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getSiteSettings, type HeroSetting, type HomeSection } from "@/lib/site-settings";
 import { mediaUrl } from "@/lib/media";
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Remarkable Collection — The company of unforgettable journeys" },
+      { name: "description", content: "An integrated African travel group: bespoke safaris, conservation-led lodges, private journeys and editorial storytelling, headquartered in Kigali." },
+      { property: "og:title", content: "Remarkable Collection" },
+      { property: "og:description", content: "The company of unforgettable journeys." },
+    ],
+    links: [
+      { rel: "preload", as: "image", href: heroGorilla, fetchpriority: "high" },
+    ],
+  }),
+  component: Index,
+});
 
 export const Route = createFileRoute("/")({
   head: () => ({
