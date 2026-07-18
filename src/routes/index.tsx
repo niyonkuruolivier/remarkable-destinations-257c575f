@@ -233,12 +233,12 @@ function Hero() {
 
         {/* curved wave bottom */}
         <svg
-          className="absolute -bottom-px left-0 z-10 h-[14vw] min-h-[80px] w-full"
-          viewBox="0 0 1500 160"
+          className="absolute -bottom-px left-0 z-10 h-[10vw] min-h-[60px] w-full"
+          viewBox="0 0 1500 120"
           preserveAspectRatio="none"
           aria-hidden
         >
-          <path d="M0,160 L0,80 Q750,-40 1500,80 L1500,160 Z" fill="var(--lavender)" />
+          <path d="M0,120 L0,70 Q750,30 1500,70 L1500,120 Z" fill="var(--lavender)" />
         </svg>
       </div>
     </section>
