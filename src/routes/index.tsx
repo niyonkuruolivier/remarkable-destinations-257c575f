@@ -524,61 +524,134 @@ const stories = [
     tag: "Magazine",
     date: "Jun 2026",
     title: "How the Mara is rewriting community conservation",
+    author: "Amara Nyong'o",
+    location: "Maasai Mara, Kenya",
+    duration: "8 min read",
   },
   {
     img: destRwanda,
     tag: "Newsroom",
     date: "May 2026",
-    title: "A new gorilla naming ceremony in Volcanoes National Park",
+    title: "A new gorilla naming ceremony in Volcanoes",
+    author: "Jean-Pierre Habimana",
+    location: "Volcanoes NP, Rwanda",
+    duration: "6 min read",
   },
   {
     img: destZanzibar,
     tag: "Stories",
     date: "Apr 2026",
-    title: "The dhow builders of Stone Town — a portrait in motion",
+    title: "The dhow builders of Stone Town — a portrait",
+    author: "Layla Al-Saidi",
+    location: "Zanzibar",
+    duration: "10 min read",
+  },
+  {
+    img: destTanzania,
+    tag: "Field notes",
+    date: "Mar 2026",
+    title: "Following the great migration river crossings",
+    author: "Thomas Otieno",
+    location: "Serengeti, Tanzania",
+    duration: "12 min read",
+  },
+  {
+    img: destNamibia,
+    tag: "Journal",
+    date: "Feb 2026",
+    title: "Sleeping under the stars in Sossusvlei's dunes",
+    author: "Anika Van Wyk",
+    location: "Namib, Namibia",
+    duration: "7 min read",
   },
 ];
 
 function Magazine() {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const scroll = (dir: 1 | -1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * (el.clientWidth * 0.75), behavior: "smooth" });
+  };
   return (
-    <section className="mx-auto max-w-[1500px] px-6 py-24 md:px-10 md:py-32">
-      <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-        <div>
-          <div className="eyebrow">Magazine & Newsroom</div>
-          <h2 className="mt-3 font-display text-[40px] font-extrabold leading-[0.95] tracking-tight text-foreground md:text-[72px]">
-            STORIES FROM<br />THE FIELD.
-          </h2>
+    <section className="relative py-24 md:py-32 overflow-hidden" style={{ background: "linear-gradient(180deg, var(--lavender) 0%, #ECEAF5 100%)" }}>
+      <div className="mx-auto max-w-[1500px] px-6 md:px-10">
+        <div className="mb-10 flex flex-col items-start justify-between gap-6 md:mb-14 md:flex-row md:items-end">
+          <div>
+            <div className="eyebrow">Magazine & Newsroom</div>
+            <h2 className="mt-3 font-display text-[40px] leading-[1.02] tracking-tight text-foreground md:text-[72px]">
+              Stories from<br />
+              <span className="italic" style={{ color: "var(--cobalt)" }}>the field.</span>
+            </h2>
+          </div>
+          <div className="flex items-center gap-3">
+            <button type="button" onClick={() => scroll(-1)} aria-label="Previous story" className="grid h-12 w-12 place-items-center rounded-full border border-foreground/20 bg-white/70 backdrop-blur transition hover:bg-foreground hover:text-white">
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button type="button" onClick={() => scroll(1)} aria-label="Next story" className="grid h-12 w-12 place-items-center rounded-full border border-foreground/20 bg-white/70 backdrop-blur transition hover:bg-foreground hover:text-white">
+              <ChevronRight className="h-5 w-5" />
+            </button>
+            <Link to="/blog" className="btn-ghost-pill ml-2 hidden md:inline-flex">
+              Read the magazine <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
-        <Link to="/blog" className="btn-ghost-pill">
-          Read the magazine <ArrowUpRight className="h-4 w-4" />
-        </Link>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-3">
-        {stories.map((s) => (
-          <article key={s.title} className="group flex flex-col overflow-hidden rounded-3xl bg-white">
-            <div className="relative aspect-[5/4] overflow-hidden">
+      <div
+        ref={scrollerRef}
+        className="hide-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-6 pb-4 md:gap-8 md:px-10"
+      >
+        {stories.map((s, i) => (
+          <article
+            key={s.title}
+            className="group relative snap-start shrink-0 overflow-hidden rounded-[28px] bg-black shadow-xl transition-transform duration-500 hover:-translate-y-2 w-[85vw] sm:w-[65vw] md:w-[520px] lg:w-[560px]"
+            style={{ animation: `reveal-up 0.6s ease-out ${i * 60}ms both` }}
+          >
+            <div className="relative aspect-[4/5] overflow-hidden">
               <img
                 src={s.img}
                 alt=""
                 loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-110"
               />
-              <span className="tag-pill absolute left-4 top-4">{s.tag}</span>
-            </div>
-            <div className="flex flex-1 flex-col p-6">
-              <div className="text-[12px] uppercase tracking-wider text-muted-foreground">
-                {s.date}
+              {/* gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20" />
+
+              {/* Top row */}
+              <div className="absolute left-5 right-5 top-5 flex items-center justify-between">
+                <span className="rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-white glass-card">
+                  {s.tag}
+                </span>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-white/80">{s.date}</span>
               </div>
-              <h3 className="mt-3 font-display text-[22px] font-extrabold leading-[1.1] text-foreground md:text-[26px]">
-                {s.title}
-              </h3>
-              <div className="mt-6 flex items-center gap-2 text-[14px] font-medium text-foreground">
-                Read article <ArrowRight className="h-4 w-4" />
+
+              {/* Bottom content */}
+              <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] font-medium uppercase tracking-wider text-white/75">
+                  <span className="inline-flex items-center gap-1"><MapPin className="h-3 w-3" /> {s.location}</span>
+                  <span className="inline-flex items-center gap-1"><Clock className="h-3 w-3" /> {s.duration}</span>
+                </div>
+                <h3 className="mt-3 font-display text-[26px] leading-[1.15] text-white md:text-[32px]">
+                  {s.title}
+                </h3>
+                <div className="mt-4 flex items-center justify-between">
+                  <div className="text-[13px] text-white/70">by <span className="text-white">{s.author}</span></div>
+                  <span className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-white px-4 py-2 text-[12px] font-semibold uppercase tracking-wider text-foreground opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    Read story <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </div>
               </div>
             </div>
           </article>
         ))}
+        <div className="shrink-0 w-6 md:w-10" />
+      </div>
+
+      <div className="mx-auto mt-8 max-w-[1500px] px-6 md:hidden">
+        <Link to="/blog" className="btn-ghost-pill w-full">
+          Read the magazine <ArrowUpRight className="h-4 w-4" />
+        </Link>
       </div>
     </section>
   );
