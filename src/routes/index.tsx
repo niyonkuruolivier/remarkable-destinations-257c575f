@@ -259,59 +259,221 @@ function Intro() {
 }
 
 /* ---------------- PORTFOLIO / BRANDS ---------------- */
-const portfolio = [
-  { img: destRwanda, label: "Rwanda", tag: "Gorilla Country" },
-  { img: destKenya, label: "Kenya", tag: "Great Migration" },
-  { img: destTanzania, label: "Tanzania", tag: "Serengeti" },
-  { img: destZanzibar, label: "Zanzibar", tag: "Indian Ocean" },
-  { img: destNamibia, label: "Namibia", tag: "Desert & Dunes" },
-  { img: lodge, label: "Botswana", tag: "Okavango Delta" },
+const countries = [
+  { name: "Rwanda",     flag: "🇷🇼", tag: "Gorilla Country",   img: destRwanda },
+  { name: "Kenya",      flag: "🇰🇪", tag: "Great Migration",   img: destKenya },
+  { name: "Tanzania",   flag: "🇹🇿", tag: "Serengeti Plains",  img: destTanzania },
+  { name: "Zanzibar",   flag: "🇹🇿", tag: "Indian Ocean",      img: destZanzibar },
+  { name: "Namibia",    flag: "🇳🇦", tag: "Desert & Dunes",    img: destNamibia },
+  { name: "Botswana",   flag: "🇧🇼", tag: "Okavango Delta",    img: lodge },
+  { name: "Uganda",     flag: "🇺🇬", tag: "Pearl of Africa",   img: destRwanda },
+  { name: "S. Africa",  flag: "🇿🇦", tag: "Cape & Kruger",     img: destNamibia },
+  { name: "Ethiopia",   flag: "🇪🇹", tag: "Ancient Highlands", img: destKenya },
 ];
 
 function Brands() {
+  const [visible, setVisible] = useState<Set<number>>(new Set());
+  const gridRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        setVisible((prev) => {
+          const next = new Set(prev);
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              const i = Number((e.target as HTMLElement).dataset.i);
+              next.add(i);
+            }
+          }
+          return next;
+        });
+      },
+      { threshold: 0.25 },
+    );
+    el.querySelectorAll<HTMLElement>("[data-i]").forEach((n) => io.observe(n));
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <section className="mx-auto max-w-[1500px] px-6 pb-24 md:px-10 md:pb-32">
-      <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-        <div>
-          <div className="eyebrow">Our portfolio</div>
-          <h2 className="mt-3 font-display text-[40px] font-extrabold leading-[0.95] tracking-tight text-foreground md:text-[72px]">
-            NINE COUNTRIES.<br />ONE STANDARD.
-          </h2>
-        </div>
-        <Link to="/destinations" className="btn-ink">
-          All destinations <ArrowUpRight className="h-4 w-4" />
-        </Link>
+    <section className="relative overflow-hidden pb-24 md:pb-32">
+      {/* topographic backdrop */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden>
+        <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" className="h-full w-full">
+          <defs>
+            <pattern id="topo" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+              <path d="M0 60 Q30 20 60 60 T120 60" fill="none" stroke="currentColor" strokeWidth="0.6" />
+              <path d="M0 90 Q30 50 60 90 T120 90" fill="none" stroke="currentColor" strokeWidth="0.6" />
+              <path d="M0 30 Q30 -10 60 30 T120 30" fill="none" stroke="currentColor" strokeWidth="0.6" />
+            </pattern>
+          </defs>
+          <rect width="800" height="600" fill="url(#topo)" />
+        </svg>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
-        {portfolio.map((p) => (
-          <Link
-            to="/destinations"
-            key={p.label}
-            className="group relative block aspect-[4/5] overflow-hidden rounded-3xl"
-          >
-            <img
-              src={p.img}
-              alt={p.label}
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent" />
-            <div className="absolute left-4 top-4">
-              <span className="tag-pill">{p.tag}</span>
-            </div>
-            <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-              <h3 className="font-display text-[26px] font-extrabold tracking-tight text-white md:text-[36px]">
-                {p.label.toUpperCase()}
-              </h3>
-              <span className="grid h-11 w-11 place-items-center rounded-full bg-white text-foreground transition-transform group-hover:rotate-45">
-                <ArrowUpRight className="h-5 w-5" />
+      <div className="relative mx-auto max-w-[1500px] px-6 md:px-10">
+        {/* Header row: giant 9 + intro */}
+        <div className="mb-12 grid items-end gap-8 md:mb-16 md:grid-cols-12 md:gap-12">
+          <div className="md:col-span-5 relative">
+            <div className="eyebrow">Our footprint across Africa</div>
+            <div className="relative mt-2 leading-none">
+              <span
+                className="block font-display text-[220px] md:text-[340px] leading-[0.8] tracking-tight"
+                style={{
+                  background: "linear-gradient(180deg, var(--ink) 0%, var(--cobalt) 60%, var(--sun) 120%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                9
               </span>
+              <span
+                className="pointer-events-none absolute -inset-6 -z-10 rounded-full opacity-30 blur-3xl"
+                style={{ background: "radial-gradient(circle, var(--sun), transparent 60%)" }}
+              />
             </div>
-          </Link>
-        ))}
+            <h2 className="mt-2 font-display text-[36px] leading-[1.05] tracking-tight text-foreground md:text-[56px]">
+              countries.<br />
+              <span className="italic" style={{ color: "var(--signal)" }}>One remarkable standard.</span>
+            </h2>
+          </div>
+
+          <div className="md:col-span-7 md:pl-8">
+            <p className="max-w-xl text-[15px] leading-relaxed text-muted-foreground md:text-[17px]">
+              From misted volcanoes in Rwanda to the endless Serengeti and the dune seas
+              of Namibia — we operate our own teams, own our own vehicles, and answer
+              directly for every hour of every journey. Nine countries. One standard.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link to="/destinations" className="btn-ink">
+                All destinations <ArrowUpRight className="h-4 w-4" />
+              </Link>
+              <Link to="/experiences" className="btn-ghost-pill">
+                Signature experiences
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Country grid: glass cards */}
+        <div ref={gridRef} className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
+          {countries.map((c, i) => (
+            <Link
+              key={c.name}
+              to="/destinations"
+              data-i={i}
+              className={[
+                "group relative block aspect-[4/5] overflow-hidden rounded-3xl transition-all duration-700 ease-out",
+                visible.has(i) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
+              ].join(" ")}
+              style={{ transitionDelay: `${(i % 3) * 80}ms` }}
+            >
+              <img
+                src={c.img}
+                alt={c.name}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+              <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "radial-gradient(circle at 50% 100%, rgba(42,75,255,0.35), transparent 60%)" }} />
+
+              {/* Glass badge top-left */}
+              <div className="absolute left-3 top-3 flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-white glass-card">
+                <span className="text-[14px] leading-none">{c.flag}</span>
+                <span>{c.tag}</span>
+              </div>
+
+              {/* Bottom label */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                <div>
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/70">
+                    0{i + 1}
+                  </div>
+                  <h3 className="mt-1 font-display text-[26px] leading-none tracking-tight text-white md:text-[34px]">
+                    {c.name}
+                  </h3>
+                </div>
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-white/95 text-foreground transition-all duration-500 group-hover:rotate-45 group-hover:bg-[var(--sun)]">
+                  <ArrowUpRight className="h-5 w-5" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* One Standard trust badge */}
+        <OneStandard />
       </div>
     </section>
+  );
+}
+
+function OneStandard() {
+  const pillars = [
+    { icon: ShieldCheck, label: "Verified Guides" },
+    { icon: Compass,     label: "Local Expertise" },
+    { icon: Leaf,        label: "Sustainability" },
+    { icon: Users,       label: "Community First" },
+    { icon: Sparkles,    label: "Unforgettable" },
+  ];
+  return (
+    <div className="relative mt-24 md:mt-32">
+      <div
+        className="relative overflow-hidden rounded-[40px] px-6 py-16 md:px-16 md:py-24"
+        style={{
+          background: "linear-gradient(135deg, #0B0E2E 0%, #17205A 55%, #2A4BFF 130%)",
+          color: "#fff",
+        }}
+      >
+        {/* soft glow */}
+        <span className="pointer-events-none absolute -top-32 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full opacity-40 blur-3xl" style={{ background: "var(--sun)" }} />
+        <span className="pointer-events-none absolute -bottom-40 right-0 h-96 w-96 rounded-full opacity-30 blur-3xl" style={{ background: "var(--signal)" }} />
+
+        <div className="relative grid items-center gap-14 md:grid-cols-12">
+          {/* Circular shield */}
+          <div className="mx-auto md:col-span-5">
+            <div className="relative grid place-items-center">
+              <span className="absolute inset-0 m-auto h-56 w-56 rounded-full border border-white/30 animate-pulse-ring" />
+              <span className="absolute inset-0 m-auto h-56 w-56 rounded-full border border-white/20 animate-pulse-ring" style={{ animationDelay: "1.5s" }} />
+              <div className="relative grid h-56 w-56 place-items-center rounded-full text-center animate-float-slow"
+                   style={{ background: "radial-gradient(circle at 30% 30%, #ffffff22, #ffffff08)", boxShadow: "0 0 60px rgba(255,180,0,0.35), inset 0 0 30px rgba(255,255,255,0.15)" }}>
+                <div className="absolute inset-2 rounded-full border border-white/40 animate-spin-slow" style={{ borderStyle: "dashed" }} />
+                <div>
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.3em] text-white/70">Since 2014</div>
+                  <div className="mt-2 font-display text-[38px] leading-none" style={{ color: "var(--sun)" }}>ONE</div>
+                  <div className="font-display text-[22px] leading-tight">Standard of<br/>Excellence</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Pillars */}
+          <div className="md:col-span-7">
+            <div className="eyebrow" style={{ color: "rgba(255,255,255,0.7)" }}>The Remarkable Promise</div>
+            <h3 className="mt-3 font-display text-[32px] leading-[1.1] md:text-[52px]">
+              Every journey, held to <span className="italic" style={{ color: "var(--sun)" }}>the same standard</span>.
+            </h3>
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {pillars.map(({ icon: Icon, label }, i) => (
+                <div
+                  key={label}
+                  className="glass-card group flex items-center gap-3 rounded-2xl px-4 py-3.5 transition-all duration-500 hover:-translate-y-1 hover:bg-white/15"
+                  style={{ animation: `reveal-up 0.7s ease-out ${i * 80}ms both` }}
+                >
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full" style={{ background: "rgba(255,180,0,0.2)", color: "var(--sun)" }}>
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <span className="text-[13px] font-semibold uppercase tracking-wider text-white">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
