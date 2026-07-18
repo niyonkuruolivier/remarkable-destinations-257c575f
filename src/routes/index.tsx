@@ -77,40 +77,71 @@ function Index() {
 
 /* ---------------- HERO ---------------- */
 function Hero() {
-  const [playing, setPlaying] = useState(true);
   const settings = useQuery({ queryKey: ["site_settings"], queryFn: getSiteSettings, staleTime: 30_000 });
   const h: HeroSetting | undefined = settings.data?.["home.hero"];
   const heroTitle = h?.title || "The company of journeys";
   const heroImage = h?.imageUrl ? mediaUrl(h.imageUrl) : hero;
   const ctaLabel = h?.ctaLabel || "Book your safari";
   const ctaHref = h?.ctaHref || "/contact";
+
+  const slides = [
+    { src: heroGorilla, alt: "Mountain gorilla in Volcanoes National Park, Rwanda" },
+    { src: heroKivu, alt: "Sunset over Lake Kivu with traditional boats" },
+    { src: heroHills, alt: "Rwanda's rolling green hills at golden hour with luxury eco-lodge" },
+  ];
+  const [active, setActive] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+
+  const go = useCallback((dir: 1 | -1) => {
+    setActive((i) => (i + dir + slides.length) % slides.length);
+  }, [slides.length]);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setActive((i) => (i + 1) % slides.length);
+    }, 5500);
+    return () => window.clearInterval(id);
+  }, [slides.length]);
+
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "var(--ink)" }}>
-      <div className="relative flex h-[100svh] min-h-[600px] w-full flex-col md:min-h-[640px]">
-        {/* YouTube background video */}
+      <div
+        className="group/hero relative flex h-[100svh] min-h-[600px] w-full flex-col md:min-h-[640px]"
+        onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+        onTouchEnd={(e) => {
+          if (touchStartX.current == null) return;
+          const dx = e.changedTouches[0].clientX - touchStartX.current;
+          if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+          touchStartX.current = null;
+        }}
+      >
+        {/* Slider */}
         <div className="absolute inset-0 overflow-hidden">
-          <iframe
-            title="Hero background video"
-            aria-hidden="true"
-            tabIndex={-1}
-            src="https://www.youtube.com/embed/HiIQdK6-y78?autoplay=1&mute=1&loop=1&playlist=HiIQdK6-y78&controls=0&modestbranding=1&rel=0&playsinline=1&showinfo=0&iv_load_policy=3&disablekb=1&fs=0"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            allowFullScreen={false}
-            frameBorder={0}
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[100vh] w-[177.78vh] min-h-[56.25vw] min-w-[100vw] -translate-x-1/2 -translate-y-1/2 border-0"
-          />
-          {/* Poster fallback shown until iframe paints */}
-          <img
-            src={heroImage}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 -z-10 h-full w-full object-cover"
-          />
+          {slides.map((s, i) => (
+            <img
+              key={s.src}
+              src={s.src}
+              alt={s.alt}
+              width={1920}
+              height={1080}
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "low"}
+              decoding={i === 0 ? "sync" : "async"}
+              className={[
+                "absolute inset-0 h-full w-full object-cover will-change-transform",
+                "transition-opacity duration-1000 ease-out",
+                i === active ? "opacity-100 animate-hero-kenburns" : "opacity-0",
+              ].join(" ")}
+              style={{ objectPosition: "center" }}
+            />
+          ))}
+          {/* Hidden fallback for CMS-provided hero image */}
+          <img src={heroImage} alt="" aria-hidden className="hidden" />
         </div>
         {/* 50% dark overlay for readability */}
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/60" />
         {/* Bottom fade into page background */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(11,14,46,0) 55%, rgba(229,227,241,0.95) 100%)" }} />
+        <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(11,14,46,0) 55%, rgba(229,227,241,0.95) 100%)" }} />
 
         <Header transparent />
 
@@ -151,14 +182,40 @@ function Hero() {
           </div>
         </div>
 
-        {/* play/pause */}
+        {/* Prev / Next arrows (desktop, on hover) */}
         <button
-          onClick={() => setPlaying((p) => !p)}
-          aria-label="Toggle background"
-          className="absolute bottom-32 left-6 z-10 grid h-12 w-12 place-items-center rounded-full bg-white/85 text-foreground backdrop-blur md:bottom-10 md:left-10"
+          type="button"
+          aria-label="Previous slide"
+          onClick={() => go(-1)}
+          className="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 place-items-center rounded-full bg-white/15 p-3 text-white opacity-0 backdrop-blur transition-all hover:bg-white/30 md:grid md:group-hover/hero:opacity-100"
         >
-          {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+          <ChevronLeft className="h-6 w-6" />
         </button>
+        <button
+          type="button"
+          aria-label="Next slide"
+          onClick={() => go(1)}
+          className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 place-items-center rounded-full bg-white/15 p-3 text-white opacity-0 backdrop-blur transition-all hover:bg-white/30 md:grid md:group-hover/hero:opacity-100"
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button>
+
+        {/* Dot indicators */}
+        <div className="absolute bottom-24 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2.5 md:bottom-16">
+          {slides.map((s, i) => (
+            <button
+              key={s.src}
+              type="button"
+              aria-label={`Go to slide ${i + 1}`}
+              aria-current={i === active}
+              onClick={() => setActive(i)}
+              className={[
+                "h-2 rounded-full transition-all duration-500",
+                i === active ? "w-8 bg-white" : "w-2 bg-white/50 hover:bg-white/80",
+              ].join(" ")}
+            />
+          ))}
+        </div>
 
         {/* floating CTA card */}
         <Link
