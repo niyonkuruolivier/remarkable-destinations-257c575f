@@ -109,28 +109,28 @@ function Hero() {
 
         <Header transparent />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col justify-center px-6 md:px-10">
-          <div className="max-w-[720px]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] sm:text-[12px]" style={{ color: "var(--sun)" }}>
+        <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col justify-center px-6 md:max-w-[1360px] md:items-center md:justify-center md:px-12 md:text-center">
+          <div className="max-w-[720px] md:max-w-[1080px] md:mx-auto md:flex md:flex-col md:items-center md:animate-fade-in">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] sm:text-[12px] md:text-[13px]" style={{ color: "var(--sun)" }}>
               Unlock Africa's Magic
             </p>
-            <h1 className="mt-5 font-display font-extrabold uppercase leading-[0.92] tracking-[-0.02em] text-white text-[40px] sm:text-[56px] md:text-[72px] lg:text-[88px]">
+            <h1 className="mt-5 font-display font-extrabold uppercase leading-[0.92] tracking-[-0.02em] text-white text-[40px] sm:text-[56px] md:mt-8 md:font-normal md:tracking-[0.005em] md:leading-[1.05] md:text-[clamp(3.25rem,6.2vw,6.5rem)]">
               Wild beauty &{" "}
-              <span className="block">unforgettable</span>
+              <span className="block md:inline">unforgettable</span>{" "}
               <span className="italic" style={{ color: "var(--sun)" }}>
                 journeys
               </span>
             </h1>
-            <p className="mt-6 max-w-[520px] text-[15px] leading-[1.65] text-white/85 md:text-[17px]">
+            <p className="mt-6 max-w-[520px] text-[15px] leading-[1.65] text-white/85 md:mt-8 md:max-w-[720px] md:text-[18px] md:leading-[1.7] md:text-white/90">
               Remarkable Collection invites you to experience the magic of Africa.
               Whether it's safaris, cultural journeys, or gorilla trekking — we
               craft adventures that connect you to the heart of the continent.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:max-w-[380px]">
+            <div className="mt-8 flex flex-col gap-3 sm:max-w-[380px] md:mt-12 md:max-w-none md:flex-row md:items-center md:justify-center md:gap-5">
               <Link
                 to={ctaHref as any}
-                className="group flex items-center justify-center gap-3 rounded-2xl px-6 py-4 text-[15px] font-semibold text-white shadow-xl transition-all hover:brightness-110"
+                className="group flex items-center justify-center gap-3 rounded-2xl px-6 py-4 text-[15px] font-semibold text-white shadow-xl transition-all hover:brightness-110 md:px-9 md:py-4 md:text-[15px] md:tracking-[0.02em]"
                 style={{ background: "var(--signal)" }}
               >
                 {ctaLabel}
@@ -138,7 +138,7 @@ function Hero() {
               </Link>
               <Link
                 to="/experiences"
-                className="flex items-center justify-center gap-3 rounded-2xl border border-white/60 px-6 py-4 text-[15px] font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10"
+                className="flex items-center justify-center gap-3 rounded-2xl border border-white/60 px-6 py-4 text-[15px] font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 md:px-9 md:py-4 md:tracking-[0.02em]"
               >
                 Join a group journey
               </Link>
@@ -150,7 +150,7 @@ function Hero() {
         <button
           onClick={() => setPlaying((p) => !p)}
           aria-label="Toggle background"
-          className="absolute bottom-32 left-6 z-10 grid h-12 w-12 place-items-center rounded-full bg-white/85 text-foreground backdrop-blur md:left-10"
+          className="absolute bottom-32 left-6 z-10 grid h-12 w-12 place-items-center rounded-full bg-white/85 text-foreground backdrop-blur md:bottom-10 md:left-10"
         >
           {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
         </button>
@@ -158,7 +158,7 @@ function Hero() {
         {/* floating CTA card */}
         <Link
           to="/contact"
-          className="absolute bottom-20 left-4 right-4 z-20 hidden items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:flex sm:left-auto sm:right-5 sm:bottom-28 sm:w-[280px] md:right-10"
+          className="absolute bottom-20 left-4 right-4 z-20 hidden items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:flex sm:left-auto sm:right-5 sm:bottom-28 sm:w-[280px] md:hidden"
         >
           <div className="text-left">
             <span className="tag-pill">Book your safari</span>
