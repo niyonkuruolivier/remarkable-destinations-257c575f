@@ -145,7 +145,7 @@ function Hero() {
 
         <Header transparent />
 
-        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1500px] flex-1 flex-col justify-center px-6 pb-20 pt-20 md:max-w-[1280px] md:items-center md:justify-center md:px-12 md:pb-24 md:pt-20 md:text-center">
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1500px] flex-1 flex-col justify-center px-6 pb-32 pt-20 md:max-w-[1280px] md:items-center md:justify-center md:px-12 md:pb-44 md:pt-20 md:text-center">
           <div className="max-w-[720px] md:max-w-[1040px] md:mx-auto md:flex md:flex-col md:items-center md:animate-fade-in">
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] sm:text-[12px] md:text-[12px]" style={{ color: "var(--sun)" }}>
               Unlock Africa's Magic
@@ -201,7 +201,7 @@ function Hero() {
         </button>
 
         {/* Dot indicators */}
-        <div className="absolute bottom-24 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2.5 md:bottom-16">
+        <div className="absolute bottom-28 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2.5 md:bottom-24">
           {slides.map((s, i) => (
             <button
               key={s.src}
@@ -220,7 +220,7 @@ function Hero() {
         {/* floating CTA card */}
         <Link
           to="/contact"
-          className="absolute bottom-20 left-4 right-4 z-20 hidden items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:flex sm:left-auto sm:right-5 sm:bottom-28 sm:w-[280px] md:hidden"
+          className="absolute bottom-24 left-4 right-4 z-20 hidden items-center justify-between gap-4 rounded-2xl bg-white/95 p-3 pl-4 shadow-xl backdrop-blur sm:flex sm:left-auto sm:right-5 sm:bottom-36 sm:w-[280px] md:hidden"
         >
           <div className="text-left">
             <span className="tag-pill">Book your safari</span>
@@ -233,12 +233,12 @@ function Hero() {
 
         {/* curved wave bottom */}
         <svg
-          className="absolute -bottom-px left-0 z-10 h-[14vw] min-h-[80px] w-full"
-          viewBox="0 0 1500 160"
+          className="absolute -bottom-px left-0 z-10 h-[10vw] min-h-[60px] w-full"
+          viewBox="0 0 1500 120"
           preserveAspectRatio="none"
           aria-hidden
         >
-          <path d="M0,160 L0,80 Q750,-40 1500,80 L1500,160 Z" fill="var(--lavender)" />
+          <path d="M0,120 L0,70 Q750,30 1500,70 L1500,120 Z" fill="var(--lavender)" />
         </svg>
       </div>
     </section>
