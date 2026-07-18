@@ -15,7 +15,7 @@ export function PageHero({
 }) {
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "var(--ink)" }}>
-      <div className="relative h-[78svh] min-h-[560px] w-full">
+      <div className="relative h-[58svh] min-h-[420px] w-full md:h-[62svh] md:min-h-[480px]">
         <img
           src={image}
           alt={alt}
@@ -30,7 +30,7 @@ export function PageHero({
           }}
         />
         <Header transparent />
-        <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col items-center justify-end px-6 pb-24 text-center md:px-10 md:pb-32">
+        <div className="relative z-10 mx-auto flex h-full max-w-[1500px] flex-col items-center justify-end px-6 pb-16 text-center md:px-10 md:pb-20">
           <span className="tag-pill">{eyebrow}</span>
           <h1 className="mt-5 max-w-4xl font-display text-[26px] font-extrabold leading-[0.92] tracking-[-0.02em] text-white sm:text-[38px] md:text-[58px]">
             {title}
