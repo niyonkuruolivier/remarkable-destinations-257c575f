@@ -711,43 +711,92 @@ function Responsibility() {
 /* ---------------- CTA ---------------- */
 function CTA() {
   return (
-    <section className="mx-auto max-w-[1500px] px-6 pb-28 md:px-10 md:pb-40">
-      <div
-        className="relative overflow-hidden rounded-b-[40px] px-8 py-20 text-center md:px-16 md:py-28"
-        style={{ background: "var(--cobalt)", color: "#fff" }}
-      >
-        <span
-          className="absolute -top-20 -right-20 h-64 w-64 rounded-full opacity-30"
-          style={{ background: "var(--sun)" }}
+    <section className="relative overflow-hidden">
+      <div className="relative h-[92vh] min-h-[620px] w-full">
+        {/* Background image with parallax feel */}
+        <img
+          src={heroHills}
+          alt="Sunset over African plains"
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover animate-hero-kenburns"
         />
-        <span
-          className="absolute -bottom-24 -left-16 h-72 w-72 rounded-full opacity-25"
-          style={{ background: "var(--signal)" }}
-        />
-        <div className="relative">
-          <div className="text-[12px] font-semibold uppercase tracking-wider text-white/70">
+        {/* Layered gradients */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(11,14,46,0.55) 0%, rgba(11,14,46,0.35) 40%, rgba(11,14,46,0.85) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(11,14,46,0.5) 100%)" }} />
+
+        {/* Decorative topographic / compass lines */}
+        <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-20 mix-blend-screen" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden>
+          <defs>
+            <radialGradient id="compassGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#FFB400" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#FFB400" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          {/* dashed safari route */}
+          <path d="M -50 600 C 200 500, 400 700, 700 500 S 1100 300, 1300 400" fill="none" stroke="#FFB400" strokeWidth="1.5" strokeDasharray="6 10" />
+          <path d="M -50 700 C 250 640, 500 780, 800 620 S 1200 500, 1300 540" fill="none" stroke="#ffffff" strokeWidth="1" strokeDasharray="2 8" opacity="0.5" />
+          {/* compass rings top-right */}
+          <g transform="translate(1050,180)">
+            <circle r="120" fill="none" stroke="#ffffff" strokeOpacity="0.35" />
+            <circle r="90"  fill="none" stroke="#ffffff" strokeOpacity="0.25" strokeDasharray="4 6" />
+            <circle r="60"  fill="none" stroke="#FFB400" strokeOpacity="0.6" />
+            <circle r="4"   fill="url(#compassGrad)" />
+            <line x1="0" y1="-120" x2="0" y2="120" stroke="#ffffff" strokeOpacity="0.3" />
+            <line x1="-120" y1="0" x2="120" y2="0" stroke="#ffffff" strokeOpacity="0.3" />
+          </g>
+        </svg>
+
+        {/* Floating decorative pins */}
+        <span className="pointer-events-none absolute left-[12%] top-[28%] hidden h-2 w-2 rounded-full bg-[var(--sun)] shadow-[0_0_20px_5px_rgba(255,180,0,0.6)] animate-float-slow md:block" />
+        <span className="pointer-events-none absolute right-[22%] top-[62%] hidden h-2 w-2 rounded-full bg-white shadow-[0_0_18px_4px_rgba(255,255,255,0.5)] animate-float-slow md:block" style={{ animationDelay: "1.5s" }} />
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto flex h-full max-w-[1200px] flex-col items-center justify-center px-6 text-center text-white md:px-10">
+          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.25em] glass-card animate-reveal-up">
+            <Sparkles className="h-3.5 w-3.5" style={{ color: "var(--sun)" }} />
             Plan with us
           </div>
-          <h2 className="mx-auto mt-4 max-w-3xl font-display text-[42px] font-extrabold leading-[0.95] tracking-tight md:text-[80px]">
-            YOUR REMARKABLE<br />STARTS HERE.
+          <h2
+            className="mt-6 font-display leading-[0.98] tracking-tight text-white animate-reveal-up"
+            style={{ animationDelay: "120ms", fontSize: "clamp(2.6rem, 6vw, 5.5rem)" }}
+          >
+            Your Remarkable<br />
+            <span className="italic" style={{ color: "var(--sun)" }}>starts here.</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-[16px] text-white/85">
+          <p
+            className="mt-6 max-w-xl text-[15px] leading-relaxed text-white/85 md:text-[17px] animate-reveal-up"
+            style={{ animationDelay: "240ms" }}
+          >
             Speak with a travel designer in Kigali. We respond within 24 hours
-            with a private proposal — at no obligation.
+            with a private, tailored proposal — at no obligation.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
+
+          <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row animate-reveal-up" style={{ animationDelay: "360ms" }}>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-[15px] font-semibold text-foreground hover:bg-foreground hover:text-white"
+              className="group inline-flex items-center gap-3 rounded-full px-7 py-4 text-[14px] font-semibold uppercase tracking-[0.12em] text-white shadow-2xl transition-all hover:brightness-110 hover:-translate-y-0.5"
+              style={{ background: "linear-gradient(135deg, var(--signal), #0BA751)" }}
             >
-              Begin a conversation <ArrowUpRight className="h-4 w-4" />
+              Start planning
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/experiences"
-              className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3.5 text-[15px] font-semibold text-white hover:bg-white/10"
+              className="group inline-flex items-center gap-3 rounded-full border border-white/40 bg-white/5 px-7 py-4 text-[14px] font-semibold uppercase tracking-[0.12em] text-white backdrop-blur-sm transition-all hover:bg-white/15 hover:-translate-y-0.5"
             >
-              Explore experiences
+              Explore journeys
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
             </Link>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="pointer-events-none absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-white/80">
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.3em]">Scroll</span>
+            <span className="grid h-9 w-9 place-items-center rounded-full border border-white/40 animate-float-slow">
+              <ChevronDown className="h-4 w-4" />
+            </span>
           </div>
         </div>
       </div>
