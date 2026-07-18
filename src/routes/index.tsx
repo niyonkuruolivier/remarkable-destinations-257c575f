@@ -31,18 +31,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Remarkable Collection — The company of unforgettable journeys" },
-      { name: "description", content: "An integrated African travel group: bespoke safaris, conservation-led lodges, private journeys and editorial storytelling, headquartered in Kigali." },
-      { property: "og:title", content: "Remarkable Collection" },
-      { property: "og:description", content: "The company of unforgettable journeys." },
-    ],
-  }),
-  component: Index,
-});
-
 function Index() {
   const [showFixed, setShowFixed] = useState(false);
   const settings = useQuery({ queryKey: ["site_settings"], queryFn: getSiteSettings, staleTime: 30_000 });
