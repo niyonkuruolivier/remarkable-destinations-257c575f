@@ -481,7 +481,7 @@ function CTA() {
   return (
     <section className="mx-auto max-w-[1500px] px-6 pb-28 md:px-10 md:pb-40">
       <div
-        className="relative overflow-hidden rounded-[40px] px-8 py-20 text-center md:px-16 md:py-28"
+        className="relative overflow-hidden rounded-b-[40px] px-8 py-20 text-center md:px-16 md:py-28"
         style={{ background: "var(--cobalt)", color: "#fff" }}
       >
         <span
