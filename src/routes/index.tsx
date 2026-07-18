@@ -145,25 +145,25 @@ function Hero() {
 
         <Header transparent />
 
-        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1500px] flex-1 flex-col justify-center px-6 pb-24 pt-24 md:max-w-[1280px] md:items-center md:justify-center md:px-12 md:pb-32 md:pt-28 md:text-center">
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1500px] flex-1 flex-col justify-center px-6 pb-20 pt-20 md:max-w-[1280px] md:items-center md:justify-center md:px-12 md:pb-24 md:pt-20 md:text-center">
           <div className="max-w-[720px] md:max-w-[1040px] md:mx-auto md:flex md:flex-col md:items-center md:animate-fade-in">
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] sm:text-[12px] md:text-[12px]" style={{ color: "var(--sun)" }}>
               Unlock Africa's Magic
             </p>
-            <h1 className="mt-4 font-display font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-white text-[clamp(1.9rem,7vw,2.6rem)] sm:text-[clamp(2.4rem,6vw,3.25rem)] md:mt-6 md:font-normal md:tracking-[0.005em] md:leading-[1.08] md:text-[clamp(2.5rem,4.6vw,4.5rem)]">
+            <h1 className="mt-3 font-display font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-white text-[clamp(1.9rem,7vw,2.6rem)] sm:text-[clamp(2.4rem,6vw,3.25rem)] md:mt-4 md:font-normal md:tracking-[0.005em] md:leading-[1.08] md:text-[clamp(2.2rem,4.2vw,4rem)]">
               Wild beauty &{" "}
               <span className="block md:inline">unforgettable</span>{" "}
               <span className="italic" style={{ color: "var(--sun)" }}>
                 journeys
               </span>
             </h1>
-            <p className="mt-5 max-w-[520px] text-[14px] leading-[1.6] text-white/85 sm:text-[15px] md:mt-7 md:max-w-[680px] md:text-[17px] md:leading-[1.7] md:text-white/90">
+            <p className="mt-4 max-w-[520px] text-[14px] leading-[1.6] text-white/85 sm:text-[15px] md:mt-5 md:max-w-[640px] md:text-[16px] md:leading-[1.7] md:text-white/90">
               Remarkable Collection invites you to experience the magic of Africa.
               Whether it's safaris, cultural journeys, or gorilla trekking — we
               craft adventures that connect you to the heart of the continent.
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:max-w-[380px] md:mt-10 md:max-w-none md:flex-row md:items-center md:justify-center md:gap-5">
+            <div className="relative z-30 mt-6 flex flex-col gap-3 sm:max-w-[380px] md:mt-8 md:max-w-none md:flex-row md:items-center md:justify-center md:gap-5">
               <Link
                 to={ctaHref as any}
                 className="group flex items-center justify-center gap-3 rounded-2xl px-6 py-3.5 text-[14px] font-semibold text-white shadow-xl transition-all hover:brightness-110 sm:text-[15px] md:px-8 md:py-4 md:text-[15px] md:tracking-[0.02em]"
