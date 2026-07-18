@@ -11,7 +11,7 @@ import destNamibia from "@/assets/dest-namibia.jpg";
 import lodge from "@/assets/lodge.jpg";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck, Leaf, Users, Compass, Sparkles, MapPin, Clock, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getSiteSettings, type HeroSetting, type HomeSection } from "@/lib/site-settings";
