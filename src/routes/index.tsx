@@ -432,9 +432,9 @@ function OneStandard() {
         <span className="pointer-events-none absolute -top-32 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full opacity-40 blur-3xl" style={{ background: "var(--sun)" }} />
         <span className="pointer-events-none absolute -bottom-40 right-0 h-96 w-96 rounded-full opacity-30 blur-3xl" style={{ background: "var(--signal)" }} />
 
-        <div className="relative grid items-center gap-14 md:grid-cols-12">
+        <div className="relative grid items-center gap-12 md:grid-cols-12 md:gap-10 lg:gap-14">
           {/* Circular shield */}
-          <div className="mx-auto md:col-span-5">
+          <div className="mx-auto md:col-span-5 lg:col-span-5">
             <div className="relative grid place-items-center">
               <span className="absolute inset-0 m-auto h-56 w-56 rounded-full border border-white/30 animate-pulse-ring" />
               <span className="absolute inset-0 m-auto h-56 w-56 rounded-full border border-white/20 animate-pulse-ring" style={{ animationDelay: "1.5s" }} />
@@ -451,22 +451,22 @@ function OneStandard() {
           </div>
 
           {/* Pillars */}
-          <div className="md:col-span-7">
+          <div className="min-w-0 md:col-span-7">
             <div className="eyebrow" style={{ color: "rgba(255,255,255,0.7)" }}>The Remarkable Promise</div>
-            <h3 className="mt-3 font-display text-[32px] leading-[1.1] md:text-[52px]">
+            <h3 className="mt-3 font-display text-[26px] leading-[1.15] sm:text-[32px] md:text-[34px] lg:text-[42px] xl:text-[52px]">
               Every journey, held to <span className="italic" style={{ color: "var(--sun)" }}>the same standard</span>.
             </h3>
-            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
               {pillars.map(({ icon: Icon, label }, i) => (
                 <div
                   key={label}
-                  className="glass-card group flex items-center gap-3 rounded-2xl px-4 py-3.5 transition-all duration-500 hover:-translate-y-1 hover:bg-white/15"
+                  className="glass-card group flex min-w-0 items-center gap-3 rounded-2xl px-4 py-3.5 transition-all duration-500 hover:-translate-y-1 hover:bg-white/15"
                   style={{ animation: `reveal-up 0.7s ease-out ${i * 80}ms both` }}
                 >
                   <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full" style={{ background: "rgba(255,180,0,0.2)", color: "var(--sun)" }}>
                     <Icon className="h-4 w-4" />
                   </span>
-                  <span className="text-[13px] font-semibold uppercase tracking-wider text-white">{label}</span>
+                  <span className="min-w-0 break-words text-[12px] font-semibold uppercase leading-tight tracking-wider text-white sm:text-[13px]">{label}</span>
                 </div>
               ))}
             </div>
