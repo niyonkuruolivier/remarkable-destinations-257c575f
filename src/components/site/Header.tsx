@@ -32,7 +32,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
         <Link to="/" className="flex items-center gap-1.5 shrink-0">
           <img
             src={elephantLogo.url}
-            alt="Remarkable Destination"
+            alt="Remarkable Destinations"
             className="h-16 w-auto md:h-20 lg:h-24"
           />
           <div className="hidden lg:flex flex-col justify-center leading-none">
@@ -50,7 +50,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                 (onDark ? "text-white/70" : "text-foreground/60")
               }
             >
-              Destination
+              Destinations
             </span>
           </div>
         </Link>
@@ -71,7 +71,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
               (onDark ? "text-white/70" : "text-foreground/60")
             }
           >
-            Destination
+            Destinations
           </span>
         </div>
 
@@ -151,7 +151,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                 <div className="flex items-center gap-3 mb-14">
                   <img
                     src={elephantLogo.url}
-                    alt="Remarkable Destination"
+                    alt="Remarkable Destinations"
                     className="h-12 w-auto brightness-0 invert"
                   />
                   <div className="flex flex-col leading-none">
@@ -159,7 +159,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                       Remarkable
                     </span>
                     <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.2em] text-cream/60">
-                      Destination
+                      Destinations
                     </span>
                   </div>
                 </div>
