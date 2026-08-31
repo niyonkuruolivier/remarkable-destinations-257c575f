@@ -26,7 +26,7 @@ export function PageHero({
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(11,14,46,0.55) 0%, rgba(11,14,46,0.25) 45%, rgba(229,227,241,0.95) 100%)",
+              "linear-gradient(180deg, rgba(11,14,46,0.55) 0%, rgba(11,14,46,0.35) 45%, rgba(11,14,46,0.78) 100%)",
           }}
         />
         <Header transparent />
