@@ -197,22 +197,6 @@ function Hero() {
           <ChevronRight className="h-6 w-6" />
         </button>
 
-        {/* Dot indicators */}
-        <div className="absolute bottom-28 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2.5 md:bottom-24">
-          {slides.map((s, i) => (
-            <button
-              key={s.src}
-              type="button"
-              aria-label={`Go to slide ${i + 1}`}
-              aria-current={i === active}
-              onClick={() => setActive(i)}
-              className={[
-                "h-2 rounded-full transition-all duration-500",
-                i === active ? "w-8 bg-white" : "w-2 bg-white/50 hover:bg-white/80",
-              ].join(" ")}
-            />
-          ))}
-        </div>
 
         {/* floating CTA card */}
         <Link
