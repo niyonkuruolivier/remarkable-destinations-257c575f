@@ -14,7 +14,7 @@ import { Footer } from "@/components/site/Footer";
 import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck, Leaf, Users, Compass, Sparkles, MapPin, Clock, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getSiteSettings, type HeroSetting, type HomeSection } from "@/lib/site-settings";
+import { getSiteSettings, type HeroSetting, type HomeSection, type HeroSlide } from "@/lib/site-settings";
 import { mediaUrl } from "@/lib/media";
 export const Route = createFileRoute("/")({
   head: () => ({
