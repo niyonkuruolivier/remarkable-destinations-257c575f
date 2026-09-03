@@ -124,24 +124,57 @@ function Hero() {
       >
         {/* Slider */}
         <div className="absolute inset-0 overflow-hidden">
-          {slides.map((s, i) => (
-            <img
-              key={s.src}
-              src={s.src}
-              alt={s.alt}
-              width={1920}
-              height={1080}
-              loading={i === 0 ? "eager" : "lazy"}
-              fetchPriority={i === 0 ? "high" : "low"}
-              decoding={i === 0 ? "sync" : "async"}
-              className={[
-                "absolute inset-0 h-full w-full object-cover will-change-transform",
-                "transition-opacity duration-1000 ease-out",
-                i === active ? "opacity-100 animate-hero-kenburns" : "opacity-0",
-              ].join(" ")}
-              style={{ objectPosition: "center" }}
-            />
-          ))}
+          {slides.map((s, i) => {
+            const yt = s.videoUrl ? youTubeId(s.videoUrl) : null;
+            const wrapper = [
+              "absolute inset-0 h-full w-full transition-opacity duration-1000 ease-out",
+              i === active ? "opacity-100" : "opacity-0",
+            ].join(" ");
+            if (yt) {
+              return (
+                <div key={`${i}-yt`} className={wrapper} aria-hidden={i !== active}>
+                  <iframe
+                    title={s.alt || `Hero video ${i + 1}`}
+                    src={`https://www.youtube.com/embed/${yt}?autoplay=1&mute=1&loop=1&playlist=${yt}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1`}
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    className="pointer-events-none absolute left-1/2 top-1/2 h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 border-0"
+                  />
+                </div>
+              );
+            }
+            if (s.videoUrl) {
+              return (
+                <video
+                  key={`${i}-v`}
+                  src={s.videoUrl}
+                  poster={s.src || undefined}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className={`${wrapper} object-cover`}
+                />
+              );
+            }
+            return (
+              <img
+                key={s.src}
+                src={s.src}
+                alt={s.alt}
+                width={1920}
+                height={1080}
+                loading={i === 0 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : "low"}
+                decoding={i === 0 ? "sync" : "async"}
+                className={[
+                  "absolute inset-0 h-full w-full object-cover will-change-transform",
+                  "transition-opacity duration-1000 ease-out",
+                  i === active ? "opacity-100 animate-hero-kenburns" : "opacity-0",
+                ].join(" ")}
+                style={{ objectPosition: "center" }}
+              />
+            );
+          })}
           {/* Hidden fallback for CMS-provided hero image */}
           <img src={heroImage} alt="" aria-hidden className="hidden" />
         </div>
