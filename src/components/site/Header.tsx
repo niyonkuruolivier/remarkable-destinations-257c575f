@@ -9,6 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import elephantLogo from "@/assets/elephant-raw-logo.png.asset.json";
+import { useSiteImages } from "@/lib/site-images";
 
 const nav = [
   { to: "/about", label: "About" },
