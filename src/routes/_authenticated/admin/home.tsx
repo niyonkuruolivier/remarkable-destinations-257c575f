@@ -94,6 +94,47 @@ function HomeEditor() {
       </section>
 
       <section className="rounded-xl border bg-card p-6 space-y-4">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <h2 className="font-display text-xl font-bold">Hero Slider</h2>
+            <p className="text-xs text-muted-foreground">Add, reorder or remove the rotating background images. Leave empty to use the defaults.</p>
+          </div>
+          <Button variant="outline" onClick={() => setSlides([...slides, { imageUrl: "", alt: "" }])}>
+            <Plus className="mr-1 h-4 w-4" /> Add slide
+          </Button>
+        </div>
+        <div className="space-y-3">
+          {slides.length === 0 && <p className="text-sm text-muted-foreground">No custom slides — the default 3 images are showing.</p>}
+          {slides.map((s, i) => (
+            <div key={i} className="rounded-lg border p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">Slide {i + 1}</div>
+                <div className="flex items-center gap-1">
+                  <Button variant="ghost" size="sm" onClick={() => moveSlide(i, -1)}><ArrowUp className="h-4 w-4" /></Button>
+                  <Button variant="ghost" size="sm" onClick={() => moveSlide(i, 1)}><ArrowDown className="h-4 w-4" /></Button>
+                  <Button variant="ghost" size="sm" onClick={() => setSlides(slides.filter((_, j) => j !== i))}>
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+              <MediaUploader label="Slide image" value={s.imageUrl} prefix="hero"
+                onChange={(p) => { const n = [...slides]; n[i] = { ...s, imageUrl: p ?? "" }; setSlides(n); }} />
+              <div className="space-y-1">
+                <Label className="text-xs">Alt text</Label>
+                <Input value={s.alt ?? ""} onChange={(e) => { const n = [...slides]; n[i] = { ...s, alt: e.target.value }; setSlides(n); }} />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-end">
+          <Button onClick={() => save.mutate({ key: "home.slides", value: slides.filter((s) => s.imageUrl) })} disabled={save.isPending}>
+            Save slides
+          </Button>
+        </div>
+      </section>
+
+      <section className="rounded-xl border bg-card p-6 space-y-4">
+
         <h2 className="font-display text-xl font-bold">Sections</h2>
         <p className="text-xs text-muted-foreground">Toggle sections on/off and reorder. Titles below override defaults where applicable.</p>
         <div className="space-y-3">
