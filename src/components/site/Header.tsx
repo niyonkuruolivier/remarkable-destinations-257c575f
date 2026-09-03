@@ -25,6 +25,8 @@ const nav = [
 export function Header({ transparent = false }: { transparent?: boolean }) {
   const onDark = transparent;
   const [open, setOpen] = useState(false);
+  const img = useSiteImages();
+  const logoSrc = img("brand.logo", elephantLogo.url);
 
   return (
     <header className="absolute inset-x-0 top-0 z-40">
@@ -32,7 +34,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
         {/* Brand */}
         <Link to="/" className="flex items-center gap-1.5 shrink-0">
           <img
-            src={elephantLogo.url}
+            src={logoSrc}
             alt="Remarkable Destinations"
             className="h-16 w-auto md:h-20 lg:h-24"
           />
@@ -151,7 +153,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                 {/* Brand */}
                 <div className="flex items-center gap-3 mb-14">
                   <img
-                    src={elephantLogo.url}
+                    src={logoSrc}
                     alt="Remarkable Destinations"
                     className="h-12 w-auto brightness-0 invert"
                   />
