@@ -80,7 +80,7 @@ function GalleryPage() {
               }
             >
               <img
-                src={p.src}
+                src={img(`gallery.photo.${photos.indexOf(p) + 1}`, p.src)}
                 alt={p.alt}
                 loading="lazy"
                 className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105 md:aspect-[4/3]"

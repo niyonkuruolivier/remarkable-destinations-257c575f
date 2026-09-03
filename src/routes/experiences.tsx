@@ -77,12 +77,12 @@ function ExperiencesPage() {
 
       <section className="mx-auto max-w-[1500px] px-6 py-24 md:px-10 md:py-32">
         <div className="grid gap-6 md:grid-cols-2">
-          {experiences.map((e) => {
+          {experiences.map((e, i) => {
             const Icon = e.icon;
             return (
               <article key={e.title} className="overflow-hidden rounded-[32px] bg-white">
                 <div className="aspect-[16/9] overflow-hidden">
-                  <img src={e.img} alt={e.title} loading="lazy" className="h-full w-full object-cover" />
+                  <img src={img(`experiences.card.${i + 1}`, e.img)} alt={e.title} loading="lazy" className="h-full w-full object-cover" />
                 </div>
                 <div className="p-7 md:p-9">
                   <div className="flex items-center gap-3">

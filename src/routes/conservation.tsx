@@ -94,10 +94,10 @@ function ConservationPage() {
           </h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((p) => (
+          {projects.map((p, i) => (
             <article key={p.title} className="overflow-hidden rounded-[32px] bg-white">
               <div className="aspect-[16/9] overflow-hidden">
-                <img src={p.img} alt={p.title} loading="lazy" className="h-full w-full object-cover" />
+                <img src={img(`conservation.card.${i + 1}`, p.img)} alt={p.title} loading="lazy" className="h-full w-full object-cover" />
               </div>
               <div className="p-7 md:p-9">
                 <div className="text-[12px] uppercase tracking-wider text-muted-foreground">{p.place}</div>

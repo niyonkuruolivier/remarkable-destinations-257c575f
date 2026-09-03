@@ -74,7 +74,7 @@ function DestinationsPage() {
           <article key={d.name} className="grid gap-10 md:grid-cols-12 md:gap-14">
             <div className={`md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
               <div className="overflow-hidden rounded-[32px]">
-                <img src={d.img} alt={d.name} loading="lazy" className="aspect-[5/4] w-full object-cover" />
+                <img src={img(`destinations.card.${i + 1}`, d.img)} alt={d.name} loading="lazy" className="aspect-[5/4] w-full object-cover" />
               </div>
             </div>
             <div className="md:col-span-5 self-center">

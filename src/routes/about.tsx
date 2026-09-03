@@ -128,10 +128,10 @@ function AboutPage() {
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
-          {team.map((m) => (
+          {team.map((m, i) => (
             <div key={m.name} className="overflow-hidden rounded-3xl bg-white">
               <div className="aspect-[4/5] overflow-hidden">
-                <img src={m.img} alt={m.name} loading="lazy" className="h-full w-full object-cover" />
+                <img src={img(`about.team.${i + 1}`, m.img)} alt={m.name} loading="lazy" className="h-full w-full object-cover" />
               </div>
               <div className="p-5">
                 <div className="font-display text-[18px] font-extrabold text-foreground">{m.name}</div>
