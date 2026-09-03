@@ -77,6 +77,11 @@ function Index() {
 }
 
 /* ---------------- HERO ---------------- */
+function youTubeId(url: string): string | null {
+  const m = url.match(/(?:youtube\.com\/(?:watch\?[^#]*v=|embed\/|shorts\/|live\/)|youtu\.be\/)([\w-]{6,})/);
+  return m ? m[1] : null;
+}
+
 function Hero() {
   const settings = useQuery({ queryKey: ["site_settings"], queryFn: getSiteSettings, staleTime: 30_000 });
   const h: HeroSetting | undefined = settings.data?.["home.hero"];
