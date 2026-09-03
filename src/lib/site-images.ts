@@ -1,4 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
+import heroPool from "@/assets/hero-pool.jpg";
+import heroHills from "@/assets/hero-slide-hills.jpg";
+import destRwanda from "@/assets/dest-rwanda.jpg";
+import destKenya from "@/assets/dest-kenya.jpg";
+import destTanzania from "@/assets/dest-tanzania.jpg";
+import destZanzibar from "@/assets/dest-zanzibar.jpg";
+import destNamibia from "@/assets/dest-namibia.jpg";
+import elephantLogo from "@/assets/elephant-raw-logo.png.asset.json";
 import { getSiteSettings } from "@/lib/site-settings";
 import { mediaUrl } from "@/lib/media";
 
@@ -11,18 +19,20 @@ const U = (id: string, w = 1200) =>
  * Every replaceable image on the public site.
  * Admin → Images lets an administrator upload a replacement for any slot.
  */
+const GALLERY_IDS = ["photo-1547970810-dc1eac37d174", "photo-1535941339077-2dd1c7963098", "photo-1551966775-a4ddc8df052b", "photo-1516426122078-c23e76319801", "photo-1547471080-7cc2caa01a7e", "photo-1493244040629-496f6d136cc3", "photo-1571406761758-9a3eed5338ef", "photo-1582719508461-905c673771fd", "photo-1542314831-068cd1dbfeeb", "photo-1523805009345-7448845a9e53", "photo-1504609813442-a8924e83f76e", "photo-1502920917128-1aa500764cbd"];
+
 export const IMAGE_SLOTS: ImageSlot[] = [
   // Brand
-  { key: "brand.logo", label: "Header logo", group: "Brand", default: "" },
+  { key: "brand.logo", label: "Header logo", group: "Brand", default: elephantLogo.url },
 
   // Home
-  { key: "home.hero.fallback", label: "Hero fallback image", group: "Home page", default: "" },
-  { key: "home.cta.background", label: "Bottom CTA background", group: "Home page", default: "" },
-  { key: "home.story.1", label: "Story card 1", group: "Home page", default: "" },
-  { key: "home.story.2", label: "Story card 2", group: "Home page", default: "" },
-  { key: "home.story.3", label: "Story card 3", group: "Home page", default: "" },
-  { key: "home.story.4", label: "Story card 4", group: "Home page", default: "" },
-  { key: "home.story.5", label: "Story card 5", group: "Home page", default: "" },
+  { key: "home.hero.fallback", label: "Hero fallback image", group: "Home page", default: heroPool },
+  { key: "home.cta.background", label: "Bottom CTA background", group: "Home page", default: heroHills },
+  { key: "home.story.1", label: "Story card 1", group: "Home page", default: destKenya },
+  { key: "home.story.2", label: "Story card 2", group: "Home page", default: destRwanda },
+  { key: "home.story.3", label: "Story card 3", group: "Home page", default: destZanzibar },
+  { key: "home.story.4", label: "Story card 4", group: "Home page", default: destTanzania },
+  { key: "home.story.5", label: "Story card 5", group: "Home page", default: destNamibia },
 
   // Page heroes
   { key: "hero.about", label: "About hero", group: "Page heroes", default: U("photo-1516426122078-c23e76319801", 1920) },
@@ -73,7 +83,7 @@ export const IMAGE_SLOTS: ImageSlot[] = [
     key: `gallery.photo.${i + 1}`,
     label: `Gallery photo ${i + 1}`,
     group: "Gallery page",
-    default: "",
+    default: U(GALLERY_IDS[i], 900),
   })),
 
   // Testimonials
