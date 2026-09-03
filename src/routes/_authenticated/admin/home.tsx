@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { adminUpsertSiteSetting } from "@/lib/admin.functions";
-import { getSiteSettings, type HeroSetting, type HomeSection, type HeroSlide } from "@/lib/site-settings";
+import { getSiteSettings, type HeroSetting, type HomeSection, type HeroSlide, type CountryCard } from "@/lib/site-settings";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -12,6 +12,18 @@ import { Switch } from "@/components/ui/switch";
 import { MediaUploader } from "@/components/admin/MediaUploader";
 import { toast } from "sonner";
 import { ArrowDown, ArrowUp, Plus, Trash2 } from "lucide-react";
+
+const DEFAULT_COUNTRIES: CountryCard[] = [
+  { name: "Rwanda", flag: "🇷🇼", tag: "Gorilla Country", imageUrl: "" },
+  { name: "Kenya", flag: "🇰🇪", tag: "Great Migration", imageUrl: "" },
+  { name: "Tanzania", flag: "🇹🇿", tag: "Serengeti Plains", imageUrl: "" },
+  { name: "Zanzibar", flag: "🇹🇿", tag: "Indian Ocean", imageUrl: "" },
+  { name: "Namibia", flag: "🇳🇦", tag: "Desert & Dunes", imageUrl: "" },
+  { name: "Botswana", flag: "🇧🇼", tag: "Okavango Delta", imageUrl: "" },
+  { name: "Uganda", flag: "🇺🇬", tag: "Pearl of Africa", imageUrl: "" },
+  { name: "S. Africa", flag: "🇿🇦", tag: "Cape & Kruger", imageUrl: "" },
+  { name: "Ethiopia", flag: "🇪🇹", tag: "Ancient Highlands", imageUrl: "" },
+];
 
 export const Route = createFileRoute("/_authenticated/admin/home")({
   component: HomeEditor,
@@ -26,12 +38,14 @@ function HomeEditor() {
   const [hero, setHero] = useState<HeroSetting | null>(null);
   const [sections, setSections] = useState<HomeSection[]>([]);
   const [slides, setSlides] = useState<HeroSlide[]>([]);
+  const [countries, setCountries] = useState<CountryCard[]>([]);
 
   useEffect(() => {
     if (q.data) {
       setHero(q.data["home.hero"] ?? { eyebrow: "", title: "", subtitle: "", ctaLabel: "", ctaHref: "", imageUrl: "" });
       setSections(q.data["home.sections"] ?? []);
       setSlides(q.data["home.slides"] ?? []);
+      setCountries((q.data["home.countries"] ?? DEFAULT_COUNTRIES).map((c: CountryCard) => ({ ...c })));
     }
   }, [q.data]);
 
@@ -139,6 +153,41 @@ function HomeEditor() {
         <div className="flex justify-end">
           <Button onClick={() => save.mutate({ key: "home.slides", value: slides.filter((s) => s.imageUrl) })} disabled={save.isPending}>
             Save slides
+          </Button>
+        </div>
+      </section>
+
+      <section className="rounded-xl border bg-card p-6 space-y-4">
+        <div>
+          <h2 className="font-display text-xl font-bold">Countries grid</h2>
+          <p className="text-xs text-muted-foreground">The “Nine countries — One remarkable standard” section. Upload a photo to replace the default image for each country, and edit its name or tagline.</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {countries.map((c, i) => (
+            <div key={i} className="rounded-lg border p-4 space-y-3">
+              <div className="text-xs uppercase tracking-widest text-muted-foreground">Card {i + 1}</div>
+              <MediaUploader label="Photo" value={c.imageUrl} prefix="countries"
+                onChange={(p) => { const n = [...countries]; n[i] = { ...c, imageUrl: p ?? "" }; setCountries(n); }} />
+              <div className="grid grid-cols-2 gap-2">
+                <div className="space-y-1">
+                  <Label className="text-xs">Name</Label>
+                  <Input value={c.name} onChange={(e) => { const n = [...countries]; n[i] = { ...c, name: e.target.value }; setCountries(n); }} />
+                </div>
+                <div className="space-y-1">
+                  <Label className="text-xs">Flag emoji</Label>
+                  <Input value={c.flag ?? ""} onChange={(e) => { const n = [...countries]; n[i] = { ...c, flag: e.target.value }; setCountries(n); }} />
+                </div>
+              </div>
+              <div className="space-y-1">
+                <Label className="text-xs">Tagline</Label>
+                <Input value={c.tag ?? ""} onChange={(e) => { const n = [...countries]; n[i] = { ...c, tag: e.target.value }; setCountries(n); }} />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-end">
+          <Button onClick={() => save.mutate({ key: "home.countries", value: countries })} disabled={save.isPending}>
+            Save countries
           </Button>
         </div>
       </section>

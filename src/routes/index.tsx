@@ -14,7 +14,7 @@ import { Footer } from "@/components/site/Footer";
 import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck, Leaf, Users, Compass, Sparkles, MapPin, Clock, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getSiteSettings, type HeroSetting, type HomeSection, type HeroSlide } from "@/lib/site-settings";
+import { getSiteSettings, type HeroSetting, type HomeSection, type HeroSlide, type CountryCard } from "@/lib/site-settings";
 import { mediaUrl } from "@/lib/media";
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -263,6 +263,13 @@ const countries = [
 function Brands() {
   const [visible, setVisible] = useState<Set<number>>(new Set());
   const gridRef = useRef<HTMLDivElement | null>(null);
+  const settings = useQuery({ queryKey: ["site_settings"], queryFn: getSiteSettings, staleTime: 30_000 });
+  const cms = (settings.data?.["home.countries"] as CountryCard[] | undefined) ?? [];
+  const list = countries.map((d, i) => {
+    const c = cms[i];
+    if (!c || !c.imageUrl) return d;
+    return { ...d, name: c.name || d.name, flag: c.flag || d.flag, tag: c.tag || d.tag, img: mediaUrl(c.imageUrl) };
+  });
 
   useEffect(() => {
     const el = gridRef.current;
@@ -349,7 +356,7 @@ function Brands() {
 
         {/* Country grid: glass cards */}
         <div ref={gridRef} className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
-          {countries.map((c, i) => (
+          {list.map((c, i) => (
             <Link
               key={c.name}
               to="/destinations"

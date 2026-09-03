@@ -53,3 +53,10 @@ export type HeroSlide = {
   imageUrl: string;
   alt?: string;
 };
+
+export type CountryCard = {
+  name: string;
+  flag?: string;
+  tag?: string;
+  imageUrl: string;
+};
