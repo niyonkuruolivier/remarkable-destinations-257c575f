@@ -158,6 +158,41 @@ function HomeEditor() {
       </section>
 
       <section className="rounded-xl border bg-card p-6 space-y-4">
+        <div>
+          <h2 className="font-display text-xl font-bold">Countries grid</h2>
+          <p className="text-xs text-muted-foreground">The “Nine countries — One remarkable standard” section. Upload a photo to replace the default image for each country, and edit its name or tagline.</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {countries.map((c, i) => (
+            <div key={i} className="rounded-lg border p-4 space-y-3">
+              <div className="text-xs uppercase tracking-widest text-muted-foreground">Card {i + 1}</div>
+              <MediaUploader label="Photo" value={c.imageUrl} prefix="countries"
+                onChange={(p) => { const n = [...countries]; n[i] = { ...c, imageUrl: p ?? "" }; setCountries(n); }} />
+              <div className="grid grid-cols-2 gap-2">
+                <div className="space-y-1">
+                  <Label className="text-xs">Name</Label>
+                  <Input value={c.name} onChange={(e) => { const n = [...countries]; n[i] = { ...c, name: e.target.value }; setCountries(n); }} />
+                </div>
+                <div className="space-y-1">
+                  <Label className="text-xs">Flag emoji</Label>
+                  <Input value={c.flag ?? ""} onChange={(e) => { const n = [...countries]; n[i] = { ...c, flag: e.target.value }; setCountries(n); }} />
+                </div>
+              </div>
+              <div className="space-y-1">
+                <Label className="text-xs">Tagline</Label>
+                <Input value={c.tag ?? ""} onChange={(e) => { const n = [...countries]; n[i] = { ...c, tag: e.target.value }; setCountries(n); }} />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-end">
+          <Button onClick={() => save.mutate({ key: "home.countries", value: countries })} disabled={save.isPending}>
+            Save countries
+          </Button>
+        </div>
+      </section>
+
+      <section className="rounded-xl border bg-card p-6 space-y-4">
 
         <h2 className="font-display text-xl font-bold">Sections</h2>
         <p className="text-xs text-muted-foreground">Toggle sections on/off and reorder. Titles below override defaults where applicable.</p>
