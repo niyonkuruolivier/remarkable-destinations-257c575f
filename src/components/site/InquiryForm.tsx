@@ -1,30 +1,49 @@
 import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 export function InquiryForm({ source = "homepage" }: { source?: string }) {
   const [loading, setLoading] = useState(false);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     setLoading(true);
-    const { error } = await supabase.from("inquiries").insert({
-      name: String(fd.get("name") || ""),
-      email: String(fd.get("email") || ""),
-      phone: String(fd.get("phone") || "") || null,
-      interest: String(fd.get("interest") || "") || null,
-      travel_date: (fd.get("travel_date") as string) || null,
-      travelers: fd.get("travelers") ? Number(fd.get("travelers")) : null,
-      message: String(fd.get("message") || "") || null,
-      source,
-    });
+
+    const name = String(fd.get("name") || "").trim();
+    const email = String(fd.get("email") || "").trim();
+    const phone = String(fd.get("phone") || "").trim();
+    const interest = String(fd.get("interest") || "").trim();
+    const travelDate = String(fd.get("travel_date") || "").trim();
+    const travelers = String(fd.get("travelers") || "").trim();
+    const message = String(fd.get("message") || "").trim();
+
+    const to = "hello@remarkabledestinations.com";
+    const subject = encodeURIComponent(`New safari inquiry from ${name}`);
+    const body = encodeURIComponent(
+      [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        phone ? `Phone: ${phone}` : "",
+        interest ? `Safari interest: ${interest}` : "",
+        travelDate ? `Travel date: ${travelDate}` : "",
+        travelers ? `Travelers: ${travelers}` : "",
+        "",
+        "Message:",
+        message || "—",
+        "",
+        `Source: ${source}`,
+      ]
+        .filter(Boolean)
+        .join("\n")
+    );
+
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      to
+    )}&su=${subject}&body=${body}`;
+
     setLoading(false);
-    if (error) {
-      toast.error("Something interrupted us. Please try again.");
-      return;
-    }
-    toast.success("Received. A safari designer will write to you within 24 hours.");
+    window.open(gmailUrl, "_blank");
+    toast.success("Opening Gmail so you can send your inquiry directly.");
     (e.target as HTMLFormElement).reset();
   }
 
@@ -47,7 +66,7 @@ export function InquiryForm({ source = "homepage" }: { source?: string }) {
       />
       <div className="md:col-span-2">
         <button disabled={loading} className="btn-primary w-full md:w-auto" type="submit">
-          {loading ? "Sending…" : "Begin the Conversation"}
+          {loading ? "Opening Gmail…" : "Begin the Conversation"}
         </button>
       </div>
     </form>
