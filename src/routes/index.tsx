@@ -263,6 +263,13 @@ const countries = [
 function Brands() {
   const [visible, setVisible] = useState<Set<number>>(new Set());
   const gridRef = useRef<HTMLDivElement | null>(null);
+  const settings = useQuery({ queryKey: ["site_settings"], queryFn: getSiteSettings, staleTime: 30_000 });
+  const cms = (settings.data?.["home.countries"] as CountryCard[] | undefined) ?? [];
+  const list = countries.map((d, i) => {
+    const c = cms[i];
+    if (!c || !c.imageUrl) return d;
+    return { ...d, name: c.name || d.name, flag: c.flag || d.flag, tag: c.tag || d.tag, img: mediaUrl(c.imageUrl) };
+  });
 
   useEffect(() => {
     const el = gridRef.current;
