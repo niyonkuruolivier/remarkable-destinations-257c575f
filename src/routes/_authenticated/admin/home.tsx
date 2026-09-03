@@ -13,6 +13,18 @@ import { MediaUploader } from "@/components/admin/MediaUploader";
 import { toast } from "sonner";
 import { ArrowDown, ArrowUp, Plus, Trash2 } from "lucide-react";
 
+const DEFAULT_COUNTRIES: CountryCard[] = [
+  { name: "Rwanda", flag: "🇷🇼", tag: "Gorilla Country", imageUrl: "" },
+  { name: "Kenya", flag: "🇰🇪", tag: "Great Migration", imageUrl: "" },
+  { name: "Tanzania", flag: "🇹🇿", tag: "Serengeti Plains", imageUrl: "" },
+  { name: "Zanzibar", flag: "🇹🇿", tag: "Indian Ocean", imageUrl: "" },
+  { name: "Namibia", flag: "🇳🇦", tag: "Desert & Dunes", imageUrl: "" },
+  { name: "Botswana", flag: "🇧🇼", tag: "Okavango Delta", imageUrl: "" },
+  { name: "Uganda", flag: "🇺🇬", tag: "Pearl of Africa", imageUrl: "" },
+  { name: "S. Africa", flag: "🇿🇦", tag: "Cape & Kruger", imageUrl: "" },
+  { name: "Ethiopia", flag: "🇪🇹", tag: "Ancient Highlands", imageUrl: "" },
+];
+
 export const Route = createFileRoute("/_authenticated/admin/home")({
   component: HomeEditor,
 });
