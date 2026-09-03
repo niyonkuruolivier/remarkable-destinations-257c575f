@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
+import { useSiteImages } from "@/lib/site-images";
 
 export const Route = createFileRoute("/conservation")({
   head: () => ({
@@ -52,13 +53,14 @@ const pillars = [
 ];
 
 function ConservationPage() {
+  const img = useSiteImages();
   return (
     <div className="bg-background">
       <PageHero
         eyebrow="Conservation & sustainability"
         title={<>TRAVEL THAT PAYS<br />THE WILD BACK.</>}
         subtitle="Sustainability is not a department at Remarkable — it is the operating model. Each itinerary is engineered to leave the land, the wildlife and the people who steward them measurably better."
-        image="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&fit=crop&w=1920&q=80"
+        image={img("hero.conservation", "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&fit=crop&w=1920&q=80")}
         alt="Ranger watching elephants at dusk"
       />
 

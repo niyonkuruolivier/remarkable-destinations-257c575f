@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
+import { useSiteImages } from "@/lib/site-images";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -37,6 +38,7 @@ const photos: { src: string; cat: Cat; alt: string }[] = [
 ];
 
 function GalleryPage() {
+  const img = useSiteImages();
   const [active, setActive] = useState<Cat>("All");
   const filtered = active === "All" ? photos : photos.filter((p) => p.cat === active);
 
@@ -46,7 +48,7 @@ function GalleryPage() {
         eyebrow="Gallery"
         title={<>A VISUAL<br />FIELD-BOOK.</>}
         subtitle="Frames carried home from our safaris — the wildlife, the landscapes, the lodges, and the people who make each journey possible."
-        image="https://images.unsplash.com/photo-1547970810-dc1eac37d174?auto=format&fit=crop&w=1920&q=80"
+        image={img("hero.gallery", "https://images.unsplash.com/photo-1547970810-dc1eac37d174?auto=format&fit=crop&w=1920&q=80")}
         alt="Cheetah at dawn on the savanna"
       />
 

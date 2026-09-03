@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
+import { useSiteImages } from "@/lib/site-images";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -35,13 +36,14 @@ const posts = [
 ];
 
 function BlogPage() {
+  const img = useSiteImages();
   return (
     <div className="bg-background">
       <PageHero
         eyebrow="Travel insights"
         title={<>STORIES FROM<br />THE FIELD.</>}
         subtitle="Planning guides, conservation reporting and quiet field notes — written by the guides, designers and photographers who carry the Remarkable name across East Africa."
-        image="https://images.unsplash.com/photo-1493244040629-496f6d136cc3?auto=format&fit=crop&w=1920&q=80"
+        image={img("hero.blog", "https://images.unsplash.com/photo-1493244040629-496f6d136cc3?auto=format&fit=crop&w=1920&q=80")}
         alt="Vehicle silhouette in storm light over savanna"
       />
 

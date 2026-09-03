@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Quote, Star } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
+import { useSiteImages } from "@/lib/site-images";
 
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
@@ -32,13 +33,14 @@ const more = [
 ];
 
 function TestimonialsPage() {
+  const img = useSiteImages();
   return (
     <div className="bg-background">
       <PageHero
         eyebrow="Testimonials"
         title={<>LETTERS FROM<br />THE FIELD.</>}
         subtitle="We do not write our own copy on this page. These are the words of the travellers who entrusted us with their journeys — printed, with their permission, exactly as written."
-        image="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1920&q=80"
+        image={img("hero.testimonials", "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1920&q=80")}
         alt="Pool deck overlooking the plains at dusk"
       />
 

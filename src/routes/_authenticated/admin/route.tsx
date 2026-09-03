@@ -25,6 +25,7 @@ const NAV: { to: string; label: string; icon: any; exact?: boolean }[] = [
   { to: "/admin/gallery", label: "Gallery", icon: ImageIcon },
   { to: "/admin/blog", label: "Blog", icon: BookOpen },
   { to: "/admin/inquiries", label: "Inquiries", icon: Inbox },
+  { to: "/admin/images", label: "Images", icon: ImageIcon },
   { to: "/admin/media", label: "Media Library", icon: Images },
   { to: "/admin/settings", label: "Site Settings", icon: Settings },
 ];

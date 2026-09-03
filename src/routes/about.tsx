@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
+import { useSiteImages } from "@/lib/site-images";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -32,13 +33,14 @@ const values = [
 ];
 
 function AboutPage() {
+  const img = useSiteImages();
   return (
     <div className="bg-background">
       <PageHero
         eyebrow="About us"
         title={<>AN ATELIER<br />FOR THE WILD.</>}
         subtitle="Remarkable Collection is an East African journey house headquartered in Kigali, designing private safaris that move at the pace of the land — and leave it better than we found it."
-        image="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1920&q=80"
+        image={img("hero.about", "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1920&q=80")}
         alt="Acacia trees on the African savanna at dawn"
       />
 

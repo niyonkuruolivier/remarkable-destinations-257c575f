@@ -28,6 +28,7 @@ import { Route as AuthenticatedAdminSettingsRouteImport } from './routes/_authen
 import { Route as AuthenticatedAdminPackagesRouteImport } from './routes/_authenticated/admin/packages'
 import { Route as AuthenticatedAdminMediaRouteImport } from './routes/_authenticated/admin/media'
 import { Route as AuthenticatedAdminInquiriesRouteImport } from './routes/_authenticated/admin/inquiries'
+import { Route as AuthenticatedAdminImagesRouteImport } from './routes/_authenticated/admin/images'
 import { Route as AuthenticatedAdminHomeRouteImport } from './routes/_authenticated/admin/home'
 import { Route as AuthenticatedAdminGalleryRouteImport } from './routes/_authenticated/admin/gallery'
 import { Route as AuthenticatedAdminDestinationsRouteImport } from './routes/_authenticated/admin/destinations'
@@ -132,6 +133,12 @@ const AuthenticatedAdminInquiriesRoute =
     path: '/inquiries',
     getParentRoute: () => AuthenticatedAdminRouteRoute,
   } as any)
+const AuthenticatedAdminImagesRoute =
+  AuthenticatedAdminImagesRouteImport.update({
+    id: '/images',
+    path: '/images',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
 const AuthenticatedAdminHomeRoute = AuthenticatedAdminHomeRouteImport.update({
   id: '/home',
   path: '/home',
@@ -177,6 +184,7 @@ export interface FileRoutesByFullPath {
   '/admin/destinations': typeof AuthenticatedAdminDestinationsRoute
   '/admin/gallery': typeof AuthenticatedAdminGalleryRoute
   '/admin/home': typeof AuthenticatedAdminHomeRoute
+  '/admin/images': typeof AuthenticatedAdminImagesRoute
   '/admin/inquiries': typeof AuthenticatedAdminInquiriesRoute
   '/admin/media': typeof AuthenticatedAdminMediaRoute
   '/admin/packages': typeof AuthenticatedAdminPackagesRoute
@@ -201,6 +209,7 @@ export interface FileRoutesByTo {
   '/admin/destinations': typeof AuthenticatedAdminDestinationsRoute
   '/admin/gallery': typeof AuthenticatedAdminGalleryRoute
   '/admin/home': typeof AuthenticatedAdminHomeRoute
+  '/admin/images': typeof AuthenticatedAdminImagesRoute
   '/admin/inquiries': typeof AuthenticatedAdminInquiriesRoute
   '/admin/media': typeof AuthenticatedAdminMediaRoute
   '/admin/packages': typeof AuthenticatedAdminPackagesRoute
@@ -228,6 +237,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/destinations': typeof AuthenticatedAdminDestinationsRoute
   '/_authenticated/admin/gallery': typeof AuthenticatedAdminGalleryRoute
   '/_authenticated/admin/home': typeof AuthenticatedAdminHomeRoute
+  '/_authenticated/admin/images': typeof AuthenticatedAdminImagesRoute
   '/_authenticated/admin/inquiries': typeof AuthenticatedAdminInquiriesRoute
   '/_authenticated/admin/media': typeof AuthenticatedAdminMediaRoute
   '/_authenticated/admin/packages': typeof AuthenticatedAdminPackagesRoute
@@ -255,6 +265,7 @@ export interface FileRouteTypes {
     | '/admin/destinations'
     | '/admin/gallery'
     | '/admin/home'
+    | '/admin/images'
     | '/admin/inquiries'
     | '/admin/media'
     | '/admin/packages'
@@ -279,6 +290,7 @@ export interface FileRouteTypes {
     | '/admin/destinations'
     | '/admin/gallery'
     | '/admin/home'
+    | '/admin/images'
     | '/admin/inquiries'
     | '/admin/media'
     | '/admin/packages'
@@ -305,6 +317,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/destinations'
     | '/_authenticated/admin/gallery'
     | '/_authenticated/admin/home'
+    | '/_authenticated/admin/images'
     | '/_authenticated/admin/inquiries'
     | '/_authenticated/admin/media'
     | '/_authenticated/admin/packages'
@@ -465,6 +478,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminInquiriesRouteImport
       parentRoute: typeof AuthenticatedAdminRouteRoute
     }
+    '/_authenticated/admin/images': {
+      id: '/_authenticated/admin/images'
+      path: '/images'
+      fullPath: '/admin/images'
+      preLoaderRoute: typeof AuthenticatedAdminImagesRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
     '/_authenticated/admin/home': {
       id: '/_authenticated/admin/home'
       path: '/home'
@@ -508,6 +528,7 @@ interface AuthenticatedAdminRouteRouteChildren {
   AuthenticatedAdminDestinationsRoute: typeof AuthenticatedAdminDestinationsRoute
   AuthenticatedAdminGalleryRoute: typeof AuthenticatedAdminGalleryRoute
   AuthenticatedAdminHomeRoute: typeof AuthenticatedAdminHomeRoute
+  AuthenticatedAdminImagesRoute: typeof AuthenticatedAdminImagesRoute
   AuthenticatedAdminInquiriesRoute: typeof AuthenticatedAdminInquiriesRoute
   AuthenticatedAdminMediaRoute: typeof AuthenticatedAdminMediaRoute
   AuthenticatedAdminPackagesRoute: typeof AuthenticatedAdminPackagesRoute
@@ -522,6 +543,7 @@ const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren
     AuthenticatedAdminDestinationsRoute: AuthenticatedAdminDestinationsRoute,
     AuthenticatedAdminGalleryRoute: AuthenticatedAdminGalleryRoute,
     AuthenticatedAdminHomeRoute: AuthenticatedAdminHomeRoute,
+    AuthenticatedAdminImagesRoute: AuthenticatedAdminImagesRoute,
     AuthenticatedAdminInquiriesRoute: AuthenticatedAdminInquiriesRoute,
     AuthenticatedAdminMediaRoute: AuthenticatedAdminMediaRoute,
     AuthenticatedAdminPackagesRoute: AuthenticatedAdminPackagesRoute,
