@@ -114,32 +114,34 @@ function BlogPage() {
         </article>
       </section>
 
-      <section className="mx-auto max-w-[1500px] px-6 pb-24 md:px-10 md:pb-32">
-        <div className="mb-10">
-          <span className="eyebrow">Latest</span>
-          <h2 className="mt-3 font-display text-[32px] font-extrabold leading-[0.95] text-foreground md:text-[48px]">
-            More from the journal.
-          </h2>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {gridPosts.map((p, i) => (
-            <article key={p.title + i} className="group flex flex-col overflow-hidden rounded-3xl bg-white">
-              <div className="relative aspect-[5/4] overflow-hidden">
-                <img src={p.img} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <span className="tag-pill absolute left-4 top-4">{p.tag}</span>
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <div className="text-[12px] uppercase tracking-wider text-muted-foreground">{p.date}</div>
-                <h3 className="mt-3 font-display text-[20px] font-extrabold leading-[1.15] text-foreground md:text-[24px]">{p.title}</h3>
-                <p className="mt-3 text-[14px] leading-[1.65] text-muted-foreground">{p.excerpt}</p>
-                <div className="mt-6 flex items-center gap-2 text-[14px] font-medium text-foreground">
-                  Read article <ArrowRight className="h-4 w-4" />
+      {gridPosts.length > 0 && (
+        <section className="mx-auto max-w-[1500px] px-6 pb-24 md:px-10 md:pb-32">
+          <div className="mb-10">
+            <span className="eyebrow">Latest</span>
+            <h2 className="mt-3 font-display text-[32px] font-extrabold leading-[0.95] text-foreground md:text-[48px]">
+              More from the journal.
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {gridPosts.map((p, i) => (
+              <article key={p.title + i} className="group flex flex-col overflow-hidden rounded-3xl bg-white">
+                <div className="relative aspect-[5/4] overflow-hidden">
+                  <img src={p.img} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <span className="tag-pill absolute left-4 top-4">{p.tag}</span>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="text-[12px] uppercase tracking-wider text-muted-foreground">{p.date}</div>
+                  <h3 className="mt-3 font-display text-[20px] font-extrabold leading-[1.15] text-foreground md:text-[24px]">{p.title}</h3>
+                  <p className="mt-3 text-[14px] leading-[1.65] text-muted-foreground">{p.excerpt}</p>
+                  <div className="mt-6 flex items-center gap-2 text-[14px] font-medium text-foreground">
+                    Read article <ArrowRight className="h-4 w-4" />
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="mx-auto max-w-[1500px] px-6 pb-28 md:px-10 md:pb-40">
         <div className="rounded-[40px] px-8 py-16 text-center md:px-16 md:py-20" style={{ background: "var(--cream)" }}>
