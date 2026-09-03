@@ -48,3 +48,8 @@ export async function getSiteSettings(): Promise<Record<string, any>> {
   if (error || !data) return {};
   return Object.fromEntries(data.map((r) => [r.key, r.value]));
 }
+
+export type HeroSlide = {
+  imageUrl: string;
+  alt?: string;
+};

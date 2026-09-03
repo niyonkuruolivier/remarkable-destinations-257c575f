@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { adminUpsertSiteSetting } from "@/lib/admin.functions";
-import { getSiteSettings, type HeroSetting, type HomeSection } from "@/lib/site-settings";
+import { getSiteSettings, type HeroSetting, type HomeSection, type HeroSlide } from "@/lib/site-settings";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { MediaUploader } from "@/components/admin/MediaUploader";
 import { toast } from "sonner";
-import { ArrowDown, ArrowUp } from "lucide-react";
+import { ArrowDown, ArrowUp, Plus, Trash2 } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin/home")({
   component: HomeEditor,
@@ -25,11 +25,13 @@ function HomeEditor() {
 
   const [hero, setHero] = useState<HeroSetting | null>(null);
   const [sections, setSections] = useState<HomeSection[]>([]);
+  const [slides, setSlides] = useState<HeroSlide[]>([]);
 
   useEffect(() => {
     if (q.data) {
       setHero(q.data["home.hero"] ?? { eyebrow: "", title: "", subtitle: "", ctaLabel: "", ctaHref: "", imageUrl: "" });
       setSections(q.data["home.sections"] ?? []);
+      setSlides(q.data["home.slides"] ?? []);
     }
   }, [q.data]);
 
@@ -38,6 +40,14 @@ function HomeEditor() {
     onSuccess: () => { qc.invalidateQueries({ queryKey: ["site_settings"] }); toast.success("Saved"); },
     onError: (e: any) => toast.error(e?.message ?? "Save failed"),
   });
+
+  function moveSlide(i: number, dir: -1 | 1) {
+    const j = i + dir;
+    if (j < 0 || j >= slides.length) return;
+    const next = [...slides];
+    [next[i], next[j]] = [next[j], next[i]];
+    setSlides(next);
+  }
 
   function moveSection(i: number, dir: -1 | 1) {
     const j = i + dir;
@@ -94,6 +104,47 @@ function HomeEditor() {
       </section>
 
       <section className="rounded-xl border bg-card p-6 space-y-4">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <h2 className="font-display text-xl font-bold">Hero Slider</h2>
+            <p className="text-xs text-muted-foreground">Add, reorder or remove the rotating background images. Leave empty to use the defaults.</p>
+          </div>
+          <Button variant="outline" onClick={() => setSlides([...slides, { imageUrl: "", alt: "" }])}>
+            <Plus className="mr-1 h-4 w-4" /> Add slide
+          </Button>
+        </div>
+        <div className="space-y-3">
+          {slides.length === 0 && <p className="text-sm text-muted-foreground">No custom slides — the default 3 images are showing.</p>}
+          {slides.map((s, i) => (
+            <div key={i} className="rounded-lg border p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">Slide {i + 1}</div>
+                <div className="flex items-center gap-1">
+                  <Button variant="ghost" size="sm" onClick={() => moveSlide(i, -1)}><ArrowUp className="h-4 w-4" /></Button>
+                  <Button variant="ghost" size="sm" onClick={() => moveSlide(i, 1)}><ArrowDown className="h-4 w-4" /></Button>
+                  <Button variant="ghost" size="sm" onClick={() => setSlides(slides.filter((_, j) => j !== i))}>
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+              <MediaUploader label="Slide image" value={s.imageUrl} prefix="hero"
+                onChange={(p) => { const n = [...slides]; n[i] = { ...s, imageUrl: p ?? "" }; setSlides(n); }} />
+              <div className="space-y-1">
+                <Label className="text-xs">Alt text</Label>
+                <Input value={s.alt ?? ""} onChange={(e) => { const n = [...slides]; n[i] = { ...s, alt: e.target.value }; setSlides(n); }} />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-end">
+          <Button onClick={() => save.mutate({ key: "home.slides", value: slides.filter((s) => s.imageUrl) })} disabled={save.isPending}>
+            Save slides
+          </Button>
+        </div>
+      </section>
+
+      <section className="rounded-xl border bg-card p-6 space-y-4">
+
         <h2 className="font-display text-xl font-bold">Sections</h2>
         <p className="text-xs text-muted-foreground">Toggle sections on/off and reorder. Titles below override defaults where applicable.</p>
         <div className="space-y-3">

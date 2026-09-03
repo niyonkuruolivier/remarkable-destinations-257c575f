@@ -14,7 +14,7 @@ import { Footer } from "@/components/site/Footer";
 import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck, Leaf, Users, Compass, Sparkles, MapPin, Clock, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getSiteSettings, type HeroSetting, type HomeSection } from "@/lib/site-settings";
+import { getSiteSettings, type HeroSetting, type HomeSection, type HeroSlide } from "@/lib/site-settings";
 import { mediaUrl } from "@/lib/media";
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -84,11 +84,16 @@ function Hero() {
   const ctaLabel = h?.ctaLabel || "Book your safari";
   const ctaHref = h?.ctaHref || "/contact";
 
-  const slides = [
+  const cmsSlides = (settings.data?.["home.slides"] as HeroSlide[] | undefined) ?? [];
+  const defaultSlides = [
     { src: heroGorilla, alt: "Mountain gorilla in Volcanoes National Park, Rwanda" },
     { src: heroKivu, alt: "Sunset over Lake Kivu with traditional boats" },
     { src: heroHills, alt: "Rwanda's rolling green hills at golden hour with luxury eco-lodge" },
   ];
+  const slides = cmsSlides.filter((s) => s?.imageUrl).length
+    ? cmsSlides.filter((s) => s?.imageUrl).map((s) => ({ src: mediaUrl(s.imageUrl), alt: s.alt || "" }))
+    : defaultSlides;
+
   const [active, setActive] = useState(0);
   const touchStartX = useRef<number | null>(null);
 
