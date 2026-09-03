@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
+import { useSiteImages } from "@/lib/site-images";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -35,20 +36,21 @@ const posts = [
 ];
 
 function BlogPage() {
+  const img = useSiteImages();
   return (
     <div className="bg-background">
       <PageHero
         eyebrow="Travel insights"
         title={<>STORIES FROM<br />THE FIELD.</>}
         subtitle="Planning guides, conservation reporting and quiet field notes — written by the guides, designers and photographers who carry the Remarkable name across East Africa."
-        image="https://images.unsplash.com/photo-1493244040629-496f6d136cc3?auto=format&fit=crop&w=1920&q=80"
+        image={img("hero.blog", "https://images.unsplash.com/photo-1493244040629-496f6d136cc3?auto=format&fit=crop&w=1920&q=80")}
         alt="Vehicle silhouette in storm light over savanna"
       />
 
       <section className="mx-auto max-w-[1500px] px-6 py-20 md:px-10 md:py-28">
         <article className="grid items-center gap-10 md:grid-cols-2">
           <div className="overflow-hidden rounded-[32px]">
-            <img src={featured.img} alt={featured.title} className="aspect-[5/4] w-full object-cover" />
+            <img src={img("blog.featured", featured.img)} alt={featured.title} className="aspect-[5/4] w-full object-cover" />
           </div>
           <div>
             <span className="tag-pill">{featured.tag}</span>
@@ -72,10 +74,10 @@ function BlogPage() {
           </h2>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
-          {posts.map((p) => (
+          {posts.map((p, i) => (
             <article key={p.title} className="group flex flex-col overflow-hidden rounded-3xl bg-white">
               <div className="relative aspect-[5/4] overflow-hidden">
-                <img src={p.img} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={img(`blog.post.${i + 1}`, p.img)} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <span className="tag-pill absolute left-4 top-4">{p.tag}</span>
               </div>
               <div className="flex flex-1 flex-col p-6">

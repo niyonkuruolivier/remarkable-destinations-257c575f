@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Bird, Camera, Footprints, Mountain, Sparkles, Users } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
+import { useSiteImages } from "@/lib/site-images";
 
 export const Route = createFileRoute("/experiences")({
   head: () => ({
@@ -63,24 +64,25 @@ const sample = [
 ];
 
 function ExperiencesPage() {
+  const img = useSiteImages();
   return (
     <div className="bg-background">
       <PageHero
         eyebrow="Safari experiences"
         title={<>SIX WAYS<br />TO MEET AFRICA.</>}
         subtitle="Every Remarkable journey is bespoke — but they begin from six well-loved foundations. Blend any of them, in any order, on any continent of the wild."
-        image="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1920&q=80"
+        image={img("hero.experiences", "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1920&q=80")}
         alt="Rainforest canopy in Uganda"
       />
 
       <section className="mx-auto max-w-[1500px] px-6 py-24 md:px-10 md:py-32">
         <div className="grid gap-6 md:grid-cols-2">
-          {experiences.map((e) => {
+          {experiences.map((e, i) => {
             const Icon = e.icon;
             return (
               <article key={e.title} className="overflow-hidden rounded-[32px] bg-white">
                 <div className="aspect-[16/9] overflow-hidden">
-                  <img src={e.img} alt={e.title} loading="lazy" className="h-full w-full object-cover" />
+                  <img src={img(`experiences.card.${i + 1}`, e.img)} alt={e.title} loading="lazy" className="h-full w-full object-cover" />
                 </div>
                 <div className="p-7 md:p-9">
                   <div className="flex items-center gap-3">

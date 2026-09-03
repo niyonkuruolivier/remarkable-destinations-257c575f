@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
+import { useSiteImages } from "@/lib/site-images";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -32,13 +33,14 @@ const values = [
 ];
 
 function AboutPage() {
+  const img = useSiteImages();
   return (
     <div className="bg-background">
       <PageHero
         eyebrow="About us"
         title={<>AN ATELIER<br />FOR THE WILD.</>}
         subtitle="Remarkable Collection is an East African journey house headquartered in Kigali, designing private safaris that move at the pace of the land — and leave it better than we found it."
-        image="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1920&q=80"
+        image={img("hero.about", "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1920&q=80")}
         alt="Acacia trees on the African savanna at dawn"
       />
 
@@ -126,10 +128,10 @@ function AboutPage() {
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
-          {team.map((m) => (
+          {team.map((m, i) => (
             <div key={m.name} className="overflow-hidden rounded-3xl bg-white">
               <div className="aspect-[4/5] overflow-hidden">
-                <img src={m.img} alt={m.name} loading="lazy" className="h-full w-full object-cover" />
+                <img src={img(`about.team.${i + 1}`, m.img)} alt={m.name} loading="lazy" className="h-full w-full object-cover" />
               </div>
               <div className="p-5">
                 <div className="font-display text-[18px] font-extrabold text-foreground">{m.name}</div>

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
+import { useSiteImages } from "@/lib/site-images";
 
 export const Route = createFileRoute("/destinations")({
   head: () => ({
@@ -57,13 +58,14 @@ const destinations = [
 ];
 
 function DestinationsPage() {
+  const img = useSiteImages();
   return (
     <div className="bg-background">
       <PageHero
         eyebrow="Destinations"
         title={<>FOUR COUNTRIES.<br />ONE HORIZON.</>}
         subtitle="From the misted highlands of Rwanda to the sun-burnt plains of the Serengeti, we design private journeys across East Africa's four most extraordinary safari nations."
-        image="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?auto=format&fit=crop&w=1920&q=80"
+        image={img("hero.destinations", "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?auto=format&fit=crop&w=1920&q=80")}
         alt="Elephants crossing the Serengeti plains"
       />
 
@@ -72,7 +74,7 @@ function DestinationsPage() {
           <article key={d.name} className="grid gap-10 md:grid-cols-12 md:gap-14">
             <div className={`md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
               <div className="overflow-hidden rounded-[32px]">
-                <img src={d.img} alt={d.name} loading="lazy" className="aspect-[5/4] w-full object-cover" />
+                <img src={img(`destinations.card.${i + 1}`, d.img)} alt={d.name} loading="lazy" className="aspect-[5/4] w-full object-cover" />
               </div>
             </div>
             <div className="md:col-span-5 self-center">

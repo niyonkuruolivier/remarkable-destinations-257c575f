@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Quote, Star } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
+import { useSiteImages } from "@/lib/site-images";
 
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
@@ -32,26 +33,27 @@ const more = [
 ];
 
 function TestimonialsPage() {
+  const img = useSiteImages();
   return (
     <div className="bg-background">
       <PageHero
         eyebrow="Testimonials"
         title={<>LETTERS FROM<br />THE FIELD.</>}
         subtitle="We do not write our own copy on this page. These are the words of the travellers who entrusted us with their journeys — printed, with their permission, exactly as written."
-        image="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1920&q=80"
+        image={img("hero.testimonials", "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1920&q=80")}
         alt="Pool deck overlooking the plains at dusk"
       />
 
       <section className="mx-auto max-w-[1500px] px-6 py-24 md:px-10 md:py-32">
         <div className="grid gap-8 md:grid-cols-2">
-          {featured.map((t) => (
+          {featured.map((t, ti) => (
             <article key={t.name} className="rounded-[32px] bg-white p-8 md:p-12">
               <Quote className="h-10 w-10 text-foreground/15" />
               <p className="mt-6 font-display text-[22px] italic leading-[1.45] text-foreground md:text-[26px]">
                 "{t.body}"
               </p>
               <div className="mt-8 flex items-center gap-4 border-t border-foreground/10 pt-6">
-                <img src={t.img} alt={t.name} className="h-12 w-12 rounded-full object-cover" />
+                <img src={img(`testimonials.avatar.${ti + 1}`, t.img)} alt={t.name} className="h-12 w-12 rounded-full object-cover" />
                 <div>
                   <div className="font-display text-[16px] font-extrabold text-foreground">{t.name}</div>
                   <div className="text-[13px] text-muted-foreground">{t.place}</div>

@@ -16,6 +16,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getSiteSettings, type HeroSetting, type HomeSection, type HeroSlide, type CountryCard } from "@/lib/site-settings";
 import { mediaUrl } from "@/lib/media";
+import { useSiteImages } from "@/lib/site-images";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -80,7 +81,8 @@ function Hero() {
   const settings = useQuery({ queryKey: ["site_settings"], queryFn: getSiteSettings, staleTime: 30_000 });
   const h: HeroSetting | undefined = settings.data?.["home.hero"];
   const heroTitle = h?.title || "The company of journeys";
-  const heroImage = h?.imageUrl ? mediaUrl(h.imageUrl) : hero;
+  const img = useSiteImages();
+  const heroImage = h?.imageUrl ? mediaUrl(h.imageUrl) : img("home.hero.fallback", hero);
   const ctaLabel = h?.ctaLabel || "Book your safari";
   const ctaHref = h?.ctaHref || "/contact";
 
@@ -563,6 +565,7 @@ const stories = [
 ];
 
 function Magazine() {
+  const img = useSiteImages();
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const scroll = (dir: 1 | -1) => {
     const el = scrollerRef.current;
@@ -606,7 +609,7 @@ function Magazine() {
           >
             <div className="relative aspect-[4/5] overflow-hidden">
               <img
-                src={s.img}
+                src={img(`home.story.${i + 1}`, s.img)}
                 alt=""
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-110"
@@ -706,12 +709,13 @@ function Responsibility() {
 
 /* ---------------- CTA ---------------- */
 function CTA() {
+  const img = useSiteImages();
   return (
     <section className="relative overflow-hidden">
       <div className="relative h-[92vh] min-h-[620px] w-full">
         {/* Background image with parallax feel */}
         <img
-          src={heroHills}
+          src={img("home.cta.background", heroHills)}
           alt="Sunset over African plains"
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover animate-hero-kenburns"
