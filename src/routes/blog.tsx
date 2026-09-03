@@ -1,24 +1,36 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
 import { useSiteImages } from "@/lib/site-images";
+import { getPublishedBlogPosts } from "@/lib/blog.functions";
+import { mediaUrl } from "@/lib/media";
+import type { Tables } from "@/integrations/supabase/types";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Blog & Travel Insights — Remarkable Collection" },
+      { title: "Blog & Travel Insights — Remarkable Destinations" },
       { name: "description", content: "Field notes, planning guides and conservation stories from East Africa's most experienced safari designers." },
-      { property: "og:title", content: "Blog & Travel Insights — Remarkable Collection" },
+      { property: "og:title", content: "Blog & Travel Insights — Remarkable Destinations" },
       { property: "og:description", content: "Field notes, planning guides and conservation stories from East Africa." },
       { property: "og:url", content: "https://remarkable-destinations.lovable.app/blog" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "https://remarkable-destinations.lovable.app/blog" }],
   }),
+  loader: async ({ context }) => {
+    await context.queryClient.ensureQueryData({
+      queryKey: ["public", "blog_posts"],
+      queryFn: () => getPublishedBlogPosts(),
+    });
+  },
   component: BlogPage,
 });
 
-const featured = {
+const fallbackFeatured = {
   tag: "Field notes",
   date: "Jun 2026",
   title: "What a gorilla trek actually feels like — minute by minute",
@@ -26,7 +38,7 @@ const featured = {
   img: "https://images.unsplash.com/photo-1551966775-a4ddc8df052b?auto=format&fit=crop&w=1600&q=80",
 };
 
-const posts = [
+const fallbackPosts = [
   { tag: "Planning", date: "May 2026", title: "When to travel for the Great Migration — month by month", excerpt: "A complete calendar of the migration's movements across the Serengeti–Mara ecosystem, and the camps positioned to receive it.", img: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?auto=format&fit=crop&w=1200&q=80" },
   { tag: "Conservation", date: "May 2026", title: "How a gorilla permit actually pays for protection", excerpt: "We trace the path of a single Rwandan permit — from your booking confirmation to the salaries of the rangers it funds.", img: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=80" },
   { tag: "Families", date: "Apr 2026", title: "A safari with children — what we ask first", excerpt: "Ages, pacing, lodges with family rooms, and the four questions every honest safari designer should ask before quoting.", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" },
@@ -35,8 +47,44 @@ const posts = [
   { tag: "Field notes", date: "Jan 2026", title: "A week with the elephants of Amboseli", excerpt: "Our head of conservation spent seven days with the Amboseli Trust's matriarch families. These are the notes she brought back.", img: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?auto=format&fit=crop&w=1200&q=80" },
 ];
 
+function formatDate(dateStr: string | null | undefined): string {
+  if (!dateStr) return "";
+  const d = new Date(dateStr);
+  if (isNaN(d.getTime())) return "";
+  return d.toLocaleDateString("en-US", { year: "numeric", month: "short" });
+}
+
 function BlogPage() {
   const img = useSiteImages();
+  const { data: posts } = useSuspenseQuery({
+    queryKey: ["public", "blog_posts"],
+    queryFn: () => getPublishedBlogPosts(),
+  });
+
+  const hasCmsPosts = posts.length > 0;
+  const cmsFeatured: Tables<"blog_posts"> | undefined = posts[0];
+  const cmsRest = posts.slice(1);
+
+  const featured = cmsFeatured
+    ? {
+        tag: cmsFeatured.category || "Article",
+        date: formatDate(cmsFeatured.published_at || cmsFeatured.created_at),
+        title: cmsFeatured.title,
+        excerpt: cmsFeatured.excerpt || "",
+        img: img("blog.featured", mediaUrl(cmsFeatured.featured_image_url) || fallbackFeatured.img),
+      }
+    : fallbackFeatured;
+
+  const gridPosts = hasCmsPosts
+    ? cmsRest.map((p, i) => ({
+        tag: p.category || "Article",
+        date: formatDate(p.published_at || p.created_at),
+        title: p.title,
+        excerpt: p.excerpt || "",
+        img: img(`blog.post.${i + 1}`, mediaUrl(p.featured_image_url) || fallbackPosts[i % fallbackPosts.length].img),
+      }))
+    : fallbackPosts;
+
   return (
     <div className="bg-background">
       <PageHero
@@ -50,7 +98,7 @@ function BlogPage() {
       <section className="mx-auto max-w-[1500px] px-6 py-20 md:px-10 md:py-28">
         <article className="grid items-center gap-10 md:grid-cols-2">
           <div className="overflow-hidden rounded-[32px]">
-            <img src={img("blog.featured", featured.img)} alt={featured.title} className="aspect-[5/4] w-full object-cover" />
+            <img src={featured.img} alt={featured.title} className="aspect-[5/4] w-full object-cover" />
           </div>
           <div>
             <span className="tag-pill">{featured.tag}</span>
@@ -74,10 +122,10 @@ function BlogPage() {
           </h2>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
-          {posts.map((p, i) => (
-            <article key={p.title} className="group flex flex-col overflow-hidden rounded-3xl bg-white">
+          {gridPosts.map((p, i) => (
+            <article key={p.title + i} className="group flex flex-col overflow-hidden rounded-3xl bg-white">
               <div className="relative aspect-[5/4] overflow-hidden">
-                <img src={img(`blog.post.${i + 1}`, p.img)} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={p.img} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <span className="tag-pill absolute left-4 top-4">{p.tag}</span>
               </div>
               <div className="flex flex-1 flex-col p-6">
