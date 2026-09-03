@@ -4,8 +4,8 @@ import { Footer } from "@/components/site/Footer";
 import { InquiryForm } from "@/components/site/InquiryForm";
 import { MapPin, Mail, Phone, MessageCircle, Clock } from "lucide-react";
 
-const WHATSAPP_NUMBER = "+250788000000"; // TODO: replace with your real WhatsApp number
-const WHATSAPP_DISPLAY = "+250 788 000 000";
+const WHATSAPP_NUMBER = "+250788444827";
+const WHATSAPP_DISPLAY = "+250 788 444 827";
 const WHATSAPP_MSG = encodeURIComponent("Hello Remarkable Collection — I would like to plan a safari.");
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}?text=${WHATSAPP_MSG}`;
 
