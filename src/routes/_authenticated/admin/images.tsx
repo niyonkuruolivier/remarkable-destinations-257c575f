@@ -8,6 +8,8 @@ import { IMAGE_SLOTS, IMAGE_GROUPS, type ImageOverrides } from "@/lib/site-image
 import { MediaUploader } from "@/components/admin/MediaUploader";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin/images")({
   component: ImagesEditor,
