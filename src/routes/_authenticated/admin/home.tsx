@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { adminUpsertSiteSetting } from "@/lib/admin.functions";
-import { getSiteSettings, type HeroSetting, type HomeSection, type HeroSlide } from "@/lib/site-settings";
+import { getSiteSettings, type HeroSetting, type HomeSection, type HeroSlide, type CountryCard } from "@/lib/site-settings";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -26,12 +26,14 @@ function HomeEditor() {
   const [hero, setHero] = useState<HeroSetting | null>(null);
   const [sections, setSections] = useState<HomeSection[]>([]);
   const [slides, setSlides] = useState<HeroSlide[]>([]);
+  const [countries, setCountries] = useState<CountryCard[]>([]);
 
   useEffect(() => {
     if (q.data) {
       setHero(q.data["home.hero"] ?? { eyebrow: "", title: "", subtitle: "", ctaLabel: "", ctaHref: "", imageUrl: "" });
       setSections(q.data["home.sections"] ?? []);
       setSlides(q.data["home.slides"] ?? []);
+      setCountries((q.data["home.countries"] ?? DEFAULT_COUNTRIES).map((c: CountryCard) => ({ ...c })));
     }
   }, [q.data]);
 
