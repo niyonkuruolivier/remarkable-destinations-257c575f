@@ -20,6 +20,7 @@ function ImagesEditor() {
   const upsert = useServerFn(adminUpsertSiteSetting);
   const q = useQuery({ queryKey: ["site_settings"], queryFn: getSiteSettings });
   const [overrides, setOverrides] = useState<ImageOverrides | null>(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     if (q.data) setOverrides({ ...((q.data["images"] as ImageOverrides) ?? {}) });
