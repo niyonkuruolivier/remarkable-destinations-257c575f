@@ -87,13 +87,13 @@ function Hero() {
   const ctaHref = h?.ctaHref || "/contact";
 
   const cmsSlides = (settings.data?.["home.slides"] as HeroSlide[] | undefined) ?? [];
-  const defaultSlides = [
+  const defaultSlides: { src: string; alt: string; videoUrl?: string }[] = [
     { src: heroGorilla, alt: "Mountain gorilla in Volcanoes National Park, Rwanda" },
     { src: heroKivu, alt: "Sunset over Lake Kivu with traditional boats" },
     { src: heroHills, alt: "Rwanda's rolling green hills at golden hour with luxury eco-lodge" },
   ];
-  const slides = cmsSlides.filter((s) => s?.imageUrl).length
-    ? cmsSlides.filter((s) => s?.imageUrl).map((s) => ({ src: mediaUrl(s.imageUrl), alt: s.alt || "" }))
+  const slides = cmsSlides.filter((s) => s?.imageUrl || s?.videoUrl).length
+    ? cmsSlides.filter((s) => s?.imageUrl || s?.videoUrl).map((s) => ({ src: s.imageUrl ? mediaUrl(s.imageUrl) : "", alt: s.alt || "", videoUrl: s.videoUrl || undefined }))
     : defaultSlides;
 
   const [active, setActive] = useState(0);

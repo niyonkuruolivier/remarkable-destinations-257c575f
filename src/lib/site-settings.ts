@@ -52,6 +52,8 @@ export async function getSiteSettings(): Promise<Record<string, any>> {
 export type HeroSlide = {
   imageUrl: string;
   alt?: string;
+  /** Optional video (YouTube link or direct mp4 URL) shown instead of the image. */
+  videoUrl?: string;
 };
 
 export type CountryCard = {

@@ -144,6 +144,13 @@ function HomeEditor() {
               <MediaUploader label="Slide image" value={s.imageUrl} prefix="hero"
                 onChange={(p) => { const n = [...slides]; n[i] = { ...s, imageUrl: p ?? "" }; setSlides(n); }} />
               <div className="space-y-1">
+                <Label className="text-xs">Video link (optional)</Label>
+                <Input placeholder="https://www.youtube.com/watch?v=... or https://.../clip.mp4"
+                  value={s.videoUrl ?? ""}
+                  onChange={(e) => { const n = [...slides]; n[i] = { ...s, videoUrl: e.target.value }; setSlides(n); }} />
+                <p className="text-[11px] text-muted-foreground">If set, this video plays in the hero for this slide (the image is used as its poster/fallback).</p>
+              </div>
+              <div className="space-y-1">
                 <Label className="text-xs">Alt text</Label>
                 <Input value={s.alt ?? ""} onChange={(e) => { const n = [...slides]; n[i] = { ...s, alt: e.target.value }; setSlides(n); }} />
               </div>
@@ -151,7 +158,7 @@ function HomeEditor() {
           ))}
         </div>
         <div className="flex justify-end">
-          <Button onClick={() => save.mutate({ key: "home.slides", value: slides.filter((s) => s.imageUrl) })} disabled={save.isPending}>
+          <Button onClick={() => save.mutate({ key: "home.slides", value: slides.filter((s) => s.imageUrl || s.videoUrl) })} disabled={save.isPending}>
             Save slides
           </Button>
         </div>
