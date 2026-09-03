@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { adminUpsertSiteSetting } from "@/lib/admin.functions";
-import { getSiteSettings, type HeroSetting, type HomeSection } from "@/lib/site-settings";
+import { getSiteSettings, type HeroSetting, type HomeSection, type HeroSlide } from "@/lib/site-settings";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { MediaUploader } from "@/components/admin/MediaUploader";
 import { toast } from "sonner";
-import { ArrowDown, ArrowUp } from "lucide-react";
+import { ArrowDown, ArrowUp, Plus, Trash2 } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin/home")({
   component: HomeEditor,
@@ -25,11 +25,13 @@ function HomeEditor() {
 
   const [hero, setHero] = useState<HeroSetting | null>(null);
   const [sections, setSections] = useState<HomeSection[]>([]);
+  const [slides, setSlides] = useState<HeroSlide[]>([]);
 
   useEffect(() => {
     if (q.data) {
       setHero(q.data["home.hero"] ?? { eyebrow: "", title: "", subtitle: "", ctaLabel: "", ctaHref: "", imageUrl: "" });
       setSections(q.data["home.sections"] ?? []);
+      setSlides(q.data["home.slides"] ?? []);
     }
   }, [q.data]);
 
@@ -38,6 +40,14 @@ function HomeEditor() {
     onSuccess: () => { qc.invalidateQueries({ queryKey: ["site_settings"] }); toast.success("Saved"); },
     onError: (e: any) => toast.error(e?.message ?? "Save failed"),
   });
+
+  function moveSlide(i: number, dir: -1 | 1) {
+    const j = i + dir;
+    if (j < 0 || j >= slides.length) return;
+    const next = [...slides];
+    [next[i], next[j]] = [next[j], next[i]];
+    setSlides(next);
+  }
 
   function moveSection(i: number, dir: -1 | 1) {
     const j = i + dir;
