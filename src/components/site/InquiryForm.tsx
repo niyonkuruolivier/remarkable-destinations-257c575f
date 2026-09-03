@@ -47,27 +47,51 @@ export function InquiryForm({ source = "homepage" }: { source?: string }) {
     (e.target as HTMLFormElement).reset();
   }
 
+  const label = "mb-2 block text-[12px] font-semibold uppercase tracking-[0.12em] text-muted-foreground";
   const field =
-    "w-full border-b border-foreground/20 bg-transparent py-3 text-[15px] text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none";
+    "w-full rounded-2xl border border-border bg-background/60 px-4 py-3 text-[15px] text-foreground placeholder:text-muted-foreground/70 transition-colors focus:border-cobalt focus:bg-card focus:outline-none focus:ring-2 focus:ring-cobalt/20";
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-6 md:grid-cols-2">
-      <input className={field} required name="name" placeholder="Your name" />
-      <input className={field} required type="email" name="email" placeholder="Email address" />
-      <input className={field} name="phone" placeholder="Telephone (optional)" />
-      <input className={field} name="interest" placeholder="Safari interest — e.g. gorilla trek" />
-      <input className={field} type="date" name="travel_date" />
-      <input className={field} type="number" min={1} name="travelers" placeholder="Travelers" />
-      <textarea
-        className={field + " md:col-span-2 resize-none"}
-        rows={4}
-        name="message"
-        placeholder="Tell us what you dream of seeing…"
-      />
-      <div className="md:col-span-2">
-        <button disabled={loading} className="btn-primary w-full md:w-auto" type="submit">
+    <form onSubmit={onSubmit} className="grid gap-5 sm:grid-cols-2">
+      <div>
+        <label className={label} htmlFor="cf-name">Your name</label>
+        <input id="cf-name" className={field} required name="name" placeholder="Jane Doe" />
+      </div>
+      <div>
+        <label className={label} htmlFor="cf-email">Email address</label>
+        <input id="cf-email" className={field} required type="email" name="email" placeholder="jane@email.com" />
+      </div>
+      <div>
+        <label className={label} htmlFor="cf-phone">Telephone <span className="normal-case tracking-normal font-normal">(optional)</span></label>
+        <input id="cf-phone" className={field} name="phone" placeholder="+250 …" />
+      </div>
+      <div>
+        <label className={label} htmlFor="cf-interest">Safari interest</label>
+        <input id="cf-interest" className={field} name="interest" placeholder="e.g. gorilla trek" />
+      </div>
+      <div>
+        <label className={label} htmlFor="cf-date">Approximate travel date</label>
+        <input id="cf-date" className={field} type="date" name="travel_date" />
+      </div>
+      <div>
+        <label className={label} htmlFor="cf-travelers">Travelers</label>
+        <input id="cf-travelers" className={field} type="number" min={1} name="travelers" placeholder="2" />
+      </div>
+      <div className="sm:col-span-2">
+        <label className={label} htmlFor="cf-message">Tell us more</label>
+        <textarea
+          id="cf-message"
+          className={field + " resize-none"}
+          rows={5}
+          name="message"
+          placeholder="Tell us what you dream of seeing…"
+        />
+      </div>
+      <div className="sm:col-span-2 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <button disabled={loading} className="btn-cobalt w-full sm:w-auto" type="submit">
           {loading ? "Opening Gmail…" : "Begin the Conversation"}
         </button>
+        <p className="text-[13px] text-muted-foreground">We reply within 24 hours — 7 days a week.</p>
       </div>
     </form>
   );

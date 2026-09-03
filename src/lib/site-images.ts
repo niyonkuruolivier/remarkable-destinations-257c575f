@@ -42,6 +42,7 @@ export const IMAGE_SLOTS: ImageSlot[] = [
   { key: "hero.conservation", label: "Conservation hero", group: "Page heroes", default: U("photo-1564349683136-77e08dba1ef7", 1920) },
   { key: "hero.blog", label: "Blog hero", group: "Page heroes", default: U("photo-1493244040629-496f6d136cc3", 1920) },
   { key: "hero.testimonials", label: "Testimonials hero", group: "Page heroes", default: U("photo-1582719508461-905c673771fd", 1920) },
+  { key: "hero.contact", label: "Contact hero", group: "Page heroes", default: U("photo-1516426122078-c23e76319801", 1920) },
 
   // About team
   { key: "about.team.1", label: "Team member 1", group: "About page", default: U("photo-1531123897727-8f129e1688ce", 600) },
