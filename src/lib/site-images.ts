@@ -6,6 +6,8 @@ import destKenya from "@/assets/dest-kenya.jpg";
 import destTanzania from "@/assets/dest-tanzania.jpg";
 import destZanzibar from "@/assets/dest-zanzibar.jpg";
 import destNamibia from "@/assets/dest-namibia.jpg";
+import story1 from "@/assets/story-1.jpeg";
+import story2 from "@/assets/story-2.jpeg";
 import elephantLogo from "@/assets/elephant-raw-logo.png.asset.json";
 import { getSiteSettings } from "@/lib/site-settings";
 import { mediaUrl } from "@/lib/media";
