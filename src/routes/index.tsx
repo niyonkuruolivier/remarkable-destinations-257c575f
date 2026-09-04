@@ -16,6 +16,8 @@ import cZanzibar from "@/assets/country-zanzibar.jpg";
 import cNamibia from "@/assets/country-namibia.jpg";
 import cUganda from "@/assets/country-uganda.jpg";
 import cSouthAfrica from "@/assets/country-southafrica.jpg";
+import story1 from "@/assets/story-1.jpeg";
+import story2 from "@/assets/story-2.jpeg";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck, Leaf, Users, Compass, Sparkles, MapPin, Clock, ChevronDown } from "lucide-react";
