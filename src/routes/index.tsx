@@ -565,7 +565,7 @@ function Stats() {
 /* ---------------- MAGAZINE ---------------- */
 const stories = [
   {
-    img: destKenya,
+    img: story1,
     tag: "Magazine",
     date: "Jun 2026",
     title: "How the Mara is rewriting community conservation",
@@ -574,7 +574,7 @@ const stories = [
     duration: "8 min read",
   },
   {
-    img: destRwanda,
+    img: story2,
     tag: "Newsroom",
     date: "May 2026",
     title: "A new gorilla naming ceremony in Volcanoes",
