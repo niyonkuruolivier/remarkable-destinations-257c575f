@@ -9,6 +9,13 @@ import destTanzania from "@/assets/dest-tanzania.jpg";
 import destZanzibar from "@/assets/dest-zanzibar.jpg";
 import destNamibia from "@/assets/dest-namibia.jpg";
 import lodge from "@/assets/lodge.jpg";
+import cRwanda from "@/assets/country-rwanda.jpg";
+import cKenya from "@/assets/country-kenya.jpg";
+import cTanzania from "@/assets/country-tanzania.jpg";
+import cZanzibar from "@/assets/country-zanzibar.jpg";
+import cNamibia from "@/assets/country-namibia.jpg";
+import cUganda from "@/assets/country-uganda.jpg";
+import cSouthAfrica from "@/assets/country-southafrica.jpg";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck, Leaf, Users, Compass, Sparkles, MapPin, Clock, ChevronDown } from "lucide-react";
@@ -289,14 +296,14 @@ function Intro() {
 
 /* ---------------- PORTFOLIO / BRANDS ---------------- */
 const countries = [
-  { name: "Rwanda",     flag: "🇷🇼", tag: "Gorilla Country",   img: destRwanda },
-  { name: "Kenya",      flag: "🇰🇪", tag: "Great Migration",   img: destKenya },
-  { name: "Tanzania",   flag: "🇹🇿", tag: "Serengeti Plains",  img: destTanzania },
-  { name: "Zanzibar",   flag: "🇹🇿", tag: "Indian Ocean",      img: destZanzibar },
-  { name: "Namibia",    flag: "🇳🇦", tag: "Desert & Dunes",    img: destNamibia },
+  { name: "Rwanda",     flag: "🇷🇼", tag: "Giraffe",           img: cRwanda },
+  { name: "Kenya",      flag: "🇰🇪", tag: "Great Migration",   img: cKenya },
+  { name: "Tanzania",   flag: "🇹🇿", tag: "Serengeti Plains",  img: cTanzania },
+  { name: "Zanzibar",   flag: "🇹🇿", tag: "Indian Ocean",      img: cZanzibar },
+  { name: "Namibia",    flag: "🇳🇦", tag: "Desert & Dunes",    img: cNamibia },
   { name: "Botswana",   flag: "🇧🇼", tag: "Okavango Delta",    img: lodge },
-  { name: "Uganda",     flag: "🇺🇬", tag: "Pearl of Africa",   img: destRwanda },
-  { name: "S. Africa",  flag: "🇿🇦", tag: "Cape & Kruger",     img: destNamibia },
+  { name: "Uganda",     flag: "🇺🇬", tag: "uganda equator",    img: cUganda },
+  { name: "S. Africa",  flag: "🇿🇦", tag: "Cape & Kruger",     img: cSouthAfrica },
   { name: "Ethiopia",   flag: "🇪🇹", tag: "Ancient Highlands", img: destKenya },
 ];
 
