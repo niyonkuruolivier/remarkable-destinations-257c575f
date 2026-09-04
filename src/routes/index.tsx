@@ -16,6 +16,8 @@ import cZanzibar from "@/assets/country-zanzibar.jpg";
 import cNamibia from "@/assets/country-namibia.jpg";
 import cUganda from "@/assets/country-uganda.jpg";
 import cSouthAfrica from "@/assets/country-southafrica.jpg";
+import story1 from "@/assets/story-1.jpeg";
+import story2 from "@/assets/story-2.jpeg";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck, Leaf, Users, Compass, Sparkles, MapPin, Clock, ChevronDown } from "lucide-react";
@@ -563,7 +565,7 @@ function Stats() {
 /* ---------------- MAGAZINE ---------------- */
 const stories = [
   {
-    img: destKenya,
+    img: story1,
     tag: "Magazine",
     date: "Jun 2026",
     title: "How the Mara is rewriting community conservation",
@@ -572,7 +574,7 @@ const stories = [
     duration: "8 min read",
   },
   {
-    img: destRwanda,
+    img: story2,
     tag: "Newsroom",
     date: "May 2026",
     title: "A new gorilla naming ceremony in Volcanoes",

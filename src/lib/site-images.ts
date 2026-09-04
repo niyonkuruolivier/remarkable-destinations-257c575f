@@ -6,6 +6,8 @@ import destKenya from "@/assets/dest-kenya.jpg";
 import destTanzania from "@/assets/dest-tanzania.jpg";
 import destZanzibar from "@/assets/dest-zanzibar.jpg";
 import destNamibia from "@/assets/dest-namibia.jpg";
+import story1 from "@/assets/story-1.jpeg";
+import story2 from "@/assets/story-2.jpeg";
 import elephantLogo from "@/assets/elephant-raw-logo.png.asset.json";
 import { getSiteSettings } from "@/lib/site-settings";
 import { mediaUrl } from "@/lib/media";
@@ -28,8 +30,8 @@ export const IMAGE_SLOTS: ImageSlot[] = [
   // Home
   { key: "home.hero.fallback", label: "Hero fallback image", group: "Home page", default: heroPool },
   { key: "home.cta.background", label: "Bottom CTA background", group: "Home page", default: heroHills },
-  { key: "home.story.1", label: "Story card 1", group: "Home page", default: destKenya },
-  { key: "home.story.2", label: "Story card 2", group: "Home page", default: destRwanda },
+  { key: "home.story.1", label: "Story card 1", group: "Home page", default: story1 },
+  { key: "home.story.2", label: "Story card 2", group: "Home page", default: story2 },
   { key: "home.story.3", label: "Story card 3", group: "Home page", default: destZanzibar },
   { key: "home.story.4", label: "Story card 4", group: "Home page", default: destTanzania },
   { key: "home.story.5", label: "Story card 5", group: "Home page", default: destNamibia },
