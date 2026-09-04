@@ -28,8 +28,8 @@ export const IMAGE_SLOTS: ImageSlot[] = [
   // Home
   { key: "home.hero.fallback", label: "Hero fallback image", group: "Home page", default: heroPool },
   { key: "home.cta.background", label: "Bottom CTA background", group: "Home page", default: heroHills },
-  { key: "home.story.1", label: "Story card 1", group: "Home page", default: destKenya },
-  { key: "home.story.2", label: "Story card 2", group: "Home page", default: destRwanda },
+  { key: "home.story.1", label: "Story card 1", group: "Home page", default: story1 },
+  { key: "home.story.2", label: "Story card 2", group: "Home page", default: story2 },
   { key: "home.story.3", label: "Story card 3", group: "Home page", default: destZanzibar },
   { key: "home.story.4", label: "Story card 4", group: "Home page", default: destTanzania },
   { key: "home.story.5", label: "Story card 5", group: "Home page", default: destNamibia },
